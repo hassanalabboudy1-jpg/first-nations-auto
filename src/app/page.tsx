@@ -5,7 +5,7 @@ import { ALL_COMMUNITIES } from "@/data/communities";
 
 const STATS = [
   { value: "191+", label: "Communities Served", sub: "ON, QC, NB & NS" },
-  { value: "15%", label: "Tax Savings", sub: "HST exempt on-reserve" },
+  { value: "100%", label: "Tax Savings", sub: "HST exempt with Status Card" },
   { value: "$0", label: "Down Payment", sub: "Drive today" },
   { value: "1 HR", label: "Callback Time", sub: "We call you fast" },
 ];
