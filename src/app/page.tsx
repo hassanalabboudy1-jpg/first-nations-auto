@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { LeadForm } from "@/components/LeadForm";
+import { CommunityAccordion } from "@/components/CommunityAccordion";
 import { ALL_COMMUNITIES } from "@/data/communities";
 
 const STATS = [
@@ -271,90 +272,48 @@ export default function HomePage() {
       </section>
 
       {/* Communities */}
-      <section id="communities" className="max-w-6xl mx-auto px-4 py-20">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-earth-dark mb-3">
+      <section id="communities" className="max-w-6xl mx-auto px-4 py-16">
+        <div className="text-center mb-8">
+          <h2 className="text-2xl font-bold text-earth-dark mb-2">
             Communities We Serve
           </h2>
-          <p className="text-earth-muted max-w-lg mx-auto">
-            Click your community for personalized financing information and
-            local delivery details.
+          <p className="text-sm text-earth-muted">
+            We deliver tax-free to 191+ First Nations communities. Find yours below.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-10">
-          {/* Ontario */}
-          <div>
-            <h3 className="font-bold text-earth-forest mb-4 text-sm tracking-wider uppercase">
-              🍁 Ontario — {ontarioCommunities.length} Communities
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              {ontarioCommunities.map((c) => (
-                <Link
-                  key={c.slug}
-                  href={`/community/${c.slug}`}
-                  className="text-xs bg-white border border-earth-border rounded-full px-3 py-1.5 hover:border-earth-forest hover:text-earth-forest transition text-earth-muted"
-                >
-                  {c.name}
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          {/* Quebec */}
-          <div>
-            <h3 className="font-bold text-earth-sage mb-4 text-sm tracking-wider uppercase">
-              ⚜️ Quebec — {quebecCommunities.length} Communities
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              {quebecCommunities.map((c) => (
-                <Link
-                  key={c.slug}
-                  href={`/community/${c.slug}`}
-                  className="text-xs bg-white border border-earth-border rounded-full px-3 py-1.5 hover:border-earth-sage hover:text-earth-sage transition text-earth-muted"
-                >
-                  {c.name}
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          {/* New Brunswick */}
-          <div>
-            <h3 className="font-bold text-earth-brown mb-4 text-sm tracking-wider uppercase">
-              🌊 New Brunswick — {newBrunswickCommunities.length} Communities
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              {newBrunswickCommunities.map((c) => (
-                <Link
-                  key={c.slug}
-                  href={`/community/${c.slug}`}
-                  className="text-xs bg-white border border-earth-border rounded-full px-3 py-1.5 hover:border-earth-brown hover:text-earth-brown transition text-earth-muted"
-                >
-                  {c.name}
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          {/* Nova Scotia */}
-          <div>
-            <h3 className="font-bold text-earth-tan mb-4 text-sm tracking-wider uppercase">
-              🦞 Nova Scotia — {novaScotiaCommunities.length} Communities
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              {novaScotiaCommunities.map((c) => (
-                <Link
-                  key={c.slug}
-                  href={`/community/${c.slug}`}
-                  className="text-xs bg-white border border-earth-border rounded-full px-3 py-1.5 hover:border-earth-tan hover:text-earth-tan transition text-earth-muted"
-                >
-                  {c.name}
-                </Link>
-              ))}
-            </div>
-          </div>
-        </div>
+        <CommunityAccordion
+          provinces={[
+            {
+              label: "Ontario",
+              icon: "🍁",
+              color: "text-earth-forest",
+              hoverColor: "hover:border-earth-forest hover:text-earth-forest",
+              communities: ontarioCommunities,
+            },
+            {
+              label: "Quebec",
+              icon: "⚜️",
+              color: "text-earth-sage",
+              hoverColor: "hover:border-earth-sage hover:text-earth-sage",
+              communities: quebecCommunities,
+            },
+            {
+              label: "New Brunswick",
+              icon: "🌊",
+              color: "text-earth-brown",
+              hoverColor: "hover:border-earth-brown hover:text-earth-brown",
+              communities: newBrunswickCommunities,
+            },
+            {
+              label: "Nova Scotia",
+              icon: "🦞",
+              color: "text-earth-tan",
+              hoverColor: "hover:border-earth-tan hover:text-earth-tan",
+              communities: novaScotiaCommunities,
+            },
+          ]}
+        />
       </section>
 
       {/* Footer */}
