@@ -155,12 +155,7 @@ export default function HomePage() {
               Save thousands with tax-exempt on-reserve delivery across Ontario,
               Quebec, New Brunswick, and Nova Scotia.
             </p>
-            <p className="text-white/60 mb-8 flex items-center gap-2">
-              <span className="text-earth-gold font-semibold">— Sam Al</span>
-              <span className="text-sm">
-                $0 down. All credit welcome. I call you within 1 hour.
-              </span>
-            </p>
+            <div className="mb-8" />
             <div className="flex flex-wrap gap-3">
               <a
                 href="#apply"
