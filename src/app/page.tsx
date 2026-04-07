@@ -52,7 +52,7 @@ const TRUST_POINTS = [
   {
     icon: "💳",
     title: "All Credit Welcome",
-    description: "Bad credit, no credit, new credit — we work with 50+ lenders to find your best option. Over 90% approval rate.",
+    description: "Bad credit, no credit, new credit — we work with 50+ lenders to find your best option. Over 98.9% approval rate.",
   },
   {
     icon: "🪶",
