@@ -16,7 +16,7 @@ const STEPS = [
     num: "01",
     title: "Apply Online",
     description:
-      "Fill out our simple 3-minute form. No credit check, no commitment, no pressure.",
+      "Fill out our simple 3-minute form. No commitment, no pressure.",
   },
   {
     num: "02",
