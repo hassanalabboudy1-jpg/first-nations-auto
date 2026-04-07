@@ -273,13 +273,6 @@ export function LeadForm() {
               </p>
             </div>
           </label>
-          <input
-            type="text"
-            placeholder="Referral Code (optional)"
-            value={formData.referralCode}
-            onChange={(e) => update("referralCode", e.target.value)}
-            className={inputClass}
-          />
           <p className="text-xs text-earth-muted leading-relaxed">
             By submitting, you consent to being contacted about vehicle financing
             options. No impact on your credit score for pre-approval. Your
