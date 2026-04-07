@@ -50,48 +50,50 @@ export function LeadForm() {
         setStep("success");
       }
     } catch {
-      // Silently handle — we'll still show success to avoid losing the lead
       setStep("success");
     } finally {
       setLoading(false);
     }
   }
 
+  const inputClass =
+    "w-full bg-white border border-earth-border rounded-xl px-4 py-3 text-sm text-earth-text focus:border-earth-forest focus:ring-1 focus:ring-earth-forest/20 focus:outline-none transition placeholder:text-earth-muted/60";
+
   if (step === "success") {
     return (
-      <div className="bg-brand-darker border border-brand-teal/30 rounded-2xl p-8 text-center">
+      <div className="bg-earth-forest rounded-2xl p-8 text-center">
         <div className="text-5xl mb-4">🎉</div>
-        <h3 className="font-display text-xl font-bold text-brand-teal mb-2">
+        <h3 className="text-xl font-bold text-white mb-2">
           You&apos;re Pre-Approved!
         </h3>
-        <p className="text-gray-400 mb-4">
-          We&apos;ll call you within 1 hour to discuss your options. No obligation.
+        <p className="text-white/80 mb-4">
+          Sam will call you within 1 hour to discuss your options. No obligation.
         </p>
-        <p className="text-sm text-gray-500">
-          Check your phone — we&apos;ll send a confirmation text shortly.
+        <p className="text-sm text-white/60">
+          Check your phone — we&apos;re sending a confirmation text now.
         </p>
       </div>
     );
   }
 
   return (
-    <div className="bg-brand-darker border border-brand-border rounded-2xl p-6 md:p-8">
+    <div className="bg-white border border-earth-border rounded-2xl p-6 md:p-8 shadow-sm">
       {/* Progress */}
       <div className="flex gap-2 mb-6">
         {(["contact", "vehicle", "details"] as const).map((s, i) => (
           <div
             key={s}
-            className={`h-1.5 flex-1 rounded-full transition-colors ${
+            className={`h-2 flex-1 rounded-full transition-colors ${
               i <= ["contact", "vehicle", "details"].indexOf(step)
-                ? "bg-brand-red"
-                : "bg-brand-border"
+                ? "bg-earth-forest"
+                : "bg-earth-border"
             }`}
           />
         ))}
       </div>
 
       {/* Trust Signals */}
-      <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 mb-6 text-[11px] text-gray-500">
+      <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 mb-6 text-[11px] text-earth-muted">
         <span>🔒 No credit impact</span>
         <span>🏠 On-reserve delivery</span>
         <span>📞 1-hour callback</span>
@@ -101,7 +103,7 @@ export function LeadForm() {
       {/* Step 1: Contact */}
       {step === "contact" && (
         <div className="space-y-4">
-          <h3 className="font-display text-sm font-bold text-brand-gold tracking-wider uppercase mb-4">
+          <h3 className="font-bold text-earth-forest text-sm tracking-wider uppercase mb-4">
             Step 1 — Your Information
           </h3>
           <div className="grid grid-cols-2 gap-3">
@@ -110,14 +112,14 @@ export function LeadForm() {
               placeholder="First Name *"
               value={formData.firstName}
               onChange={(e) => update("firstName", e.target.value)}
-              className="bg-brand-dark border border-brand-border rounded-lg px-4 py-3 text-sm focus:border-brand-red focus:outline-none transition"
+              className={inputClass}
             />
             <input
               type="text"
               placeholder="Last Name"
               value={formData.lastName}
               onChange={(e) => update("lastName", e.target.value)}
-              className="bg-brand-dark border border-brand-border rounded-lg px-4 py-3 text-sm focus:border-brand-red focus:outline-none transition"
+              className={inputClass}
             />
           </div>
           <input
@@ -125,47 +127,39 @@ export function LeadForm() {
             placeholder="Phone Number *"
             value={formData.phone}
             onChange={(e) => update("phone", e.target.value)}
-            className="w-full bg-brand-dark border border-brand-border rounded-lg px-4 py-3 text-sm focus:border-brand-red focus:outline-none transition"
+            className={inputClass}
           />
           <input
             type="email"
             placeholder="Email (optional)"
             value={formData.email}
             onChange={(e) => update("email", e.target.value)}
-            className="w-full bg-brand-dark border border-brand-border rounded-lg px-4 py-3 text-sm focus:border-brand-red focus:outline-none transition"
+            className={inputClass}
           />
           <select
             value={formData.communitySlug}
             onChange={(e) => update("communitySlug", e.target.value)}
-            className="w-full bg-brand-dark border border-brand-border rounded-lg px-4 py-3 text-sm focus:border-brand-red focus:outline-none transition text-gray-400"
+            className={inputClass + " text-earth-muted"}
           >
             <option value="">Select Your Community</option>
             <optgroup label="Ontario">
               {ALL_COMMUNITIES.filter((c) => c.province === "ON").map((c) => (
-                <option key={c.slug} value={c.slug}>
-                  {c.name}
-                </option>
+                <option key={c.slug} value={c.slug}>{c.name}</option>
               ))}
             </optgroup>
             <optgroup label="Quebec">
               {ALL_COMMUNITIES.filter((c) => c.province === "QC").map((c) => (
-                <option key={c.slug} value={c.slug}>
-                  {c.name}
-                </option>
+                <option key={c.slug} value={c.slug}>{c.name}</option>
               ))}
             </optgroup>
             <optgroup label="New Brunswick">
               {ALL_COMMUNITIES.filter((c) => c.province === "NB").map((c) => (
-                <option key={c.slug} value={c.slug}>
-                  {c.name}
-                </option>
+                <option key={c.slug} value={c.slug}>{c.name}</option>
               ))}
             </optgroup>
             <optgroup label="Nova Scotia">
               {ALL_COMMUNITIES.filter((c) => c.province === "NS").map((c) => (
-                <option key={c.slug} value={c.slug}>
-                  {c.name}
-                </option>
+                <option key={c.slug} value={c.slug}>{c.name}</option>
               ))}
             </optgroup>
             <option value="other">Other / Not Listed</option>
@@ -175,7 +169,7 @@ export function LeadForm() {
               if (formData.firstName && formData.phone) setStep("vehicle");
             }}
             disabled={!formData.firstName || !formData.phone}
-            className="w-full bg-brand-red hover:bg-red-700 disabled:opacity-40 disabled:cursor-not-allowed text-white py-3 rounded-lg font-semibold transition"
+            className="w-full bg-earth-forest hover:bg-earth-forest/90 disabled:opacity-40 disabled:cursor-not-allowed text-white py-3 rounded-xl font-semibold transition"
           >
             Next — Vehicle Preferences
           </button>
@@ -185,7 +179,7 @@ export function LeadForm() {
       {/* Step 2: Vehicle */}
       {step === "vehicle" && (
         <div className="space-y-4">
-          <h3 className="font-display text-sm font-bold text-brand-gold tracking-wider uppercase mb-4">
+          <h3 className="font-bold text-earth-forest text-sm tracking-wider uppercase mb-4">
             Step 2 — What Are You Looking For?
           </h3>
           <div className="grid grid-cols-2 gap-3">
@@ -198,10 +192,10 @@ export function LeadForm() {
               <button
                 key={type.value}
                 onClick={() => update("vehicleType", type.value)}
-                className={`p-4 rounded-lg border text-center transition ${
+                className={`p-4 rounded-xl border text-center transition ${
                   formData.vehicleType === type.value
-                    ? "border-brand-red bg-brand-red/10 text-white"
-                    : "border-brand-border hover:border-gray-500 text-gray-400"
+                    ? "border-earth-forest bg-earth-forest/5 text-earth-forest"
+                    : "border-earth-border hover:border-earth-sage text-earth-muted"
                 }`}
               >
                 <div className="text-2xl mb-1">{type.label.split(" ")[0]}</div>
@@ -212,7 +206,7 @@ export function LeadForm() {
           <select
             value={formData.budgetRange}
             onChange={(e) => update("budgetRange", e.target.value)}
-            className="w-full bg-brand-dark border border-brand-border rounded-lg px-4 py-3 text-sm focus:border-brand-red focus:outline-none transition text-gray-400"
+            className={inputClass + " text-earth-muted"}
           >
             <option value="">Monthly Budget Range</option>
             <option value="under_300">Under $300/month</option>
@@ -220,25 +214,25 @@ export function LeadForm() {
             <option value="500_700">$500 - $700/month</option>
             <option value="over_700">$700+/month</option>
           </select>
-          <label className="flex items-center gap-3 p-3 bg-brand-dark border border-brand-border rounded-lg cursor-pointer">
+          <label className="flex items-center gap-3 p-3 bg-earth-cream border border-earth-border rounded-xl cursor-pointer">
             <input
               type="checkbox"
               checked={formData.tradeIn}
               onChange={(e) => update("tradeIn", e.target.checked)}
-              className="w-4 h-4 accent-brand-red"
+              className="w-4 h-4 accent-earth-forest"
             />
-            <span className="text-sm text-gray-400">I have a vehicle to trade in</span>
+            <span className="text-sm text-earth-muted">I have a vehicle to trade in</span>
           </label>
           <div className="flex gap-3">
             <button
               onClick={() => setStep("contact")}
-              className="flex-1 border border-brand-border text-gray-400 py-3 rounded-lg font-semibold hover:border-gray-500 transition"
+              className="flex-1 border border-earth-border text-earth-muted py-3 rounded-xl font-semibold hover:border-earth-sage transition"
             >
               Back
             </button>
             <button
               onClick={() => setStep("details")}
-              className="flex-1 bg-brand-red hover:bg-red-700 text-white py-3 rounded-lg font-semibold transition"
+              className="flex-1 bg-earth-forest hover:bg-earth-forest/90 text-white py-3 rounded-xl font-semibold transition"
             >
               Next — Final Details
             </button>
@@ -249,13 +243,13 @@ export function LeadForm() {
       {/* Step 3: Details */}
       {step === "details" && (
         <div className="space-y-4">
-          <h3 className="font-display text-sm font-bold text-brand-gold tracking-wider uppercase mb-4">
+          <h3 className="font-bold text-earth-forest text-sm tracking-wider uppercase mb-4">
             Step 3 — Almost Done!
           </h3>
           <select
             value={formData.employmentStatus}
             onChange={(e) => update("employmentStatus", e.target.value)}
-            className="w-full bg-brand-dark border border-brand-border rounded-lg px-4 py-3 text-sm focus:border-brand-red focus:outline-none transition text-gray-400"
+            className={inputClass + " text-earth-muted"}
           >
             <option value="">Employment Status</option>
             <option value="employed">Employed Full-Time</option>
@@ -265,16 +259,16 @@ export function LeadForm() {
             <option value="pension">Pension / Disability</option>
             <option value="other">Other</option>
           </select>
-          <label className="flex items-center gap-3 p-3 bg-brand-dark border border-brand-border rounded-lg cursor-pointer">
+          <label className="flex items-center gap-3 p-3 bg-earth-cream border border-earth-border rounded-xl cursor-pointer">
             <input
               type="checkbox"
               checked={formData.hasStatusCard}
               onChange={(e) => update("hasStatusCard", e.target.checked)}
-              className="w-4 h-4 accent-brand-teal"
+              className="w-4 h-4 accent-earth-forest"
             />
             <div>
-              <span className="text-sm text-gray-300">I have a Status Card</span>
-              <p className="text-xs text-gray-500 mt-0.5">
+              <span className="text-sm text-earth-text">I have a Status Card</span>
+              <p className="text-xs text-earth-muted mt-0.5">
                 Required for tax exemption on on-reserve delivery
               </p>
             </div>
@@ -284,9 +278,9 @@ export function LeadForm() {
             placeholder="Referral Code (optional)"
             value={formData.referralCode}
             onChange={(e) => update("referralCode", e.target.value)}
-            className="w-full bg-brand-dark border border-brand-border rounded-lg px-4 py-3 text-sm focus:border-brand-red focus:outline-none transition"
+            className={inputClass}
           />
-          <p className="text-xs text-gray-500 leading-relaxed">
+          <p className="text-xs text-earth-muted leading-relaxed">
             By submitting, you consent to being contacted about vehicle financing
             options. No impact on your credit score for pre-approval. Your
             information is protected under PIPEDA.
@@ -294,14 +288,14 @@ export function LeadForm() {
           <div className="flex gap-3">
             <button
               onClick={() => setStep("vehicle")}
-              className="flex-1 border border-brand-border text-gray-400 py-3 rounded-lg font-semibold hover:border-gray-500 transition"
+              className="flex-1 border border-earth-border text-earth-muted py-3 rounded-xl font-semibold hover:border-earth-sage transition"
             >
               Back
             </button>
             <button
               onClick={handleSubmit}
               disabled={loading}
-              className="flex-1 bg-brand-red hover:bg-red-700 disabled:opacity-60 text-white py-3 rounded-lg font-bold text-lg transition"
+              className="flex-1 bg-earth-gold hover:bg-earth-gold/90 disabled:opacity-60 text-earth-dark py-3 rounded-xl font-bold text-lg transition"
             >
               {loading ? "Submitting..." : "Get Pre-Approved"}
             </button>

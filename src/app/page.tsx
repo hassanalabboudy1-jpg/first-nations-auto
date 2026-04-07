@@ -4,121 +4,139 @@ import { ALL_COMMUNITIES } from "@/data/communities";
 
 const STATS = [
   { value: "191+", label: "Communities Served", sub: "ON, QC, NB & NS" },
-  { value: "13%", label: "Tax Savings", sub: "HST exempt on-reserve" },
-  { value: "$0", label: "Down Payment", sub: "Get approved today" },
-  { value: "FREE", label: "Delivery", sub: "To your community" },
+  { value: "15%", label: "Tax Savings", sub: "HST exempt on-reserve" },
+  { value: "$0", label: "Down Payment", sub: "Drive today" },
+  { value: "1 HR", label: "Callback Time", sub: "We call you fast" },
 ];
 
-const FEATURES = [
+const STEPS = [
   {
-    icon: "🏠",
+    num: "01",
+    title: "Apply Online",
+    description: "Fill out our simple 3-minute form. No credit check, no commitment, no pressure.",
+  },
+  {
+    num: "02",
+    title: "Sam Calls You",
+    description: "Within 1 hour, I'll personally call to discuss your options and find the right vehicle.",
+  },
+  {
+    num: "03",
+    title: "Get Approved",
+    description: "We work with 50+ lenders to get you the best rate — even with challenged credit.",
+  },
+  {
+    num: "04",
     title: "Delivered to Your Door",
-    description:
-      "Free vehicle delivery directly to your community — whether you're in Six Nations, Kahnawà:ke, or Attawapiskat. We come to you.",
+    description: "Your vehicle is delivered tax-free directly to your community. No dealership trips.",
   },
-  {
-    icon: "💰",
-    title: "Tax Exemption Savings",
-    description:
-      "Save 13% HST (Ontario) or 14.975% QST+GST (Quebec) with on-reserve delivery. Section 87 of the Indian Act — your right, your savings.",
-  },
-  {
-    icon: "✅",
-    title: "All Credit Welcome",
-    description:
-      "No credit, bad credit, rebuilding credit — we work with every situation. 98% approval rate through our network of 50+ lenders.",
-  },
+];
+
+const TRUST_POINTS = [
   {
     icon: "🤝",
+    title: "Built on Respect",
+    description: "We operate with honesty, transparency, and respect for every community we serve. No hidden fees. No surprises.",
+  },
+  {
+    icon: "🏠",
+    title: "On-Reserve Delivery",
+    description: "Your vehicle delivered tax-free directly to your door. Save thousands in HST/QST that you'd pay at a dealership.",
+  },
+  {
+    icon: "📞",
+    title: "A Real Person, Not a Bot",
+    description: "When you apply, Sam Al calls you personally within 1 hour. You're not a number here — you're family.",
+  },
+  {
+    icon: "💳",
+    title: "All Credit Welcome",
+    description: "Bad credit, no credit, new credit — we work with 50+ lenders to find your best option. Over 90% approval rate.",
+  },
+  {
+    icon: "🪶",
     title: "Community First",
-    description:
-      "We invest back into the communities we serve. Sponsoring powwows, hockey tournaments, and youth programs. This is a partnership.",
+    description: "We support powwows, hockey teams, and community events. A portion of every sale goes back to the communities we serve.",
   },
   {
-    icon: "📱",
-    title: "3-Minute Application",
-    description:
-      "Apply in minutes from your phone. No impact on your credit score for pre-approval. Get a response the same day.",
-  },
-  {
-    icon: "🔄",
-    title: "Trade-In Accepted",
-    description:
-      "Have a vehicle to trade? We'll give you top value and apply it to your new purchase. Easy, transparent, fair.",
+    icon: "🔒",
+    title: "Your Info is Safe",
+    description: "PIPEDA compliant. Your personal information is encrypted and never shared without your consent.",
   },
 ];
 
 export default function HomePage() {
-  const ontarioCommunities = ALL_COMMUNITIES.filter(
-    (c) => c.province === "ON"
-  );
-  const quebecCommunities = ALL_COMMUNITIES.filter(
-    (c) => c.province === "QC"
-  );
-  const newBrunswickCommunities = ALL_COMMUNITIES.filter(
-    (c) => c.province === "NB"
-  );
-  const novaScotiaCommunities = ALL_COMMUNITIES.filter(
-    (c) => c.province === "NS"
-  );
+  const ontarioCommunities = ALL_COMMUNITIES.filter((c) => c.province === "ON");
+  const quebecCommunities = ALL_COMMUNITIES.filter((c) => c.province === "QC");
+  const newBrunswickCommunities = ALL_COMMUNITIES.filter((c) => c.province === "NB");
+  const novaScotiaCommunities = ALL_COMMUNITIES.filter((c) => c.province === "NS");
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-earth-warm">
       {/* Nav */}
-      <nav className="border-b border-brand-border bg-brand-darker/80 backdrop-blur-md sticky top-0 z-50">
+      <nav className="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-earth-border">
         <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="text-2xl">🚗</span>
-            <span className="font-display text-sm font-bold tracking-wider gradient-text">
-              FIRST NATIONS AUTO
+            <span className="text-2xl">🌿</span>
+            <span className="text-lg font-bold text-earth-forest tracking-tight">
+              First Nations Auto
             </span>
           </div>
           <div className="flex items-center gap-4">
+            <a
+              href="tel:+16133028872"
+              className="hidden sm:flex items-center gap-1.5 text-sm text-earth-muted hover:text-earth-forest transition"
+            >
+              <span>📞</span> 613-302-8872
+            </a>
             <Link
               href="#communities"
-              className="text-sm text-gray-400 hover:text-white transition"
+              className="hidden sm:block text-sm text-earth-muted hover:text-earth-forest transition"
             >
               Communities
             </Link>
-            <Link
+            <a
               href="#apply"
-              className="text-sm bg-brand-red hover:bg-red-700 text-white px-4 py-2 rounded-lg font-semibold transition"
+              className="text-sm bg-earth-forest hover:bg-earth-forest/90 text-white px-5 py-2 rounded-full font-semibold transition"
             >
               Apply Now
-            </Link>
+            </a>
           </div>
         </div>
       </nav>
 
       {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-red/10 via-transparent to-transparent" />
-        <div className="max-w-6xl mx-auto px-4 pt-16 pb-12 relative">
-          <div className="max-w-3xl">
-            <p className="font-display text-xs tracking-widest text-brand-teal mb-4 uppercase">
-              Ontario, Quebec &amp; Maritimes First Nations Communities
+      <section className="relative overflow-hidden bg-gradient-to-b from-earth-forest to-earth-sage">
+        <div className="max-w-6xl mx-auto px-4 pt-16 pb-20 relative">
+          <div className="max-w-2xl">
+            <p className="text-earth-gold font-semibold text-sm mb-4 tracking-wide uppercase">
+              Serving 191+ First Nations communities
             </p>
-            <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6 text-white">
               Vehicle financing{" "}
-              <span className="gradient-text">built for your community</span>
+              <span className="text-earth-gold">built for your community</span>
             </h1>
-            <p className="text-lg text-gray-400 mb-8 max-w-xl leading-relaxed">
-              Save thousands with tax-exempt on-reserve delivery. $0 down. All
-              credit welcome. Free delivery to 191+ First Nations communities
-              across Ontario, Quebec, New Brunswick, and Nova Scotia.
+            <p className="text-lg text-white/80 mb-8 max-w-xl leading-relaxed">
+              Save thousands with tax-exempt on-reserve delivery across Ontario,
+              Quebec, New Brunswick, and Nova Scotia. $0 down. All credit
+              welcome. I&apos;ll personally call you within 1 hour.
+            </p>
+            <p className="text-sm text-white/60 mb-6 flex items-center gap-2">
+              <span className="text-earth-gold font-semibold">— Sam Al</span>{" "}
+              Your dedicated financing specialist
             </p>
             <div className="flex flex-wrap gap-3">
               <a
                 href="#apply"
-                className="bg-brand-red hover:bg-red-700 text-white px-8 py-3 rounded-lg font-semibold text-lg transition"
+                className="bg-earth-gold hover:bg-earth-gold/90 text-earth-dark px-8 py-3 rounded-full font-bold text-lg transition shadow-lg"
               >
-                Get Pre-Approved
+                Get Pre-Approved Free
               </a>
               <a
-                href="tel:+1XXXXXXXXXX"
-                className="border border-brand-border hover:border-gray-500 text-white px-8 py-3 rounded-lg font-semibold text-lg transition"
+                href="tel:+16133028872"
+                className="border-2 border-white/30 hover:border-white/60 text-white px-8 py-3 rounded-full font-semibold text-lg transition"
               >
-                Call Us
+                📞 613-302-8872
               </a>
             </div>
           </div>
@@ -128,78 +146,154 @@ export default function HomePage() {
             {STATS.map((stat) => (
               <div
                 key={stat.label}
-                className="bg-brand-darker border border-brand-border rounded-xl p-5 text-center"
+                className="bg-white/10 backdrop-blur-sm rounded-2xl p-5 text-center border border-white/10"
               >
-                <div className="font-display text-3xl font-bold text-brand-gold">
+                <div className="text-3xl font-bold text-earth-gold">
                   {stat.value}
                 </div>
-                <div className="font-display text-xs font-bold text-gray-400 mt-1 tracking-wide uppercase">
+                <div className="text-xs font-semibold text-white/80 mt-1 tracking-wide uppercase">
                   {stat.label}
                 </div>
-                <div className="text-xs text-gray-600 mt-1">{stat.sub}</div>
+                <div className="text-xs text-white/50 mt-1">{stat.sub}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Features */}
-      <section className="max-w-6xl mx-auto px-4 py-16">
-        <h2 className="font-display text-2xl font-bold text-center mb-12">
-          Why First Nations communities choose us
-        </h2>
-        <div className="grid md:grid-cols-3 gap-6">
-          {FEATURES.map((feature) => (
-            <div
-              key={feature.title}
-              className="bg-brand-darker border border-brand-border rounded-xl p-6 hover:border-brand-teal/50 transition"
-            >
-              <div className="text-3xl mb-4">{feature.icon}</div>
-              <h3 className="font-display text-sm font-bold text-white mb-2">
-                {feature.title}
+      {/* How It Works */}
+      <section className="max-w-6xl mx-auto px-4 py-20">
+        <div className="text-center mb-14">
+          <h2 className="text-3xl font-bold text-earth-dark mb-3">
+            How It Works
+          </h2>
+          <p className="text-earth-muted max-w-lg mx-auto">
+            From application to delivery, we make it simple. No dealership
+            visits required.
+          </p>
+        </div>
+        <div className="grid md:grid-cols-4 gap-8">
+          {STEPS.map((step) => (
+            <div key={step.num} className="text-center">
+              <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-earth-forest text-white font-bold text-lg mb-4">
+                {step.num}
+              </div>
+              <h3 className="font-bold text-earth-dark text-lg mb-2">
+                {step.title}
               </h3>
-              <p className="text-sm text-gray-400 leading-relaxed">
-                {feature.description}
+              <p className="text-sm text-earth-muted leading-relaxed">
+                {step.description}
               </p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Application Form */}
-      <section id="apply" className="max-w-6xl mx-auto px-4 py-16">
-        <div className="max-w-xl mx-auto">
-          <h2 className="font-display text-2xl font-bold text-center mb-2">
-            Get Pre-Approved in 3 Minutes
+      {/* Why Trust Us */}
+      <section className="bg-earth-cream">
+        <div className="max-w-6xl mx-auto px-4 py-20">
+          <div className="text-center mb-14">
+            <h2 className="text-3xl font-bold text-earth-dark mb-3">
+              Why Communities Trust Us
+            </h2>
+            <p className="text-earth-muted max-w-lg mx-auto">
+              We&apos;re not just another lender. We&apos;re here to build
+              long-term relationships with the communities we serve.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {TRUST_POINTS.map((point) => (
+              <div
+                key={point.title}
+                className="bg-white rounded-2xl p-6 shadow-sm border border-earth-border hover:shadow-md transition"
+              >
+                <div className="text-3xl mb-4">{point.icon}</div>
+                <h3 className="font-bold text-earth-dark mb-2">
+                  {point.title}
+                </h3>
+                <p className="text-sm text-earth-muted leading-relaxed">
+                  {point.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Meet Sam */}
+      <section className="max-w-6xl mx-auto px-4 py-20">
+        <div className="bg-earth-forest rounded-3xl p-8 md:p-12 text-center">
+          <div className="w-20 h-20 rounded-full bg-earth-gold/20 border-2 border-earth-gold flex items-center justify-center text-3xl mx-auto mb-6">
+            👤
+          </div>
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
+            Meet Sam Al
           </h2>
-          <p className="text-center text-gray-400 mb-8">
-            No impact on your credit score. We call you within 1 hour.
+          <p className="text-white/70 text-sm mb-1 uppercase tracking-wider font-semibold">
+            Your Financing Specialist
           </p>
+          <p className="text-white/80 max-w-lg mx-auto mt-4 leading-relaxed">
+            &quot;I believe everyone deserves reliable transportation. Whether
+            you&apos;re on Six Nations, in Kahnawà:ke, Eskasoni, or Tobique —
+            I&apos;ll work personally with you to find the right vehicle at the
+            right price. No judgment, no pressure, just honest help.&quot;
+          </p>
+          <div className="flex flex-wrap justify-center gap-4 mt-8">
+            <a
+              href="tel:+16133028872"
+              className="bg-earth-gold hover:bg-earth-gold/90 text-earth-dark px-8 py-3 rounded-full font-bold transition"
+            >
+              📞 Call Sam: 613-302-8872
+            </a>
+            <a
+              href="#apply"
+              className="border-2 border-white/30 hover:border-white/60 text-white px-8 py-3 rounded-full font-semibold transition"
+            >
+              Apply Online — 3 Minutes
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Application Form */}
+      <section id="apply" className="bg-earth-cream">
+        <div className="max-w-xl mx-auto px-4 py-20">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-earth-dark mb-2">
+              Get Pre-Approved in 3 Minutes
+            </h2>
+            <p className="text-earth-muted">
+              No credit impact. No commitment. Sam calls you within 1 hour.
+            </p>
+          </div>
           <LeadForm />
         </div>
       </section>
 
       {/* Communities */}
-      <section id="communities" className="max-w-6xl mx-auto px-4 py-16">
-        <h2 className="font-display text-2xl font-bold text-center mb-2">
-          Communities We Serve
-        </h2>
-        <p className="text-center text-gray-400 mb-10">
-          Click your community for personalized financing information
-        </p>
+      <section id="communities" className="max-w-6xl mx-auto px-4 py-20">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold text-earth-dark mb-3">
+            Communities We Serve
+          </h2>
+          <p className="text-earth-muted max-w-lg mx-auto">
+            Click your community for personalized financing information and
+            local delivery details.
+          </p>
+        </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-10">
           {/* Ontario */}
           <div>
-            <h3 className="font-display text-sm font-bold text-brand-red mb-4 tracking-wider uppercase">
-              Ontario — {ontarioCommunities.length} Communities
+            <h3 className="font-bold text-earth-forest mb-4 text-sm tracking-wider uppercase">
+              🍁 Ontario — {ontarioCommunities.length} Communities
             </h3>
             <div className="flex flex-wrap gap-2">
               {ontarioCommunities.map((c) => (
                 <Link
                   key={c.slug}
                   href={`/community/${c.slug}`}
-                  className="text-xs bg-brand-darker border border-brand-border rounded-lg px-3 py-2 hover:border-brand-red/50 hover:text-brand-red transition"
+                  className="text-xs bg-white border border-earth-border rounded-full px-3 py-1.5 hover:border-earth-forest hover:text-earth-forest transition text-earth-muted"
                 >
                   {c.name}
                 </Link>
@@ -209,15 +303,15 @@ export default function HomePage() {
 
           {/* Quebec */}
           <div>
-            <h3 className="font-display text-sm font-bold text-brand-blue mb-4 tracking-wider uppercase">
-              Quebec — {quebecCommunities.length} Communities
+            <h3 className="font-bold text-earth-sage mb-4 text-sm tracking-wider uppercase">
+              ⚜️ Quebec — {quebecCommunities.length} Communities
             </h3>
             <div className="flex flex-wrap gap-2">
               {quebecCommunities.map((c) => (
                 <Link
                   key={c.slug}
                   href={`/community/${c.slug}`}
-                  className="text-xs bg-brand-darker border border-brand-border rounded-lg px-3 py-2 hover:border-brand-blue/50 hover:text-brand-blue transition"
+                  className="text-xs bg-white border border-earth-border rounded-full px-3 py-1.5 hover:border-earth-sage hover:text-earth-sage transition text-earth-muted"
                 >
                   {c.name}
                 </Link>
@@ -227,15 +321,15 @@ export default function HomePage() {
 
           {/* New Brunswick */}
           <div>
-            <h3 className="font-display text-sm font-bold text-brand-teal mb-4 tracking-wider uppercase">
-              New Brunswick — {newBrunswickCommunities.length} Communities
+            <h3 className="font-bold text-earth-brown mb-4 text-sm tracking-wider uppercase">
+              🌊 New Brunswick — {newBrunswickCommunities.length} Communities
             </h3>
             <div className="flex flex-wrap gap-2">
               {newBrunswickCommunities.map((c) => (
                 <Link
                   key={c.slug}
                   href={`/community/${c.slug}`}
-                  className="text-xs bg-brand-darker border border-brand-border rounded-lg px-3 py-2 hover:border-brand-teal/50 hover:text-brand-teal transition"
+                  className="text-xs bg-white border border-earth-border rounded-full px-3 py-1.5 hover:border-earth-brown hover:text-earth-brown transition text-earth-muted"
                 >
                   {c.name}
                 </Link>
@@ -245,15 +339,15 @@ export default function HomePage() {
 
           {/* Nova Scotia */}
           <div>
-            <h3 className="font-display text-sm font-bold text-brand-gold mb-4 tracking-wider uppercase">
-              Nova Scotia — {novaScotiaCommunities.length} Communities
+            <h3 className="font-bold text-earth-tan mb-4 text-sm tracking-wider uppercase">
+              🦞 Nova Scotia — {novaScotiaCommunities.length} Communities
             </h3>
             <div className="flex flex-wrap gap-2">
               {novaScotiaCommunities.map((c) => (
                 <Link
                   key={c.slug}
                   href={`/community/${c.slug}`}
-                  className="text-xs bg-brand-darker border border-brand-border rounded-lg px-3 py-2 hover:border-brand-gold/50 hover:text-brand-gold transition"
+                  className="text-xs bg-white border border-earth-border rounded-full px-3 py-1.5 hover:border-earth-tan hover:text-earth-tan transition text-earth-muted"
                 >
                   {c.name}
                 </Link>
@@ -264,31 +358,72 @@ export default function HomePage() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-brand-border py-12 px-4">
-        <div className="max-w-6xl mx-auto text-center">
-          <p className="font-display text-sm gradient-text font-bold mb-4">
-            FIRST NATIONS AUTO FINANCING
-          </p>
-          <p className="text-xs text-gray-500 max-w-lg mx-auto leading-relaxed mb-6">
-            We acknowledge that we operate on the traditional territories of many
-            First Nations, Inuit, and Metis peoples. We are committed to building
-            respectful relationships with the communities we serve.
-          </p>
-          <p className="text-xs text-gray-600">
-            &copy; {new Date().getFullYear()} First Nations Auto Financing.
-            Serving Ontario, Quebec, New Brunswick &amp; Nova Scotia.
-          </p>
+      <footer className="bg-earth-dark text-white/70 py-14 px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-10 mb-10">
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <span className="text-xl">🌿</span>
+                <span className="text-white font-bold">First Nations Auto</span>
+              </div>
+              <p className="text-sm leading-relaxed">
+                Vehicle financing built for First Nations communities. Tax-free
+                on-reserve delivery across Ontario, Quebec, New Brunswick, and
+                Nova Scotia.
+              </p>
+            </div>
+            <div>
+              <h4 className="text-white font-bold text-sm mb-4 uppercase tracking-wider">
+                Contact Sam
+              </h4>
+              <div className="space-y-2 text-sm">
+                <p>📞 <a href="tel:+16133028872" className="hover:text-white transition">613-302-8872</a></p>
+                <p>💬 Text anytime</p>
+                <p>⏰ Callbacks within 1 hour</p>
+              </div>
+            </div>
+            <div>
+              <h4 className="text-white font-bold text-sm mb-4 uppercase tracking-wider">
+                Quick Links
+              </h4>
+              <div className="space-y-2 text-sm">
+                <p><a href="#apply" className="hover:text-white transition">Apply Now</a></p>
+                <p><a href="#communities" className="hover:text-white transition">Communities</a></p>
+                <p><Link href="/admin" className="hover:text-white transition">Admin</Link></p>
+              </div>
+            </div>
+          </div>
+
+          <div className="border-t border-white/10 pt-8 text-center">
+            <p className="text-xs text-white/40 max-w-lg mx-auto leading-relaxed mb-4">
+              We acknowledge that we operate on the traditional territories of
+              many First Nations, Inuit, and Métis peoples. We are committed to
+              building respectful relationships with the communities we serve.
+            </p>
+            <p className="text-xs text-white/30">
+              &copy; {new Date().getFullYear()} First Nations Auto. Serving
+              Ontario, Quebec, New Brunswick &amp; Nova Scotia.
+            </p>
+          </div>
         </div>
       </footer>
 
       {/* Sticky Mobile CTA */}
-      <div className="fixed bottom-0 left-0 right-0 md:hidden bg-brand-darker/95 backdrop-blur-md border-t border-brand-border px-4 py-3 z-50">
-        <a
-          href="#apply"
-          className="block w-full bg-brand-red hover:bg-red-700 text-white text-center py-3 rounded-lg font-semibold text-sm transition"
-        >
-          Get Pre-Approved — Free &amp; No Credit Impact
-        </a>
+      <div className="fixed bottom-0 left-0 right-0 md:hidden bg-white/95 backdrop-blur-md border-t border-earth-border px-4 py-3 z-50">
+        <div className="flex gap-2">
+          <a
+            href="tel:+16133028872"
+            className="flex-1 bg-earth-forest text-white text-center py-3 rounded-full font-semibold text-sm transition"
+          >
+            📞 Call Sam
+          </a>
+          <a
+            href="#apply"
+            className="flex-1 bg-earth-gold text-earth-dark text-center py-3 rounded-full font-bold text-sm transition"
+          >
+            Apply Free
+          </a>
+        </div>
       </div>
     </main>
   );
