@@ -33,7 +33,7 @@ export default function ApplyPage() {
           Get Pre-Approved Today
         </h1>
         <p className="text-center text-gray-400 mb-8">
-          3-minute application. No credit impact. We call you within 1 hour.
+          3-minute application. 100% secure. We call you within 1 hour.
         </p>
 
         <LeadForm />

@@ -56,7 +56,7 @@ export default function HomePage() {
             <span>🏠 Free On-Reserve Delivery</span>
             <span>💰 $0 Down Payment</span>
             <span>📞 1-Hour Callback</span>
-            <span>🔒 No Credit Impact</span>
+            <span>🔒 100% Secure</span>
           </div>
         </div>
       </nav>
@@ -365,7 +365,7 @@ export default function HomePage() {
         <div className="max-w-xl mx-auto px-4 py-20">
           <div className="text-center mb-8">
             <p className="text-earth-red text-sm font-bold tracking-wider uppercase mb-2">
-              Free &amp; No Credit Impact
+              Free &amp; Secure Application
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-earth-dark uppercase">
               Get Pre-Approved in 3 Minutes

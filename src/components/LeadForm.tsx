@@ -94,7 +94,7 @@ export function LeadForm() {
 
       {/* Trust Signals */}
       <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 mb-6 text-[11px] text-earth-muted">
-        <span>🔒 No credit impact</span>
+        <span>🔒 100% Secure</span>
         <span>🏠 On-reserve delivery</span>
         <span>📞 1-hour callback</span>
         <span>✅ 248+ communities</span>

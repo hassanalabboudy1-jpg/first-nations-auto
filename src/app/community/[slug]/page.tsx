@@ -259,7 +259,7 @@ export default async function CommunityPage({ params }: Props) {
           href="#apply"
           className="block w-full bg-brand-red hover:bg-red-700 text-white text-center py-3 rounded-lg font-semibold text-sm transition"
         >
-          Get Pre-Approved — Free &amp; No Credit Impact
+          Get Pre-Approved — Free &amp; Secure
         </a>
       </div>
     </main>
