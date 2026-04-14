@@ -76,12 +76,7 @@ export default function HomePage() {
 
         <div className="max-w-7xl mx-auto px-4 py-16 relative z-10 w-full">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 bg-earth-red/20 border border-earth-red/40 rounded-lg px-4 py-2 mb-6">
-              <span className="w-2 h-2 bg-earth-red rounded-full animate-pulse" />
-              <span className="text-earth-red text-xs font-bold tracking-wider uppercase">
-                Now Serving 248+ First Nations Communities
-              </span>
-            </div>
+            <div className="mb-6" />
             <h1 className="text-5xl md:text-7xl font-bold leading-[1.05] mb-6 text-white uppercase">
               Get The Keys To{" "}
               <span className="text-earth-gold">Your Dream Car</span>
