@@ -216,8 +216,8 @@ export default function HomePage() {
               },
               {
                 num: "02",
-                title: "Sam Calls You",
-                desc: "Within 1 hour, I personally call to discuss your options.",
+                title: "The Financial Specialist Calls You",
+                desc: "Within 1 hour, a specialist personally calls to discuss your options.",
               },
               {
                 num: "03",
