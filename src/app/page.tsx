@@ -139,14 +139,14 @@ export default function HomePage() {
             Find Your Perfect Ride
           </p>
           <h2 className="text-3xl md:text-5xl font-bold text-earth-dark uppercase">
-            Trucks, SUVs, Cars &amp; More
+            Trucks, SUVs, Cars &amp; Minivans
           </h2>
           <p className="text-earth-muted mt-3 max-w-lg mx-auto">
             From brand new to quality pre-owned — we match you with the right
             vehicle for your budget and lifestyle.
           </p>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {[
             {
               icon: "🛻",
@@ -156,7 +156,7 @@ export default function HomePage() {
             },
             {
               icon: "🚙",
-              label: "SUVs",
+              label: "SUVs & Minivans",
               desc: "Family-ready, all-season",
               img: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=600&q=80",
             },
@@ -165,12 +165,6 @@ export default function HomePage() {
               label: "Cars",
               desc: "Fuel-efficient & reliable",
               img: "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=600&q=80",
-            },
-            {
-              icon: "🚐",
-              label: "Vans",
-              desc: "Space for the whole crew",
-              img: "https://images.unsplash.com/photo-1564694202883-46e7571e622e?w=600&q=80",
             },
           ].map((v) => (
             <a
