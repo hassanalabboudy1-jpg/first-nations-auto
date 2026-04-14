@@ -192,6 +192,68 @@ const communities = [
   ["Oujé-Bougoumou","ouje-bougoumou","QC","Cree (Eeyou)","Cree","Wachiya",800,"Oujé-Bougoumou",49.92,-74.04,true,"remote"],
   ["Waswanipi","waswanipi","QC","Cree (Eeyou)","Cree","Wachiya",2200,"Waswanipi",49.74,-75.96,true,"remote"],
   ["Whapmagoostui","whapmagoostui","QC","Cree (Eeyou)","Cree","Wachiya",1000,"Whapmagoostui",55.28,-77.76,true,"remote"],
+  // ─── Manitoba — Southern / Anishinaabe / Dakota ───
+  ["Peguis First Nation","peguis","MB","Anishinaabe (Ojibwe/Cree)","Ojibwe / Cree","Boozhoo",11000,"Peguis Reserve",51.05,-96.65,false,"regional"],
+  ["Sagkeeng First Nation (Fort Alexander)","sagkeeng","MB","Anishinaabe (Ojibwe)","Ojibwe","Boozhoo",8000,"Fort Alexander Reserve",50.63,-96.34,false,"regional"],
+  ["Sandy Bay Ojibway First Nation","sandy-bay-mb","MB","Anishinaabe (Ojibwe)","Ojibwe","Boozhoo",6500,"Sandy Bay Reserve",50.85,-99.38,false,"regional"],
+  ["Lake Manitoba First Nation","lake-manitoba","MB","Anishinaabe (Ojibwe)","Ojibwe","Boozhoo",3500,"Lake Manitoba Reserve",50.54,-98.93,false,"regional"],
+  ["Long Plain First Nation","long-plain","MB","Anishinaabe (Ojibwe)","Ojibwe","Boozhoo",4500,"Long Plain Reserve",49.64,-98.27,false,"local"],
+  ["Roseau River Anishinabe First Nation","roseau-river","MB","Anishinaabe (Ojibwe)","Ojibwe","Boozhoo",2500,"Roseau River Reserve",49.15,-97.23,false,"local"],
+  ["Brokenhead Ojibway Nation","brokenhead","MB","Anishinaabe (Ojibwe)","Ojibwe","Boozhoo",2500,"Brokenhead Reserve",50.24,-96.53,false,"local"],
+  ["Swan Lake First Nation","swan-lake-mb","MB","Anishinaabe (Ojibwe)","Ojibwe","Boozhoo",1500,"Swan Lake Reserve",49.44,-98.89,false,"local"],
+  ["Canupawakpa Dakota Nation (Oak Lake)","canupawakpa","MB","Dakota","Dakota","Hau",800,"Oak Lake Reserve",49.67,-100.71,false,"regional"],
+  ["Dakota Tipi First Nation","dakota-tipi","MB","Dakota","Dakota","Hau",500,"Dakota Tipi Reserve",49.71,-98.29,false,"local"],
+  ["Sioux Valley Dakota Nation","sioux-valley","MB","Dakota","Dakota","Hau",2800,"Sioux Valley Reserve",49.76,-100.13,false,"regional"],
+  ["Dakota Plains Wahpeton Oyate","dakota-plains","MB","Dakota","Dakota","Hau",500,"Dakota Plains Reserve",49.63,-98.74,false,"local"],
+  ["Birdtail Sioux Dakota Nation","birdtail-sioux","MB","Dakota","Dakota","Hau",700,"Birdtail Creek Reserve",50.42,-101.0,false,"regional"],
+  // ─── Manitoba — Central / Interlake ───
+  ["Fisher River Cree Nation","fisher-river","MB","Cree","Cree","Tansi",4500,"Fisher River Reserve",51.16,-97.29,false,"regional"],
+  ["Kinonjeoshtegon First Nation (Jackhead)","jackhead","MB","Anishinaabe (Ojibwe)","Ojibwe","Boozhoo",700,"Jackhead Reserve",51.62,-96.95,false,"regional"],
+  ["Lake St. Martin First Nation","lake-st-martin","MB","Anishinaabe (Ojibwe)","Ojibwe","Boozhoo",3200,"Lake St. Martin Reserve",51.29,-98.16,false,"regional"],
+  ["Little Saskatchewan First Nation","little-saskatchewan","MB","Anishinaabe (Ojibwe)","Ojibwe","Boozhoo",2000,"Little Saskatchewan Reserve",51.36,-98.36,false,"regional"],
+  ["Pinaymootang First Nation (Fairford)","pinaymootang","MB","Anishinaabe (Ojibwe)","Ojibwe","Boozhoo",3000,"Fairford Reserve",51.34,-98.55,false,"regional"],
+  ["Bloodvein First Nation","bloodvein","MB","Anishinaabe (Ojibwe)","Ojibwe","Boozhoo",2000,"Bloodvein Reserve",51.81,-96.72,true,"remote"],
+  ["Hollow Water First Nation","hollow-water","MB","Anishinaabe (Ojibwe)","Ojibwe","Boozhoo",1600,"Hollow Water Reserve",51.22,-96.37,false,"regional"],
+  ["Black River First Nation","black-river-mb","MB","Anishinaabe (Ojibwe)","Ojibwe","Boozhoo",1200,"Black River Reserve",50.92,-96.35,false,"regional"],
+  // ─── Manitoba — Northern Cree ───
+  ["Norway House Cree Nation","norway-house","MB","Cree","Cree","Tansi",8000,"Norway House Reserve",53.97,-97.84,true,"remote"],
+  ["Cross Lake First Nation (Pimicikamak)","cross-lake","MB","Cree","Cree","Tansi",8500,"Cross Lake Reserve",54.61,-97.77,true,"remote"],
+  ["Garden Hill First Nation","garden-hill","MB","Anishinaabe (Ojibwe/Cree)","Ojibwe / Cree","Boozhoo",4500,"Garden Hill Reserve",53.93,-94.68,true,"remote"],
+  ["St. Theresa Point First Nation","st-theresa-point","MB","Anishinaabe (Ojibwe/Cree)","Ojibwe","Boozhoo",4000,"St. Theresa Point Reserve",53.84,-94.85,true,"remote"],
+  ["Wasagamack First Nation","wasagamack","MB","Anishinaabe (Ojibwe/Cree)","Ojibwe","Boozhoo",2200,"Wasagamack Reserve",53.92,-94.96,true,"remote"],
+  ["Red Sucker Lake First Nation","red-sucker-lake","MB","Anishinaabe (Ojibwe/Cree)","Ojibwe","Boozhoo",1200,"Red Sucker Lake Reserve",54.07,-93.57,true,"remote"],
+  ["Oxford House First Nation (Bunibonibee)","oxford-house","MB","Cree","Cree","Tansi",3000,"Oxford House Reserve",54.95,-95.27,true,"remote"],
+  ["God''s Lake First Nation","gods-lake","MB","Cree","Cree","Tansi",1800,"God''s Lake Reserve",54.56,-94.73,true,"remote"],
+  ["Shamattawa First Nation","shamattawa","MB","Cree","Cree","Tansi",1600,"Shamattawa Reserve",55.86,-92.09,true,"remote"],
+  ["Tataskweyak Cree Nation (Split Lake)","tataskweyak","MB","Cree","Cree","Tansi",4000,"Split Lake Reserve",56.27,-96.1,true,"remote"],
+  ["York Factory First Nation","york-factory","MB","Cree","Cree","Tansi",1100,"York Factory Reserve",56.83,-92.31,true,"remote"],
+  ["Fox Lake Cree Nation","fox-lake","MB","Cree","Cree","Tansi",2200,"Fox Lake Reserve",56.4,-94.5,true,"remote"],
+  ["War Lake First Nation","war-lake","MB","Cree","Cree","Tansi",300,"Ilford",56.06,-95.61,true,"remote"],
+  ["Nisichawayasihk Cree Nation (Nelson House)","nisichawayasihk","MB","Cree","Cree","Tansi",5000,"Nelson House Reserve",55.76,-98.85,true,"remote"],
+  ["Marcel Colomb First Nation","marcel-colomb","MB","Cree","Cree","Tansi",500,"Lynn Lake Area",56.85,-101.05,true,"remote"],
+  ["O-Pipon-Na-Piwin Cree Nation (South Indian Lake)","o-pipon-na-piwin","MB","Cree","Cree","Tansi",1200,"South Indian Lake",56.78,-98.93,true,"remote"],
+  ["Barren Lands First Nation (Brochet)","barren-lands","MB","Dene","Dene","Edlanét''e",800,"Brochet",57.88,-101.68,true,"remote"],
+  ["Northlands Denesuline First Nation (Lac Brochet)","northlands-denesuline","MB","Dene","Dene","Edlanét''e",1100,"Lac Brochet",58.62,-101.47,true,"remote"],
+  ["Sayisi Dene First Nation","sayisi-dene","MB","Dene","Dene","Edlanét''e",500,"Tadoule Lake",58.71,-98.5,true,"remote"],
+  // ─── Manitoba — Western ───
+  ["Ebb and Flow First Nation","ebb-and-flow","MB","Anishinaabe (Ojibwe)","Ojibwe","Boozhoo",2500,"Ebb and Flow Reserve",51.08,-99.6,false,"regional"],
+  ["Rolling River First Nation","rolling-river","MB","Anishinaabe (Ojibwe)","Ojibwe","Boozhoo",2200,"Rolling River Reserve",50.54,-100.08,false,"regional"],
+  ["Keeseekoowenin Ojibway First Nation","keeseekoowenin","MB","Anishinaabe (Ojibwe)","Ojibwe","Boozhoo",1800,"Keeseekoowenin Reserve",50.86,-99.98,false,"regional"],
+  ["Waywayseecappo First Nation","waywayseecappo","MB","Anishinaabe (Ojibwe)","Ojibwe","Boozhoo",3000,"Waywayseecappo Reserve",50.57,-101.27,false,"regional"],
+  ["Tootinaowaziibeeng Treaty Reserve","tootinaowaziibeeng","MB","Anishinaabe (Ojibwe)","Ojibwe","Boozhoo",1500,"Valley River Reserve",51.14,-100.79,false,"regional"],
+  ["Gamblers First Nation","gamblers","MB","Anishinaabe (Ojibwe)","Ojibwe","Boozhoo",250,"Gamblers Reserve",50.72,-101.2,false,"regional"],
+  ["Pine Creek First Nation","pine-creek-mb","MB","Anishinaabe (Ojibwe)","Ojibwe","Boozhoo",2500,"Pine Creek Reserve",52.06,-100.92,false,"regional"],
+  ["Sapotaweyak Cree Nation","sapotaweyak","MB","Cree","Cree","Tansi",2800,"Pelican Rapids Reserve",52.45,-101.14,false,"regional"],
+  ["Wuskwi Sipihk First Nation (Indian Birch)","wuskwi-sipihk","MB","Cree","Cree","Tansi",800,"Indian Birch Reserve",52.23,-100.55,false,"regional"],
+  // ─── Manitoba — Winnipeg / Southern / The Pas ───
+  ["Winnipeg First Nations (urban)","winnipeg-fn","MB","Various","Various","Boozhoo",90000,"Winnipeg Urban",49.8951,-97.1384,false,"local"],
+  ["Buffalo Point First Nation","buffalo-point","MB","Anishinaabe (Ojibwe)","Ojibwe","Boozhoo",150,"Buffalo Point Reserve",49.08,-95.23,false,"regional"],
+  ["Opaskwayak Cree Nation (The Pas)","opaskwayak","MB","Cree","Cree","Tansi",6500,"Opaskwayak Reserve",53.83,-101.25,false,"regional"],
+  ["Mosakahiken Cree Nation (Moose Lake)","mosakahiken","MB","Cree","Cree","Tansi",2500,"Moose Lake Reserve",53.76,-100.33,true,"remote"],
+  ["Chemawawin Cree Nation (Easterville)","chemawawin","MB","Cree","Cree","Tansi",2800,"Easterville Reserve",53.16,-99.18,false,"regional"],
+  ["Misipawistik Cree Nation (Grand Rapids)","misipawistik","MB","Cree","Cree","Tansi",1200,"Grand Rapids Reserve",53.18,-99.28,false,"regional"],
+  ["Mathias Colomb Cree Nation (Pukatawagan)","mathias-colomb","MB","Cree","Cree","Tansi",3500,"Pukatawagan Reserve",55.74,-101.12,true,"remote"],
+  ["Thompson (urban First Nations)","thompson-fn","MB","Cree","Cree","Tansi",5000,"Thompson Urban",55.743,-97.856,false,"regional"],
   // ─── New Brunswick — Wolastoqiyik (Maliseet) ───
   ["Tobique First Nation (Neqotkuk)","tobique","NB","Wolastoqiyik (Maliseet)","Wolastoqey","Kwe",2400,"Tobique Reserve",46.78,-67.08,false,"regional"],
   ["Woodstock First Nation","woodstock-fn","NB","Wolastoqiyik (Maliseet)","Wolastoqey","Kwe",1100,"Woodstock Reserve",46.15,-67.6,false,"regional"],
@@ -239,7 +301,7 @@ const values = communities.map(row => {
 const sql = `
 -- Update province constraint for Maritime provinces
 ALTER TABLE public.communities DROP CONSTRAINT IF EXISTS communities_province_check;
-ALTER TABLE public.communities ADD CONSTRAINT communities_province_check CHECK (province IN ('ON', 'QC', 'NB', 'NS'));
+ALTER TABLE public.communities ADD CONSTRAINT communities_province_check CHECK (province IN ('ON', 'QC', 'MB', 'NB', 'NS'));
 
 DELETE FROM public.communities;
 INSERT INTO public.communities (${cols}) VALUES

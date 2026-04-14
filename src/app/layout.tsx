@@ -5,7 +5,7 @@ import { TrackingPixels } from "@/components/TrackingPixels";
 export const metadata: Metadata = {
   title: "First Nations Auto Financing — ON, QC, NB & NS | Tax-Free Vehicle Delivery",
   description:
-    "Vehicle financing designed for First Nations communities in Ontario, Quebec, New Brunswick, and Nova Scotia. Save on HST with on-reserve delivery. $0 down. Bad credit OK. Free delivery to your community.",
+    "Vehicle financing designed for First Nations communities in Ontario, Quebec, Manitoba, New Brunswick, and Nova Scotia. Save on HST with on-reserve delivery. $0 down. Bad credit OK. Free delivery to your community.",
   keywords: [
     "First Nations car financing",
     "Indigenous auto financing Ontario",

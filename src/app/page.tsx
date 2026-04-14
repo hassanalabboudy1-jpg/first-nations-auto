@@ -5,7 +5,7 @@ import { CommunityAccordion } from "@/components/CommunityAccordion";
 import { ALL_COMMUNITIES } from "@/data/communities";
 
 const STATS = [
-  { value: "191+", label: "Communities Served", sub: "ON, QC, NB & NS" },
+  { value: "248+", label: "Communities Served", sub: "ON, QC, MB, NB & NS" },
   { value: "100%", label: "Tax Savings", sub: "HST exempt with Status Card" },
   { value: "$0", label: "Down Payment", sub: "Drive today" },
   { value: "1 HR", label: "Callback Time", sub: "We call you fast" },
@@ -84,6 +84,9 @@ export default function HomePage() {
   const quebecCommunities = ALL_COMMUNITIES.filter(
     (c) => c.province === "QC"
   );
+  const manitobaCommunities = ALL_COMMUNITIES.filter(
+    (c) => c.province === "MB"
+  );
   const newBrunswickCommunities = ALL_COMMUNITIES.filter(
     (c) => c.province === "NB"
   );
@@ -144,7 +147,7 @@ export default function HomePage() {
             <div className="inline-flex items-center gap-2 bg-earth-gold/20 border border-earth-gold/30 rounded-full px-4 py-1.5 mb-6">
               <span className="w-2 h-2 bg-earth-gold rounded-full animate-pulse" />
               <span className="text-earth-gold text-xs font-semibold tracking-wide uppercase">
-                Serving 191+ First Nations Communities
+                Serving 248+ First Nations Communities
               </span>
             </div>
             <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6 text-white">
@@ -373,7 +376,7 @@ export default function HomePage() {
             Communities We Serve
           </h2>
           <p className="text-sm text-earth-muted">
-            We deliver tax-free to 191+ First Nations communities. Find yours
+            We deliver tax-free to 248+ First Nations communities. Find yours
             below.
           </p>
         </div>
@@ -394,6 +397,13 @@ export default function HomePage() {
               color: "text-earth-sage",
               hoverColor: "hover:border-earth-sage hover:text-earth-sage",
               communities: quebecCommunities,
+            },
+            {
+              label: "Manitoba",
+              icon: "🦬",
+              color: "text-earth-brown",
+              hoverColor: "hover:border-earth-brown hover:text-earth-brown",
+              communities: manitobaCommunities,
             },
             {
               label: "New Brunswick",
@@ -482,7 +492,7 @@ export default function HomePage() {
             </p>
             <p className="text-xs text-white/30">
               &copy; {new Date().getFullYear()} First Nations Auto. Serving
-              Ontario, Quebec, New Brunswick &amp; Nova Scotia.
+              Ontario, Quebec, Manitoba, New Brunswick &amp; Nova Scotia.
             </p>
           </div>
         </div>

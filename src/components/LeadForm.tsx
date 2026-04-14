@@ -97,7 +97,7 @@ export function LeadForm() {
         <span>🔒 No credit impact</span>
         <span>🏠 On-reserve delivery</span>
         <span>📞 1-hour callback</span>
-        <span>✅ 191+ communities</span>
+        <span>✅ 248+ communities</span>
       </div>
 
       {/* Step 1: Contact */}
@@ -149,6 +149,11 @@ export function LeadForm() {
             </optgroup>
             <optgroup label="Quebec">
               {ALL_COMMUNITIES.filter((c) => c.province === "QC").map((c) => (
+                <option key={c.slug} value={c.slug}>{c.name}</option>
+              ))}
+            </optgroup>
+            <optgroup label="Manitoba">
+              {ALL_COMMUNITIES.filter((c) => c.province === "MB").map((c) => (
                 <option key={c.slug} value={c.slug}>{c.name}</option>
               ))}
             </optgroup>

@@ -117,7 +117,7 @@ export async function runDebate(config: DebateConfig): Promise<{
   const consensusResponse = await anthropic.messages.create({
     model: "claude-sonnet-4-20250514",
     max_tokens: 1500,
-    system: `You are a master strategist synthesizing a multi-agent debate about First Nations auto financing in Ontario, Quebec, New Brunswick, and Nova Scotia. Your job is to extract the BEST ideas from all agents and create a unified, actionable strategy. Be specific. Include priorities, timelines, and success metrics.`,
+    system: `You are a master strategist synthesizing a multi-agent debate about First Nations auto financing in Ontario, Quebec, Manitoba, New Brunswick, and Nova Scotia. Your job is to extract the BEST ideas from all agents and create a unified, actionable strategy. Be specific. Include priorities, timelines, and success metrics.`,
     messages: [{ role: "user", content: consensusPrompt }],
   });
 

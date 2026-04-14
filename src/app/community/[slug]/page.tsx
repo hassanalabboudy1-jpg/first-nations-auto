@@ -39,7 +39,8 @@ export default async function CommunityPage({ params }: Props) {
 
   const province = PROVINCE_LABELS[community.province] ?? community.province;
   const taxRate = TAX_RATES[community.province] ?? "15% HST";
-  const taxSavings = community.province === "QC" ? "$6,000-$10,000" : community.province === "ON" ? "$5,000-$8,000" : "$6,000-$9,000";
+  const taxSavingsMap: Record<string, string> = { ON: "$5,000-$8,000", QC: "$6,000-$10,000", MB: "$4,500-$7,500", NB: "$6,000-$9,000", NS: "$6,000-$9,000" };
+  const taxSavings = taxSavingsMap[community.province] ?? "$5,000-$8,000";
 
   // Find nearby communities for internal linking (same province)
   const nearbyCommunities = ALL_COMMUNITIES.filter(
@@ -246,8 +247,8 @@ export default async function CommunityPage({ params }: Props) {
             FIRST NATIONS AUTO FINANCING
           </Link>
           <p className="text-xs text-gray-600 mt-3">
-            Serving {community.name} and 191+ First Nations communities across
-            Ontario, Quebec, New Brunswick &amp; Nova Scotia.
+            Serving {community.name} and 248+ First Nations communities across
+            Ontario, Quebec, Manitoba, New Brunswick &amp; Nova Scotia.
           </p>
         </div>
       </footer>

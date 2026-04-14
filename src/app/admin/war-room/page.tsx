@@ -15,12 +15,12 @@ const PRESET_TOPICS = [
   {
     topic: "How do we acquire our first 100 leads in 30 days?",
     context:
-      "We just launched. No existing customer base. Budget: $5,000 for first month. Need to establish presence in Ontario, Quebec, New Brunswick, and Nova Scotia First Nations communities.",
+      "We just launched. No existing customer base. Budget: $5,000 for first month. Need to establish presence in Ontario, Quebec, Manitoba, New Brunswick, and Nova Scotia First Nations communities.",
   },
   {
     topic: "Which 10 communities should we target first and why?",
     context:
-      "We can't serve all 191+ communities at once. Need to prioritize based on population, accessibility, competition, and strategic value.",
+      "We can't serve all 248+ communities at once. Need to prioritize based on population, accessibility, competition, and strategic value.",
   },
   {
     topic: "Should we focus on Facebook Ads or SEO first?",
