@@ -282,7 +282,7 @@ export default function HomePage() {
             {
               icon: "📞",
               title: "Talk to Sam, Not a Bot",
-              desc: "When you apply, Sam Al calls you personally within 1 hour. You're not a number — you're family.",
+              desc: "When you apply, Sam calls you personally within 1 hour. You're not a number — you're family.",
             },
             {
               icon: "💳",
@@ -332,7 +332,7 @@ export default function HomePage() {
             👤
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-white uppercase mb-2">
-            Meet Sam Al
+            Meet Sam
           </h2>
           <p className="text-earth-gold text-sm uppercase tracking-wider font-bold mb-6">
             Your Dedicated Financing Specialist
