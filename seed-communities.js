@@ -299,13 +299,25 @@ const values = communities.map(row => {
 }).join(",\n");
 
 const sql = `
--- Update province constraint for Maritime provinces
+-- Update province constraint
 ALTER TABLE public.communities DROP CONSTRAINT IF EXISTS communities_province_check;
 ALTER TABLE public.communities ADD CONSTRAINT communities_province_check CHECK (province IN ('ON', 'QC', 'MB', 'NB', 'NS'));
 
-DELETE FROM public.communities;
+-- Upsert: insert new communities, update existing ones by slug
 INSERT INTO public.communities (${cols}) VALUES
-${values};
+${values}
+ON CONFLICT (slug) DO UPDATE SET
+  name = EXCLUDED.name,
+  province = EXCLUDED.province,
+  nation = EXCLUDED.nation,
+  language = EXCLUDED.language,
+  greeting = EXCLUDED.greeting,
+  population = EXCLUDED.population,
+  reserve_name = EXCLUDED.reserve_name,
+  latitude = EXCLUDED.latitude,
+  longitude = EXCLUDED.longitude,
+  is_remote = EXCLUDED.is_remote,
+  delivery_zone = EXCLUDED.delivery_zone;
 `;
 
 async function run() {
@@ -327,7 +339,7 @@ async function run() {
   });
   const counts = await res2.json();
   console.log("\nCommunities seeded:");
-  const labels = { ON: "Ontario", QC: "Quebec", NB: "New Brunswick", NS: "Nova Scotia" };
+  const labels = { ON: "Ontario", QC: "Quebec", MB: "Manitoba", NB: "New Brunswick", NS: "Nova Scotia" };
   counts.forEach(r => console.log("  " + (labels[r.province] || r.province) + ": " + r.total));
   console.log("  Total: " + counts.reduce((s, r) => s + parseInt(r.total), 0));
 }
