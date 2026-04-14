@@ -370,8 +370,8 @@ export default function HomePage() {
             {/* Image */}
             <div className="relative h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-xl">
               <Image
-                src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&q=80"
-                alt="Indigenous community member"
+                src="/indigenous-family.jpg"
+                alt="Indigenous family with their new vehicle"
                 fill
                 className="object-cover"
               />
