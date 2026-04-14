@@ -4,189 +4,125 @@ import { LeadForm } from "@/components/LeadForm";
 import { CommunityAccordion } from "@/components/CommunityAccordion";
 import { ALL_COMMUNITIES } from "@/data/communities";
 
-const STATS = [
-  { value: "248+", label: "Communities Served", sub: "ON, QC, MB, NB & NS" },
-  { value: "100%", label: "Tax Savings", sub: "HST exempt with Status Card" },
-  { value: "$0", label: "Down Payment", sub: "Drive today" },
-  { value: "1 HR", label: "Callback Time", sub: "We call you fast" },
-];
-
-const STEPS = [
-  {
-    num: "01",
-    title: "Apply Online",
-    description:
-      "Fill out our simple 3-minute form. No commitment, no pressure.",
-  },
-  {
-    num: "02",
-    title: "Sam Calls You",
-    description:
-      "Within 1 hour, I'll personally call to discuss your options and find the right vehicle.",
-  },
-  {
-    num: "03",
-    title: "Get Approved",
-    description:
-      "We work with 50+ lenders to get you the best rate — even with challenged credit.",
-  },
-  {
-    num: "04",
-    title: "Delivered to Your Door",
-    description:
-      "Your vehicle is delivered tax-free directly to your community. No dealership trips.",
-  },
-];
-
-const TRUST_POINTS = [
-  {
-    icon: "🤝",
-    title: "Built on Respect",
-    description:
-      "We operate with honesty, transparency, and respect for every community we serve. No hidden fees. No surprises.",
-  },
-  {
-    icon: "🏠",
-    title: "On-Reserve Delivery",
-    description:
-      "Your vehicle delivered tax-free directly to your door. Save thousands in HST/QST that you'd pay at a dealership.",
-  },
-  {
-    icon: "📞",
-    title: "A Real Person, Not a Bot",
-    description:
-      "When you apply, Sam Al calls you personally within 1 hour. You're not a number here — you're family.",
-  },
-  {
-    icon: "💳",
-    title: "All Credit Welcome",
-    description:
-      "Bad credit, no credit, new credit — we work with 50+ lenders to find your best option. Over 98.9% approval rate.",
-  },
-  {
-    icon: "🪶",
-    title: "Community First",
-    description:
-      "We support powwows, hockey teams, and community events. A portion of every sale goes back to the communities we serve.",
-  },
-  {
-    icon: "🔒",
-    title: "Your Info is Safe",
-    description:
-      "PIPEDA compliant. Your personal information is encrypted and never shared without your consent.",
-  },
-];
-
 export default function HomePage() {
-  const ontarioCommunities = ALL_COMMUNITIES.filter(
-    (c) => c.province === "ON"
-  );
-  const quebecCommunities = ALL_COMMUNITIES.filter(
-    (c) => c.province === "QC"
-  );
-  const manitobaCommunities = ALL_COMMUNITIES.filter(
-    (c) => c.province === "MB"
-  );
-  const newBrunswickCommunities = ALL_COMMUNITIES.filter(
-    (c) => c.province === "NB"
-  );
-  const novaScotiaCommunities = ALL_COMMUNITIES.filter(
-    (c) => c.province === "NS"
-  );
+  const ontarioCommunities = ALL_COMMUNITIES.filter((c) => c.province === "ON");
+  const quebecCommunities = ALL_COMMUNITIES.filter((c) => c.province === "QC");
+  const manitobaCommunities = ALL_COMMUNITIES.filter((c) => c.province === "MB");
+  const newBrunswickCommunities = ALL_COMMUNITIES.filter((c) => c.province === "NB");
+  const novaScotiaCommunities = ALL_COMMUNITIES.filter((c) => c.province === "NS");
 
   return (
     <main className="min-h-screen bg-earth-warm">
       {/* Nav */}
-      <nav className="bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b border-earth-border">
-        <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <nav className="bg-earth-dark sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="text-2xl">🌿</span>
-            <span className="text-lg font-bold text-earth-forest tracking-tight">
-              First Nations Auto
+            <span className="text-xl">🌿</span>
+            <span className="text-lg font-bold text-white tracking-tight">
+              First Nation Auto
             </span>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-5">
             <a
               href="tel:+16133028872"
-              className="hidden sm:flex items-center gap-1.5 text-sm text-earth-muted hover:text-earth-forest transition"
+              className="hidden sm:flex items-center gap-1.5 text-sm text-white/70 hover:text-white transition"
             >
-              <span>📞</span> 613-302-8872
+              📞 613-302-8872
             </a>
             <Link
-              href="#communities"
-              className="hidden sm:block text-sm text-earth-muted hover:text-earth-forest transition"
+              href="#vehicles"
+              className="hidden md:block text-sm text-white/70 hover:text-white transition"
             >
-              Communities
+              Vehicles
+            </Link>
+            <Link
+              href="#how-it-works"
+              className="hidden md:block text-sm text-white/70 hover:text-white transition"
+            >
+              How It Works
             </Link>
             <a
               href="#apply"
-              className="text-sm bg-earth-forest hover:bg-earth-forest/90 text-white px-5 py-2 rounded-full font-semibold transition"
+              className="text-sm bg-earth-red hover:bg-red-700 text-white px-5 py-2 rounded-lg font-bold transition"
             >
-              Apply Now
+              APPLY NOW
             </a>
+          </div>
+        </div>
+        {/* Trust banner */}
+        <div className="bg-earth-gold">
+          <div className="max-w-7xl mx-auto px-4 py-2 flex flex-wrap items-center justify-center gap-x-6 gap-y-1 text-xs font-semibold text-earth-dark">
+            <span>✅ 98.9% Approval Rate</span>
+            <span>🏠 Free On-Reserve Delivery</span>
+            <span>💰 $0 Down Payment</span>
+            <span>📞 1-Hour Callback</span>
+            <span>🔒 No Credit Impact</span>
           </div>
         </div>
       </nav>
 
-      {/* Hero — Full width image with overlay */}
-      <section className="relative min-h-[600px] md:min-h-[700px] flex items-center">
-        {/* Background Image */}
+      {/* Hero */}
+      <section className="relative min-h-[650px] md:min-h-[750px] flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80"
-            alt="Canadian mountain landscape"
+            src="https://images.unsplash.com/photo-1549317661-bd32c8ce0637?w=1920&q=80"
+            alt="Pickup truck on open road"
             fill
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-earth-dark/80 via-earth-dark/60 to-earth-dark/30" />
+          <div className="absolute inset-0 bg-gradient-to-r from-earth-dark via-earth-dark/85 to-earth-dark/40" />
         </div>
 
-        <div className="max-w-6xl mx-auto px-4 py-20 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 py-16 relative z-10 w-full">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 bg-earth-gold/20 border border-earth-gold/30 rounded-full px-4 py-1.5 mb-6">
-              <span className="w-2 h-2 bg-earth-gold rounded-full animate-pulse" />
-              <span className="text-earth-gold text-xs font-semibold tracking-wide uppercase">
-                Serving 248+ First Nations Communities
+            <div className="inline-flex items-center gap-2 bg-earth-red/20 border border-earth-red/40 rounded-lg px-4 py-2 mb-6">
+              <span className="w-2 h-2 bg-earth-red rounded-full animate-pulse" />
+              <span className="text-earth-red text-xs font-bold tracking-wider uppercase">
+                Now Serving 248+ First Nations Communities
               </span>
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6 text-white">
-              Vehicle financing{" "}
-              <span className="text-earth-gold">built for your community</span>
+            <h1 className="text-5xl md:text-7xl font-bold leading-[1.05] mb-6 text-white uppercase">
+              Get The Keys To{" "}
+              <span className="text-earth-gold">Your Dream Car</span>
             </h1>
-            <p className="text-lg md:text-xl text-white/80 mb-4 max-w-xl leading-relaxed">
-              Save thousands with tax-exempt on-reserve delivery across Ontario,
-              Quebec, New Brunswick, and Nova Scotia.
+            <p className="text-lg text-white/70 mb-8 max-w-lg leading-relaxed">
+              100% tax-free on-reserve delivery with your Status Card.
+              All credit welcome. 50+ lenders. Sam calls you within 1 hour.
             </p>
-            <div className="mb-8" />
             <div className="flex flex-wrap gap-3">
               <a
                 href="#apply"
-                className="bg-earth-gold hover:bg-earth-gold/90 text-earth-dark px-8 py-4 rounded-full font-bold text-lg transition shadow-lg shadow-earth-gold/20"
+                className="bg-earth-red hover:bg-red-700 text-white px-8 py-4 rounded-lg font-bold text-lg uppercase tracking-wide transition shadow-lg shadow-earth-red/30"
               >
-                Get Pre-Approved Free
+                Apply Now — 3 Minutes
               </a>
               <a
                 href="tel:+16133028872"
-                className="bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 text-white px-8 py-4 rounded-full font-semibold text-lg transition"
+                className="bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 text-white px-8 py-4 rounded-lg font-semibold text-lg transition"
               >
-                📞 613-302-8872
+                📞 Call Sam
               </a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Stats Bar */}
-      <section className="bg-earth-forest">
-        <div className="max-w-6xl mx-auto px-4 py-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {STATS.map((stat) => (
+      {/* Stats */}
+      <section className="bg-earth-dark border-y-4 border-earth-gold">
+        <div className="max-w-7xl mx-auto px-4 py-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {[
+              { value: "248+", label: "Communities", sub: "ON, QC, MB, NB & NS" },
+              { value: "100%", label: "Tax Savings", sub: "HST exempt with Status Card" },
+              { value: "$0", label: "Down Payment", sub: "Drive today" },
+              { value: "50+", label: "Lenders", sub: "Best rate guaranteed" },
+            ].map((stat) => (
               <div key={stat.label} className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-earth-gold">
+                <div className="text-4xl md:text-5xl font-bold text-earth-gold">
                   {stat.value}
                 </div>
-                <div className="text-xs font-semibold text-white/80 mt-1 tracking-wide uppercase">
+                <div className="text-sm font-bold text-white mt-1 uppercase tracking-wider">
                   {stat.label}
                 </div>
                 <div className="text-xs text-white/50 mt-0.5">{stat.sub}</div>
@@ -196,156 +132,229 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* How It Works */}
-      <section className="max-w-6xl mx-auto px-4 py-20">
-        <div className="text-center mb-14">
-          <p className="text-earth-forest text-sm font-semibold tracking-wider uppercase mb-2">
-            Simple Process
+      {/* Vehicle Showcase */}
+      <section id="vehicles" className="max-w-7xl mx-auto px-4 py-20">
+        <div className="text-center mb-12">
+          <p className="text-earth-red text-sm font-bold tracking-wider uppercase mb-2">
+            Find Your Perfect Ride
           </p>
-          <h2 className="text-3xl md:text-4xl font-bold text-earth-dark mb-3">
-            From Application to Your Driveway
+          <h2 className="text-3xl md:text-5xl font-bold text-earth-dark uppercase">
+            Trucks, SUVs, Cars &amp; More
           </h2>
-          <p className="text-earth-muted max-w-lg mx-auto">
-            Four easy steps. No dealership visits. No hassle.
+          <p className="text-earth-muted mt-3 max-w-lg mx-auto">
+            From brand new to quality pre-owned — we match you with the right
+            vehicle for your budget and lifestyle.
           </p>
         </div>
-        <div className="grid md:grid-cols-4 gap-8">
-          {STEPS.map((step, i) => (
-            <div key={step.num} className="relative text-center">
-              {i < STEPS.length - 1 && (
-                <div className="hidden md:block absolute top-7 left-[60%] w-[80%] h-[2px] bg-earth-border" />
-              )}
-              <div className="relative inline-flex items-center justify-center w-14 h-14 rounded-full bg-earth-forest text-white font-bold text-lg mb-4 shadow-lg shadow-earth-forest/20">
-                {step.num}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+          {[
+            {
+              icon: "🛻",
+              label: "Trucks",
+              desc: "Built for northern roads",
+              img: "https://images.unsplash.com/photo-1559416523-140ddc3d238c?w=600&q=80",
+            },
+            {
+              icon: "🚙",
+              label: "SUVs",
+              desc: "Family-ready, all-season",
+              img: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=600&q=80",
+            },
+            {
+              icon: "🚗",
+              label: "Cars",
+              desc: "Fuel-efficient & reliable",
+              img: "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=600&q=80",
+            },
+            {
+              icon: "🚐",
+              label: "Vans",
+              desc: "Space for the whole crew",
+              img: "https://images.unsplash.com/photo-1564694202883-46e7571e622e?w=600&q=80",
+            },
+          ].map((v) => (
+            <a
+              key={v.label}
+              href="#apply"
+              className="group relative rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all hover:-translate-y-1"
+            >
+              <div className="relative h-48 md:h-56">
+                <Image
+                  src={v.img}
+                  alt={v.label}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-earth-dark/90 via-earth-dark/30 to-transparent" />
               </div>
+              <div className="absolute bottom-0 left-0 right-0 p-4">
+                <div className="text-white font-bold text-lg">{v.label}</div>
+                <div className="text-white/60 text-xs">{v.desc}</div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section id="how-it-works" className="bg-earth-dark text-white">
+        <div className="max-w-7xl mx-auto px-4 py-20">
+          <div className="text-center mb-14">
+            <p className="text-earth-gold text-sm font-bold tracking-wider uppercase mb-2">
+              Simple 4-Step Process
+            </p>
+            <h2 className="text-3xl md:text-5xl font-bold uppercase">
+              How It Works
+            </h2>
+          </div>
+          <div className="grid md:grid-cols-4 gap-8">
+            {[
+              {
+                num: "01",
+                title: "Apply Online",
+                desc: "Fill out our simple 3-minute form. No commitment, no pressure.",
+              },
+              {
+                num: "02",
+                title: "Sam Calls You",
+                desc: "Within 1 hour, I personally call to discuss your options.",
+              },
+              {
+                num: "03",
+                title: "Get Approved",
+                desc: "50+ lenders compete for your business — even with challenged credit.",
+              },
+              {
+                num: "04",
+                title: "Delivered Tax-Free",
+                desc: "Vehicle delivered to your door on-reserve. No dealership trips.",
+              },
+            ].map((step, i) => (
+              <div key={step.num} className="relative text-center">
+                {i < 3 && (
+                  <div className="hidden md:block absolute top-8 left-[60%] w-[80%] h-[2px] bg-earth-gold/20" />
+                )}
+                <div className="relative inline-flex items-center justify-center w-16 h-16 rounded-full bg-earth-red text-white font-bold text-xl mb-5">
+                  {step.num}
+                </div>
+                <h3 className="font-bold text-lg mb-2 text-earth-gold">
+                  {step.title}
+                </h3>
+                <p className="text-sm text-white/60 leading-relaxed">
+                  {step.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-12">
+            <a
+              href="#apply"
+              className="inline-block bg-earth-red hover:bg-red-700 text-white px-10 py-4 rounded-lg font-bold text-lg uppercase tracking-wide transition"
+            >
+              Start Your Application
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Trust Us */}
+      <section className="max-w-7xl mx-auto px-4 py-20">
+        <div className="text-center mb-14">
+          <p className="text-earth-red text-sm font-bold tracking-wider uppercase mb-2">
+            Our Promise To You
+          </p>
+          <h2 className="text-3xl md:text-5xl font-bold text-earth-dark uppercase">
+            Why Communities Trust Us
+          </h2>
+        </div>
+        <div className="grid md:grid-cols-3 gap-6">
+          {[
+            {
+              icon: "🤝",
+              title: "Built on Respect",
+              desc: "Honest, transparent, and respectful. No hidden fees. No surprises. We explain every detail of your loan.",
+            },
+            {
+              icon: "🏠",
+              title: "On-Reserve Delivery",
+              desc: "Vehicle delivered tax-free to your door. Save thousands in HST that you'd pay at any dealership.",
+            },
+            {
+              icon: "📞",
+              title: "Talk to Sam, Not a Bot",
+              desc: "When you apply, Sam Al calls you personally within 1 hour. You're not a number — you're family.",
+            },
+            {
+              icon: "💳",
+              title: "All Credit Welcome",
+              desc: "Bad credit, no credit, bankruptcy — 50+ lenders compete for you. 98.9% approval rate.",
+            },
+            {
+              icon: "🪶",
+              title: "Community First",
+              desc: "We support powwows, hockey teams, and community events. We give back to the communities we serve.",
+            },
+            {
+              icon: "🔒",
+              title: "Your Info is Safe",
+              desc: "PIPEDA compliant. Your information is encrypted and never shared without your consent.",
+            },
+          ].map((p) => (
+            <div
+              key={p.title}
+              className="bg-white rounded-2xl p-7 border border-earth-border shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all"
+            >
+              <div className="text-3xl mb-4">{p.icon}</div>
               <h3 className="font-bold text-earth-dark text-lg mb-2">
-                {step.title}
+                {p.title}
               </h3>
               <p className="text-sm text-earth-muted leading-relaxed">
-                {step.description}
+                {p.desc}
               </p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Vehicle Types — Visual Section */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0">
-          <Image
-            src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=1920&q=80"
-            alt="Vehicle on open road"
-            fill
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-earth-dark/80" />
-        </div>
-        <div className="max-w-6xl mx-auto px-4 py-20 relative z-10">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
-              Find Your Perfect Vehicle
-            </h2>
-            <p className="text-white/60 max-w-md mx-auto">
-              Trucks, SUVs, cars, vans — new and used. We&apos;ll match you
-              with the right vehicle for your needs and budget.
-            </p>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[
-              { icon: "🛻", label: "Trucks", desc: "Perfect for northern roads" },
-              { icon: "🚙", label: "SUVs", desc: "Family-ready, all-season" },
-              { icon: "🚗", label: "Cars", desc: "Fuel-efficient & reliable" },
-              { icon: "🚐", label: "Vans", desc: "Space for the whole crew" },
-            ].map((v) => (
-              <a
-                key={v.label}
-                href="#apply"
-                className="bg-white/10 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center hover:bg-white/20 transition group"
-              >
-                <div className="text-4xl mb-3 group-hover:scale-110 transition-transform">
-                  {v.icon}
-                </div>
-                <div className="text-white font-bold">{v.label}</div>
-                <div className="text-white/50 text-xs mt-1">{v.desc}</div>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Why Trust Us */}
-      <section className="bg-earth-cream">
-        <div className="max-w-6xl mx-auto px-4 py-20">
-          <div className="text-center mb-14">
-            <p className="text-earth-forest text-sm font-semibold tracking-wider uppercase mb-2">
-              Our Promise
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-earth-dark mb-3">
-              Why Communities Trust Us
-            </h2>
-            <p className="text-earth-muted max-w-lg mx-auto">
-              We&apos;re not just another lender. We build long-term
-              relationships with the communities we serve.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {TRUST_POINTS.map((point) => (
-              <div
-                key={point.title}
-                className="bg-white rounded-2xl p-7 shadow-sm border border-earth-border hover:shadow-md hover:-translate-y-1 transition-all"
-              >
-                <div className="text-3xl mb-4">{point.icon}</div>
-                <h3 className="font-bold text-earth-dark text-lg mb-2">
-                  {point.title}
-                </h3>
-                <p className="text-sm text-earth-muted leading-relaxed">
-                  {point.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Meet Sam */}
+      {/* Meet Sam — CTA banner */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0">
           <Image
             src="https://images.unsplash.com/photo-1511497584788-876760111969?w=1920&q=80"
-            alt="Northern forest landscape"
+            alt="Northern forest"
             fill
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-earth-forest/90" />
+          <div className="absolute inset-0 bg-earth-dark/90" />
         </div>
-        <div className="max-w-3xl mx-auto px-4 py-20 relative z-10 text-center">
-          <div className="w-24 h-24 rounded-full bg-earth-gold/20 border-3 border-earth-gold flex items-center justify-center text-4xl mx-auto mb-6">
+        <div className="max-w-4xl mx-auto px-4 py-20 relative z-10 text-center">
+          <div className="w-24 h-24 rounded-full bg-earth-gold/20 border-4 border-earth-gold flex items-center justify-center text-4xl mx-auto mb-6">
             👤
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">
+          <h2 className="text-3xl md:text-4xl font-bold text-white uppercase mb-2">
             Meet Sam Al
           </h2>
-          <p className="text-earth-gold text-sm mb-6 uppercase tracking-wider font-semibold">
-            Your Financing Specialist
+          <p className="text-earth-gold text-sm uppercase tracking-wider font-bold mb-6">
+            Your Dedicated Financing Specialist
           </p>
-          <p className="text-white/80 text-lg max-w-lg mx-auto leading-relaxed mb-8">
+          <p className="text-white/70 text-lg max-w-xl mx-auto leading-relaxed mb-8">
             &quot;I believe everyone deserves reliable transportation. Whether
-            you&apos;re on Six Nations, in Kahnawà:ke, Eskasoni, or Tobique —
-            I&apos;ll work personally with you to find the right vehicle at the
-            right price. No judgment, no pressure, just honest help.&quot;
+            you&apos;re on Six Nations, in Kahnawà:ke, Peguis, Eskasoni, or
+            Tobique — I&apos;ll work with you personally. No judgment. No
+            pressure. Just honest help.&quot;
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a
               href="tel:+16133028872"
-              className="bg-earth-gold hover:bg-earth-gold/90 text-earth-dark px-8 py-3 rounded-full font-bold transition shadow-lg"
+              className="bg-earth-gold hover:bg-yellow-500 text-earth-dark px-8 py-4 rounded-lg font-bold text-lg transition shadow-lg"
             >
               📞 Call Sam: 613-302-8872
             </a>
             <a
               href="#apply"
-              className="bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 text-white px-8 py-3 rounded-full font-semibold transition"
+              className="bg-earth-red hover:bg-red-700 text-white px-8 py-4 rounded-lg font-bold text-lg uppercase transition"
             >
-              Apply Online — 3 Minutes
+              Apply Now
             </a>
           </div>
         </div>
@@ -355,13 +364,13 @@ export default function HomePage() {
       <section id="apply" className="bg-earth-cream">
         <div className="max-w-xl mx-auto px-4 py-20">
           <div className="text-center mb-8">
-            <p className="text-earth-forest text-sm font-semibold tracking-wider uppercase mb-2">
+            <p className="text-earth-red text-sm font-bold tracking-wider uppercase mb-2">
               Free &amp; No Credit Impact
             </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-earth-dark mb-2">
+            <h2 className="text-3xl md:text-4xl font-bold text-earth-dark uppercase">
               Get Pre-Approved in 3 Minutes
             </h2>
-            <p className="text-earth-muted">
+            <p className="text-earth-muted mt-2">
               No commitment. Sam calls you within 1 hour.
             </p>
           </div>
@@ -370,14 +379,14 @@ export default function HomePage() {
       </section>
 
       {/* Communities */}
-      <section id="communities" className="max-w-6xl mx-auto px-4 py-16">
+      <section id="communities" className="max-w-7xl mx-auto px-4 py-16">
         <div className="text-center mb-8">
           <h2 className="text-2xl font-bold text-earth-dark mb-2">
             Communities We Serve
           </h2>
           <p className="text-sm text-earth-muted">
-            We deliver tax-free to 248+ First Nations communities. Find yours
-            below.
+            Tax-free delivery to 248+ First Nations communities across 5
+            provinces.
           </p>
         </div>
 
@@ -402,7 +411,8 @@ export default function HomePage() {
               label: "Manitoba",
               icon: "🦬",
               color: "text-earth-brown",
-              hoverColor: "hover:border-earth-brown hover:text-earth-brown",
+              hoverColor:
+                "hover:border-earth-brown hover:text-earth-brown",
               communities: manitobaCommunities,
             },
             {
@@ -425,18 +435,20 @@ export default function HomePage() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-earth-dark text-white/70 py-14 px-4">
-        <div className="max-w-6xl mx-auto">
+      <footer className="bg-earth-dark text-white/60 pt-14 pb-20 md:pb-14 px-4">
+        <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-3 gap-10 mb-10">
             <div>
               <div className="flex items-center gap-2 mb-4">
                 <span className="text-xl">🌿</span>
-                <span className="text-white font-bold">First Nations Auto</span>
+                <span className="text-white font-bold text-lg">
+                  First Nation Auto
+                </span>
               </div>
               <p className="text-sm leading-relaxed">
                 Vehicle financing built for First Nations communities. Tax-free
-                on-reserve delivery across Ontario, Quebec, New Brunswick, and
-                Nova Scotia.
+                on-reserve delivery across Ontario, Quebec, Manitoba, New
+                Brunswick, and Nova Scotia.
               </p>
             </div>
             <div>
@@ -476,42 +488,43 @@ export default function HomePage() {
                   </a>
                 </p>
                 <p>
-                  <Link href="/admin" className="hover:text-white transition">
-                    Admin
-                  </Link>
+                  <a href="#how-it-works" className="hover:text-white transition">
+                    How It Works
+                  </a>
                 </p>
               </div>
             </div>
           </div>
 
           <div className="border-t border-white/10 pt-8 text-center">
-            <p className="text-xs text-white/40 max-w-lg mx-auto leading-relaxed mb-4">
+            <p className="text-xs text-white/30 max-w-lg mx-auto leading-relaxed mb-4">
               We acknowledge that we operate on the traditional territories of
               many First Nations, Inuit, and Métis peoples. We are committed to
               building respectful relationships with the communities we serve.
             </p>
-            <p className="text-xs text-white/30">
-              &copy; {new Date().getFullYear()} First Nations Auto. Serving
-              Ontario, Quebec, Manitoba, New Brunswick &amp; Nova Scotia.
+            <p className="text-xs text-white/20">
+              &copy; {new Date().getFullYear()} First Nation Auto Financing.
+              Serving Ontario, Quebec, Manitoba, New Brunswick &amp; Nova
+              Scotia.
             </p>
           </div>
         </div>
       </footer>
 
       {/* Sticky Mobile CTA */}
-      <div className="fixed bottom-0 left-0 right-0 md:hidden bg-white/95 backdrop-blur-md border-t border-earth-border px-4 py-3 z-50">
+      <div className="fixed bottom-0 left-0 right-0 md:hidden bg-earth-dark/95 backdrop-blur-md border-t border-earth-gold/30 px-4 py-3 z-50">
         <div className="flex gap-2">
           <a
             href="tel:+16133028872"
-            className="flex-1 bg-earth-forest text-white text-center py-3 rounded-full font-semibold text-sm transition"
+            className="flex-1 bg-earth-gold text-earth-dark text-center py-3 rounded-lg font-bold text-sm transition"
           >
             📞 Call Sam
           </a>
           <a
             href="#apply"
-            className="flex-1 bg-earth-gold text-earth-dark text-center py-3 rounded-full font-bold text-sm transition"
+            className="flex-1 bg-earth-red text-white text-center py-3 rounded-lg font-bold text-sm uppercase transition"
           >
-            Apply Free
+            Apply Now
           </a>
         </div>
       </div>

@@ -61,7 +61,7 @@ export function LeadForm() {
 
   if (step === "success") {
     return (
-      <div className="bg-earth-forest rounded-2xl p-8 text-center">
+      <div className="bg-earth-dark rounded-2xl p-8 text-center">
         <div className="text-5xl mb-4">🎉</div>
         <h3 className="text-xl font-bold text-white mb-2">
           You&apos;re Pre-Approved!
@@ -174,7 +174,7 @@ export function LeadForm() {
               if (formData.firstName && formData.phone) setStep("vehicle");
             }}
             disabled={!formData.firstName || !formData.phone}
-            className="w-full bg-earth-forest hover:bg-earth-forest/90 disabled:opacity-40 disabled:cursor-not-allowed text-white py-3 rounded-xl font-semibold transition"
+            className="w-full bg-earth-red hover:bg-red-700 disabled:opacity-40 disabled:cursor-not-allowed text-white py-3 rounded-xl font-bold uppercase tracking-wide transition"
           >
             Next — Vehicle Preferences
           </button>
@@ -237,7 +237,7 @@ export function LeadForm() {
             </button>
             <button
               onClick={() => setStep("details")}
-              className="flex-1 bg-earth-forest hover:bg-earth-forest/90 text-white py-3 rounded-xl font-semibold transition"
+              className="flex-1 bg-earth-red hover:bg-red-700 text-white py-3 rounded-xl font-bold uppercase tracking-wide transition"
             >
               Next — Final Details
             </button>
@@ -293,7 +293,7 @@ export function LeadForm() {
             <button
               onClick={handleSubmit}
               disabled={loading}
-              className="flex-1 bg-earth-gold hover:bg-earth-gold/90 disabled:opacity-60 text-earth-dark py-3 rounded-xl font-bold text-lg transition"
+              className="flex-1 bg-earth-red hover:bg-red-700 disabled:opacity-60 text-white py-3 rounded-xl font-bold text-lg uppercase tracking-wide transition"
             >
               {loading ? "Submitting..." : "Get Pre-Approved"}
             </button>
