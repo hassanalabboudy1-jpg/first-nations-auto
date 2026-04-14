@@ -251,62 +251,120 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Why Trust Us */}
-      <section className="max-w-7xl mx-auto px-4 py-20">
-        <div className="text-center mb-14">
-          <p className="text-earth-red text-sm font-bold tracking-wider uppercase mb-2">
-            Our Promise To You
-          </p>
-          <h2 className="text-3xl md:text-5xl font-bold text-earth-dark uppercase">
-            Why Communities Trust Us
-          </h2>
+      {/* Why Trust Us — Premium Section */}
+      <section className="relative overflow-hidden bg-earth-dark">
+        {/* Subtle background texture */}
+        <div className="absolute inset-0 opacity-5">
+          <Image
+            src="https://images.unsplash.com/photo-1511497584788-876760111969?w=1920&q=60"
+            alt=""
+            fill
+            className="object-cover"
+          />
         </div>
-        <div className="grid md:grid-cols-3 gap-6">
-          {[
-            {
-              icon: "🤝",
-              title: "Built on Respect",
-              desc: "Honest, transparent, and respectful. No hidden fees. No surprises. We explain every detail of your loan.",
-            },
-            {
-              icon: "🏠",
-              title: "On-Reserve Delivery",
-              desc: "Vehicle delivered tax-free to your door. Save thousands in HST that you'd pay at any dealership.",
-            },
-            {
-              icon: "📞",
-              title: "Talk to Sam, Not a Bot",
-              desc: "When you apply, Sam calls you personally within 1 hour. You're not a number — you're family.",
-            },
-            {
-              icon: "💳",
-              title: "All Credit Welcome",
-              desc: "Bad credit, no credit, bankruptcy — 50+ lenders compete for you. 98.9% approval rate.",
-            },
-            {
-              icon: "🪶",
-              title: "Community First",
-              desc: "We support powwows, hockey teams, and community events. We give back to the communities we serve.",
-            },
-            {
-              icon: "🔒",
-              title: "Your Info is Safe",
-              desc: "PIPEDA compliant. Your information is encrypted and never shared without your consent.",
-            },
-          ].map((p) => (
-            <div
-              key={p.title}
-              className="bg-white rounded-2xl p-7 border border-earth-border shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all"
-            >
-              <div className="text-3xl mb-4">{p.icon}</div>
-              <h3 className="font-bold text-earth-dark text-lg mb-2">
-                {p.title}
-              </h3>
-              <p className="text-sm text-earth-muted leading-relaxed">
-                {p.desc}
-              </p>
+        <div className="max-w-7xl mx-auto px-4 py-24 relative z-10">
+          {/* Header */}
+          <div className="text-center mb-16">
+            <div className="inline-block bg-earth-gold/10 border border-earth-gold/30 rounded-full px-6 py-2 mb-6">
+              <span className="text-earth-gold text-xs font-bold tracking-[0.2em] uppercase">
+                The First Nation Auto Promise
+              </span>
             </div>
-          ))}
+            <h2 className="text-3xl md:text-5xl font-bold text-white uppercase leading-tight">
+              Why 248+ Communities{" "}
+              <span className="text-earth-gold">Trust Us</span>
+            </h2>
+            <div className="w-20 h-1 bg-earth-red mx-auto mt-6" />
+          </div>
+
+          {/* Top row — 3 big feature cards */}
+          <div className="grid md:grid-cols-3 gap-6 mb-6">
+            {[
+              {
+                stat: "98.9%",
+                title: "Approval Rate",
+                desc: "Bad credit, no credit, bankruptcy, consumer proposal — we work with 50+ lenders who compete for your business. Almost everyone gets approved.",
+                accent: "border-earth-red",
+                statColor: "text-earth-red",
+              },
+              {
+                stat: "100%",
+                title: "Tax Savings",
+                desc: "With your Status Card, save every dollar of HST on your vehicle purchase. On a $40,000 vehicle, that's up to $6,000+ back in your pocket.",
+                accent: "border-earth-gold",
+                statColor: "text-earth-gold",
+              },
+              {
+                stat: "1 HR",
+                title: "Callback Guarantee",
+                desc: "When you apply, a real financial specialist calls you within 1 hour — not a robot, not tomorrow, not next week. We respect your time.",
+                accent: "border-earth-sage",
+                statColor: "text-earth-sage",
+              },
+            ].map((card) => (
+              <div
+                key={card.title}
+                className={`bg-white/5 backdrop-blur-sm rounded-2xl p-8 border-t-4 ${card.accent} hover:bg-white/10 transition-all group`}
+              >
+                <div className={`text-5xl font-bold ${card.statColor} mb-3`}>
+                  {card.stat}
+                </div>
+                <h3 className="text-white font-bold text-xl mb-3 uppercase tracking-wide">
+                  {card.title}
+                </h3>
+                <p className="text-white/60 leading-relaxed">
+                  {card.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* Bottom row — 3 supporting cards */}
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                icon: "🏠",
+                title: "Free On-Reserve Delivery",
+                desc: "Your vehicle delivered directly to your community — no dealership trips, no extra charges. We come to you, anywhere across 5 provinces.",
+              },
+              {
+                icon: "🤝",
+                title: "Transparent & Honest",
+                desc: "We explain every detail of your loan upfront. No hidden fees, no bait-and-switch. What we quote is what you pay. Built on respect.",
+              },
+              {
+                icon: "🔒",
+                title: "Your Privacy, Protected",
+                desc: "PIPEDA compliant. 256-bit encryption. Your personal and financial information is never shared without your explicit consent.",
+              },
+            ].map((card) => (
+              <div
+                key={card.title}
+                className="bg-white/5 backdrop-blur-sm rounded-2xl p-7 border border-white/10 hover:border-earth-gold/30 hover:bg-white/10 transition-all"
+              >
+                <div className="text-3xl mb-4">{card.icon}</div>
+                <h3 className="text-white font-bold text-lg mb-2 uppercase tracking-wide">
+                  {card.title}
+                </h3>
+                <p className="text-white/50 text-sm leading-relaxed">
+                  {card.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* CTA */}
+          <div className="text-center mt-14">
+            <a
+              href="#apply"
+              className="inline-block bg-earth-red hover:bg-red-700 text-white px-12 py-4 rounded-lg font-bold text-lg uppercase tracking-wider transition shadow-lg shadow-earth-red/20"
+            >
+              Get Pre-Approved Now
+            </a>
+            <p className="text-white/30 text-xs mt-4">
+              Takes 3 minutes. No obligation. 100% secure.
+            </p>
+          </div>
         </div>
       </section>
 
