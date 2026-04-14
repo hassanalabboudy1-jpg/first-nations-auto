@@ -310,46 +310,61 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Meet Sam — CTA banner */}
+      {/* Community Story */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0">
-          <Image
-            src="https://images.unsplash.com/photo-1511497584788-876760111969?w=1920&q=80"
-            alt="Northern forest"
-            fill
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-earth-dark/90" />
-        </div>
-        <div className="max-w-4xl mx-auto px-4 py-20 relative z-10 text-center">
-          <div className="w-24 h-24 rounded-full bg-earth-gold/20 border-4 border-earth-gold flex items-center justify-center text-4xl mx-auto mb-6">
-            👤
-          </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-white uppercase mb-2">
-            Meet Sam
-          </h2>
-          <p className="text-earth-gold text-sm uppercase tracking-wider font-bold mb-6">
-            Your Dedicated Financing Specialist
-          </p>
-          <p className="text-white/70 text-lg max-w-xl mx-auto leading-relaxed mb-8">
-            &quot;I believe everyone deserves reliable transportation. Whether
-            you&apos;re on Six Nations, in Kahnawà:ke, Peguis, Eskasoni, or
-            Tobique — I&apos;ll work with you personally. No judgment. No
-            pressure. Just honest help.&quot;
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <a
-              href="tel:+16133028872"
-              className="bg-earth-gold hover:bg-yellow-500 text-earth-dark px-8 py-4 rounded-lg font-bold text-lg transition shadow-lg"
-            >
-              📞 Call Sam: 613-302-8872
-            </a>
-            <a
-              href="#apply"
-              className="bg-earth-red hover:bg-red-700 text-white px-8 py-4 rounded-lg font-bold text-lg uppercase transition"
-            >
-              Apply Now
-            </a>
+        <div className="max-w-7xl mx-auto px-4 py-20">
+          <div className="grid md:grid-cols-2 gap-10 items-center">
+            {/* Image */}
+            <div className="relative h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-xl">
+              <Image
+                src="https://images.unsplash.com/photo-1609234656388-0ff363383899?w=800&q=80"
+                alt="First Nations community member"
+                fill
+                className="object-cover"
+              />
+            </div>
+            {/* Text */}
+            <div>
+              <p className="text-earth-red text-sm font-bold tracking-wider uppercase mb-3">
+                Our Community, Our Strength
+              </p>
+              <h2 className="text-3xl md:text-4xl font-bold text-earth-dark uppercase leading-tight mb-6">
+                Driving Our Communities{" "}
+                <span className="text-earth-gold">Forward</span>
+              </h2>
+              <p className="text-earth-muted text-lg leading-relaxed mb-4">
+                For too long, First Nations communities have been underserved by
+                traditional lenders and dealerships. We&apos;re here to change
+                that.
+              </p>
+              <p className="text-earth-muted leading-relaxed mb-4">
+                Every family deserves reliable transportation — whether it&apos;s
+                getting to work, driving your kids to school, or making the trip
+                to see loved ones. With on-reserve delivery and 100% tax savings
+                with your Status Card, we make vehicle ownership accessible and
+                affordable.
+              </p>
+              <p className="text-earth-muted leading-relaxed mb-8">
+                We&apos;re not just financing vehicles — we&apos;re building
+                trust, one community at a time. From Six Nations to Peguis, from
+                Kahnawà:ke to Eskasoni, we&apos;re proud to serve 248+ First
+                Nations communities across 5 provinces.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <a
+                  href="#apply"
+                  className="bg-earth-red hover:bg-red-700 text-white px-8 py-4 rounded-lg font-bold text-lg uppercase transition"
+                >
+                  Apply Now
+                </a>
+                <a
+                  href="tel:+16133028872"
+                  className="bg-earth-gold hover:bg-yellow-500 text-earth-dark px-8 py-4 rounded-lg font-bold text-lg transition"
+                >
+                  📞 613-302-8872
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
