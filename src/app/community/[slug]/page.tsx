@@ -119,13 +119,13 @@ export default async function CommunityPage({ params }: Props) {
           </p>
 
           {/* Quick stats */}
-          <div className="grid grid-cols-3 gap-4 max-w-lg">
+          <div className="grid grid-cols-3 gap-3 max-w-xl">
             <div className="bg-white/10 backdrop-blur-sm border border-white/10 rounded-xl p-4 text-center">
-              <div className="text-2xl font-bold text-earth-gold">{taxRate}</div>
+              <div className="text-xl md:text-2xl font-bold text-earth-gold">100%</div>
               <div className="text-xs text-white/50 mt-1">Tax Savings</div>
             </div>
             <div className="bg-white/10 backdrop-blur-sm border border-white/10 rounded-xl p-4 text-center">
-              <div className="text-2xl font-bold text-earth-gold">{taxSavings}</div>
+              <div className="text-lg md:text-2xl font-bold text-earth-gold whitespace-nowrap">{taxSavings}</div>
               <div className="text-xs text-white/50 mt-1">Avg. Saved</div>
             </div>
             <div className="bg-white/10 backdrop-blur-sm border border-white/10 rounded-xl p-4 text-center">
