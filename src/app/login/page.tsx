@@ -33,14 +33,14 @@ function LoginForm() {
   }
 
   return (
-    <main className="min-h-screen flex items-center justify-center px-4">
+    <main className="min-h-screen flex items-center justify-center px-4 bg-earth-dark">
       <div className="w-full max-w-sm">
         <div className="text-center mb-8">
-          <span className="text-4xl">🚗</span>
-          <h1 className="font-display text-lg font-bold gradient-text mt-3">
-            FIRST NATIONS AUTO
+          <span className="text-4xl">🌿</span>
+          <h1 className="text-lg font-bold text-white mt-3">
+            First Nation Auto
           </h1>
-          <p className="text-xs text-gray-500 mt-1">Command Center Login</p>
+          <p className="text-xs text-white/40 mt-1">Command Center Login</p>
         </div>
 
         <form onSubmit={handleLogin} className="space-y-4">
@@ -51,7 +51,7 @@ function LoginForm() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="w-full bg-brand-darker border border-brand-border rounded-lg px-4 py-3 text-sm focus:border-brand-red focus:outline-none transition"
+              className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-sm text-white focus:border-earth-gold focus:outline-none transition placeholder:text-white/40"
             />
           </div>
           <div>
@@ -61,7 +61,7 @@ function LoginForm() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="w-full bg-brand-darker border border-brand-border rounded-lg px-4 py-3 text-sm focus:border-brand-red focus:outline-none transition"
+              className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-sm text-white focus:border-earth-gold focus:outline-none transition placeholder:text-white/40"
             />
           </div>
 
@@ -74,14 +74,14 @@ function LoginForm() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-brand-red hover:bg-red-700 disabled:opacity-50 text-white px-4 py-3 rounded-lg font-semibold text-sm transition"
+            className="w-full bg-earth-red hover:bg-red-700 disabled:opacity-50 text-white px-4 py-3 rounded-lg font-bold text-sm uppercase tracking-wide transition"
           >
             {loading ? "Signing in..." : "Sign In"}
           </button>
         </form>
 
-        <p className="text-center text-xs text-gray-600 mt-6">
-          Admin access only. Contact your admin for credentials.
+        <p className="text-center text-xs text-white/30 mt-6">
+          Admin access only.
         </p>
       </div>
     </main>

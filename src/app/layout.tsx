@@ -3,25 +3,38 @@ import "./globals.css";
 import { TrackingPixels } from "@/components/TrackingPixels";
 
 export const metadata: Metadata = {
-  title: "First Nations Auto Financing — ON, QC, NB & NS | Tax-Free Vehicle Delivery",
+  title: "First Nation Auto Financing | Tax-Free Vehicle Delivery to 248+ Communities",
   description:
-    "Vehicle financing designed for First Nations communities in Ontario, Quebec, Manitoba, New Brunswick, and Nova Scotia. Save on HST with on-reserve delivery. $0 down. Bad credit OK. Free delivery to your community.",
+    "Vehicle financing for First Nations communities in Ontario, Quebec, Manitoba, New Brunswick, and Nova Scotia. 100% tax savings with Status Card. $0 down. 98.9% approval. Free on-reserve delivery.",
   keywords: [
     "First Nations car financing",
+    "First Nation auto financing",
     "Indigenous auto financing Ontario",
     "First Nation vehicle financing Quebec",
+    "First Nations auto loan Manitoba",
     "First Nations auto loan New Brunswick",
     "Mi'kmaq vehicle financing Nova Scotia",
     "tax exempt vehicle First Nations",
     "on-reserve vehicle delivery",
-    "Aboriginal auto loan Canada",
+    "Status Card tax exemption vehicle",
+    "bad credit auto loan First Nations",
+    "vehicle delivery reserve Canada",
   ],
+  metadataBase: new URL("https://firstnationautofinancing.ca"),
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "First Nations Auto Financing — Ontario, Quebec & Maritimes",
+    title: "First Nation Auto Financing | 248+ Communities Served",
     description:
-      "Vehicle financing designed for First Nations communities. Save on taxes with on-reserve delivery. $0 down. Free delivery.",
+      "Vehicle financing for First Nations communities. 100% tax savings with Status Card. $0 down. Free on-reserve delivery across 5 provinces.",
     type: "website",
     locale: "en_CA",
+    siteName: "First Nation Auto Financing",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
