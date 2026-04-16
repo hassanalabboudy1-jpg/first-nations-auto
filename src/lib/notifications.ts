@@ -104,7 +104,7 @@ async function emailNewLead(lead: LeadAlert) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: "First Nation Auto <leads@firstnationautofinancing.ca>",
+        from: "First Nation Auto <onboarding@resend.dev>",
         to: NOTIFY_EMAIL,
         subject: `🚗 New Lead: ${lead.firstName} — ${lead.community || "Website"} — CALL WITHIN 1 HR`,
         html,
