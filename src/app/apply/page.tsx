@@ -52,12 +52,7 @@ export default function ApplyPage() {
 
         <LeadForm />
 
-        <div className="mt-8 text-center space-y-3">
-          <p className="text-xs text-earth-muted leading-relaxed">
-            By submitting this application, you consent to being contacted by
-            phone, SMS, or email regarding vehicle financing. Your information is
-            handled in accordance with PIPEDA.
-          </p>
+        <div className="mt-8 text-center">
           <div className="flex justify-center gap-6 text-xs text-earth-muted font-semibold">
             <span>98.9% Approval</span>
             <span>50+ Lenders</span>

@@ -14,6 +14,8 @@ interface Lead {
   vehicle_type: string | null;
   budget_range: string | null;
   employment_status: string | null;
+  monthly_income: string | null;
+  credit_score_range: string | null;
   status: string;
   source: string;
   has_status_card: boolean;
@@ -294,6 +296,8 @@ export default function AdminDashboard() {
                   <th className="text-left px-5 py-3">Community</th>
                   <th className="text-left px-5 py-3">Vehicle</th>
                   <th className="text-left px-5 py-3">Budget</th>
+                  <th className="text-left px-5 py-3">Income</th>
+                  <th className="text-left px-5 py-3">Credit</th>
                   <th className="text-left px-5 py-3">Source</th>
                   <th className="text-left px-5 py-3">Status</th>
                   <th className="text-left px-5 py-3">Time</th>
@@ -358,6 +362,12 @@ export default function AdminDashboard() {
                       </td>
                       <td className="px-5 py-3 text-sm text-gray-400">
                         {lead.budget_range || "—"}
+                      </td>
+                      <td className="px-5 py-3 text-sm text-gray-400">
+                        {lead.monthly_income?.replace(/_/g, " ") || "—"}
+                      </td>
+                      <td className="px-5 py-3 text-sm text-gray-400 capitalize">
+                        {lead.credit_score_range?.replace(/_/g, " ") || "—"}
                       </td>
                       <td className="px-5 py-3">
                         <span className="text-xs text-gray-500">

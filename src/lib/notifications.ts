@@ -17,6 +17,9 @@ interface LeadAlert {
   vehicleType?: string;
   budgetRange?: string;
   hasStatusCard?: boolean;
+  employmentStatus?: string;
+  monthlyIncome?: string;
+  creditRange?: string;
   source?: string;
 }
 
@@ -37,6 +40,9 @@ export async function notifyNewLead(lead: LeadAlert) {
     lead.community ? `Community: ${lead.community}` : null,
     lead.vehicleType ? `Vehicle: ${lead.vehicleType}` : null,
     lead.budgetRange ? `Budget: ${lead.budgetRange}` : null,
+    lead.employmentStatus ? `Employment: ${lead.employmentStatus}` : null,
+    lead.monthlyIncome ? `Income: ${lead.monthlyIncome}` : null,
+    lead.creditRange ? `Credit: ${lead.creditRange}` : null,
     `Status Card: ${statusCard}`,
     lead.source ? `Source: ${lead.source}` : null,
   ]
@@ -81,19 +87,29 @@ async function emailNewLead(lead: LeadAlert) {
   }
 
   const statusCard = lead.hasStatusCard ? "Yes" : "No";
+  const row = (label: string, value: string) =>
+    `<tr><td style="padding:6px 16px 6px 0;font-weight:bold;color:#333;">${label}</td><td style="padding:6px 0;color:#555;">${value}</td></tr>`;
+
   const html = `
-    <h2>🚗 New Lead — Call Within 1 Hour!</h2>
-    <table style="border-collapse:collapse;font-family:sans-serif;">
-      <tr><td style="padding:4px 12px 4px 0;font-weight:bold;">Name:</td><td>${lead.firstName}${lead.lastName ? " " + lead.lastName : ""}</td></tr>
-      <tr><td style="padding:4px 12px 4px 0;font-weight:bold;">Phone:</td><td><a href="tel:${lead.phone}">${lead.phone}</a></td></tr>
-      <tr><td style="padding:4px 12px 4px 0;font-weight:bold;">Community:</td><td>${lead.community || "Not specified"}</td></tr>
-      <tr><td style="padding:4px 12px 4px 0;font-weight:bold;">Vehicle:</td><td>${lead.vehicleType || "Not specified"}</td></tr>
-      <tr><td style="padding:4px 12px 4px 0;font-weight:bold;">Budget:</td><td>${lead.budgetRange || "Not specified"}</td></tr>
-      <tr><td style="padding:4px 12px 4px 0;font-weight:bold;">Status Card:</td><td>${statusCard}</td></tr>
-      <tr><td style="padding:4px 12px 4px 0;font-weight:bold;">Source:</td><td>${lead.source || "website"}</td></tr>
-    </table>
-    <br>
-    <p><strong>⏰ Call them within 1 hour!</strong></p>
+    <div style="font-family:sans-serif;max-width:500px;">
+      <h2 style="color:#b91c1c;margin-bottom:4px;">🚗 NEW LEAD — Call Within 1 Hour!</h2>
+      <p style="color:#666;font-size:13px;margin-top:0;">Submitted just now from the website.</p>
+      <table style="border-collapse:collapse;width:100%;margin:16px 0;">
+        ${row("Name", `${lead.firstName}${lead.lastName ? " " + lead.lastName : ""}`)}
+        ${row("Phone", `<a href="tel:${lead.phone}" style="color:#b91c1c;font-weight:bold;">${lead.phone}</a>`)}
+        ${row("Community", lead.community || "Not specified")}
+        ${row("Vehicle", lead.vehicleType || "Not specified")}
+        ${row("Budget", lead.budgetRange || "Not specified")}
+        ${row("Employment", lead.employmentStatus || "Not specified")}
+        ${row("Monthly Income", lead.monthlyIncome || "Not specified")}
+        ${row("Credit", lead.creditRange || "Not specified")}
+        ${row("Status Card", statusCard)}
+        ${row("Source", lead.source || "website")}
+      </table>
+      <p style="background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:12px;text-align:center;">
+        <strong style="color:#b91c1c;">⏰ Call them within 1 hour!</strong>
+      </p>
+    </div>
   `;
 
   try {

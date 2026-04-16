@@ -188,7 +188,7 @@ export default async function CommunityPage({ params }: Props) {
               Takes 3 minutes. A specialist calls you within 1 hour.
             </p>
           </div>
-          <LeadForm />
+          <LeadForm preselectedCommunity={community.slug} />
         </div>
       </section>
 
