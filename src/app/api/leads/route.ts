@@ -8,7 +8,7 @@ const leadSchema = z.object({
   firstName: z.string().min(1),
   lastName: z.string().optional(),
   phone: z.string().min(7).max(20).regex(/^[\d\-\+\s\(\)]{7,20}$/, "Invalid phone number"),
-  email: z.string().email().optional().or(z.literal("")),
+  email: z.string().email(),
   province: z.string().optional(),
   communitySlug: z.string().optional(),
   vehicleType: z.string().optional(),

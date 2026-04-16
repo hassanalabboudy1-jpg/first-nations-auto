@@ -298,7 +298,7 @@ export function LeadForm({ preselectedCommunity }: { preselectedCommunity?: stri
           />
           <input
             type="email"
-            placeholder="Email (optional)"
+            placeholder="Email *"
             value={formData.email}
             onChange={(e) => update("email", e.target.value)}
             className={inputClass}
@@ -391,13 +391,13 @@ export function LeadForm({ preselectedCommunity }: { preselectedCommunity?: stri
             </button>
             <button
               onClick={() => {
-                if (!formData.firstName || !formData.phone) {
-                  setError("Please enter your name and phone number.");
+                if (!formData.firstName || !formData.phone || !formData.email) {
+                  setError("Please enter your name, phone number, and email.");
                   return;
                 }
                 setStep("financial");
               }}
-              disabled={!formData.firstName || !formData.phone}
+              disabled={!formData.firstName || !formData.phone || !formData.email}
               className="flex-1 bg-earth-red hover:bg-red-700 disabled:opacity-40 disabled:cursor-not-allowed text-white py-3.5 rounded-xl font-bold uppercase tracking-wide transition"
             >
               Next — Final Details
