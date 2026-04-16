@@ -9,6 +9,7 @@ type FormStep = "contact" | "vehicle" | "details" | "success";
 export function LeadForm() {
   const [step, setStep] = useState<FormStep>("contact");
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -48,9 +49,11 @@ export function LeadForm() {
           vehicleType: formData.vehicleType,
         });
         setStep("success");
+      } else {
+        setError("Something went wrong. Please try again or call us at 613-302-8872.");
       }
     } catch {
-      setStep("success");
+      setError("Connection error. Please try again or call us at 613-302-8872.");
     } finally {
       setLoading(false);
     }
@@ -91,6 +94,13 @@ export function LeadForm() {
           />
         ))}
       </div>
+
+      {/* Error Message */}
+      {error && (
+        <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-xl px-4 py-3 mb-4">
+          {error}
+        </p>
+      )}
 
       {/* Trust Signals */}
       <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 mb-6 text-[11px] text-earth-muted">
