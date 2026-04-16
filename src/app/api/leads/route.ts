@@ -7,7 +7,7 @@ import { notifyNewLead, sendLeadAutoReply } from "@/lib/notifications";
 const leadSchema = z.object({
   firstName: z.string().min(1),
   lastName: z.string().optional(),
-  phone: z.string().min(7),
+  phone: z.string().min(7).max(20).regex(/^[\d\-\+\s\(\)]{7,20}$/, "Invalid phone number"),
   email: z.string().email().optional().or(z.literal("")),
   communitySlug: z.string().optional(),
   vehicleType: z.string().optional(),
@@ -95,7 +95,7 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    // SMS alerts — fire and forget, don't block the response
+    // Notifications — fire and forget, don't block the response
     notifyNewLead({
       leadId: lead.id,
       firstName: data.firstName,
@@ -106,13 +106,13 @@ export async function POST(request: NextRequest) {
       budgetRange: data.budgetRange,
       hasStatusCard: data.hasStatusCard,
       source: data.source,
-    });
+    }).catch(err => console.error("Lead notification failed:", err));
 
     // Auto-reply to the lead — confirms their application instantly
     sendLeadAutoReply({
       firstName: data.firstName,
       phone: data.phone,
-    });
+    }).catch(err => console.error("Lead auto-reply failed:", err));
 
     // Check referral code
     if (data.referralCode) {
@@ -126,7 +126,7 @@ export async function POST(request: NextRequest) {
   } catch (err) {
     if (err instanceof z.ZodError) {
       return NextResponse.json(
-        { error: "Invalid data", details: err.errors },
+        { error: "Please check your information and try again." },
         { status: 400 }
       );
     }

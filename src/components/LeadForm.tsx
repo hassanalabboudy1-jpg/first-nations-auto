@@ -70,7 +70,7 @@ export function LeadForm() {
           Sam will call you within 1 hour to discuss your options. No obligation.
         </p>
         <p className="text-sm text-white/60">
-          Check your phone — we&apos;re sending a confirmation text now.
+          We&apos;ll be in touch shortly to discuss your options.
         </p>
       </div>
     );

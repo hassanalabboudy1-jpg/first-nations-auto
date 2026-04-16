@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { ALL_COMMUNITIES } from "@/data/communities";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://firstnationsautofinancing.ca";
+  const baseUrl = "https://firstnationautofinancing.ca";
 
   // Static pages
   const staticPages: MetadataRoute.Sitemap = [

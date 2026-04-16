@@ -11,7 +11,9 @@ function LoginForm() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const searchParams = useSearchParams();
-  const redirect = searchParams.get("redirect") || "/admin";
+  const rawRedirect = searchParams.get("redirect") || "/admin";
+  // Only allow internal paths — prevent open redirect attacks
+  const redirect = rawRedirect.startsWith("/") && !rawRedirect.startsWith("//") ? rawRedirect : "/admin";
 
   async function handleLogin(e: React.FormEvent) {
     e.preventDefault();
