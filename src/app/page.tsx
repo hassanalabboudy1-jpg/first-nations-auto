@@ -83,7 +83,7 @@ export default function HomePage() {
             </h1>
             <p className="text-lg text-white/70 mb-8 max-w-lg leading-relaxed">
               100% tax-free on-reserve delivery with your Status Card.
-              All credit welcome. 50+ lenders. Sam calls you within 1 hour.
+              All credit welcome. 50+ lenders. We call you within 1 hour.
             </p>
             <div className="flex flex-wrap gap-3">
               <a
@@ -96,7 +96,7 @@ export default function HomePage() {
                 href="tel:+16133028872"
                 className="bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 text-white px-8 py-4 rounded-lg font-semibold text-lg transition"
               >
-                📞 Call Sam
+                📞 Call Now
               </a>
             </div>
           </div>
@@ -433,7 +433,7 @@ export default function HomePage() {
               Get Pre-Approved in 3 Minutes
             </h2>
             <p className="text-earth-muted mt-2">
-              No commitment. Sam calls you within 1 hour.
+              No commitment. We call you within 1 hour.
             </p>
           </div>
           <LeadForm />
@@ -515,7 +515,7 @@ export default function HomePage() {
             </div>
             <div>
               <h4 className="text-white font-bold text-sm mb-4 uppercase tracking-wider">
-                Contact Sam
+                Contact Us
               </h4>
               <div className="space-y-2 text-sm">
                 <p>
@@ -580,7 +580,7 @@ export default function HomePage() {
             href="tel:+16133028872"
             className="flex-1 bg-earth-gold text-earth-dark text-center py-3 rounded-lg font-bold text-sm transition"
           >
-            📞 Call Sam
+            📞 Call Now
           </a>
           <a
             href="#apply"
