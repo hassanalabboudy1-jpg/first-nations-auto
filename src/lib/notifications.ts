@@ -21,8 +21,11 @@ interface LeadAlert {
 }
 
 export async function notifyNewLead(lead: LeadAlert) {
+  // Always send email alert
+  await emailNewLead(lead);
+
+  // SMS alert (only if Twilio is configured)
   if (!TWILIO_SID || !TWILIO_TOKEN || !TWILIO_FROM || !NOTIFY_PHONE) {
-    console.warn("Twilio not configured — skipping SMS notification");
     return;
   }
 
@@ -63,9 +66,6 @@ export async function notifyNewLead(lead: LeadAlert) {
   } catch (err) {
     console.error("SMS notification failed:", err);
   }
-
-  // Email notification as backup
-  await emailNewLead(lead);
 }
 
 /**
