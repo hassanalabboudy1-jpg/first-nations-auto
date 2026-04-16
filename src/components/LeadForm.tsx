@@ -412,7 +412,7 @@ export function LeadForm({ preselectedCommunity }: { preselectedCommunity?: stri
           <h3 className="font-bold text-earth-forest text-sm tracking-wider uppercase mb-1">
             Almost done — helps us find your best rate
           </h3>
-          <p className="text-xs text-earth-muted mb-3">This does NOT affect your credit score.</p>
+          <p className="text-xs text-earth-muted mb-3">Helps us find your best rate.</p>
 
           {/* Employment */}
           <select
@@ -450,11 +450,11 @@ export function LeadForm({ preselectedCommunity }: { preselectedCommunity?: stri
             <p className="text-xs text-earth-muted mb-2 font-medium">How would you describe your credit?</p>
             <div className="space-y-2">
               {[
-                { value: "excellent", label: "Great", desc: "I pay bills on time" },
-                { value: "good", label: "Good", desc: "Mostly on time, a few late payments" },
-                { value: "fair", label: "Rebuilding", desc: "I've had some credit challenges" },
-                { value: "poor", label: "Starting Fresh", desc: "New to credit or starting over" },
-                { value: "not_sure", label: "Not Sure", desc: "That's okay — we work with all credit" },
+                { value: "excellent", label: "Great" },
+                { value: "good", label: "Good" },
+                { value: "fair", label: "Rebuilding" },
+                { value: "poor", label: "Starting Fresh" },
+                { value: "not_sure", label: "Not Sure" },
               ].map((opt) => (
                 <button
                   key={opt.value}
@@ -474,7 +474,6 @@ export function LeadForm({ preselectedCommunity }: { preselectedCommunity?: stri
                     <span className={`text-sm font-semibold ${
                       formData.creditRange === opt.value ? "text-earth-forest" : "text-earth-text"
                     }`}>{opt.label}</span>
-                    <span className="text-xs text-earth-muted ml-2">{opt.desc}</span>
                   </div>
                 </button>
               ))}
