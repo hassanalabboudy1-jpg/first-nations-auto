@@ -6,6 +6,8 @@ export function CallbackWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [phone, setPhone] = useState("");
   const [name, setName] = useState("");
+  const [website, setWebsite] = useState("");
+  const [openedAt] = useState(Date.now());
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -22,6 +24,8 @@ export function CallbackWidget() {
           firstName: name,
           phone,
           email: "",
+          website,
+          _t: Date.now() - openedAt,
           source: "callback_widget",
           landingPage: window.location.pathname,
         }),
@@ -79,6 +83,9 @@ export function CallbackWidget() {
           </button>
         </div>
         <form onSubmit={handleSubmit} className="space-y-3">
+          <div style={{ position: "absolute", left: "-9999px" }} aria-hidden="true">
+            <input type="text" name="website" tabIndex={-1} autoComplete="off" value={website} onChange={(e) => setWebsite(e.target.value)} />
+          </div>
           <input
             type="text"
             placeholder="Your Name"

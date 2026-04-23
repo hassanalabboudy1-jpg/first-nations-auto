@@ -37,7 +37,10 @@ export function LeadForm({ preselectedCommunity }: { preselectedCommunity?: stri
     monthlyIncome: "",
     creditRange: "",
     hasStatusCard: false,
+    website: "", // honeypot
   });
+
+  const [formLoadedAt] = useState(Date.now());
 
   const update = (field: string, value: string | boolean) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -78,6 +81,7 @@ export function LeadForm({ preselectedCommunity }: { preselectedCommunity?: stri
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...formData,
+          _t: Date.now() - formLoadedAt,
           source: "website_form",
           landingPage: window.location.pathname,
           utmSource: new URLSearchParams(window.location.search).get("utm_source"),
@@ -166,6 +170,18 @@ export function LeadForm({ preselectedCommunity }: { preselectedCommunity?: stri
           {error}
         </p>
       )}
+
+      {/* Honeypot — hidden from real users, bots fill it */}
+      <div style={{ position: "absolute", left: "-9999px" }} aria-hidden="true">
+        <input
+          type="text"
+          name="website"
+          tabIndex={-1}
+          autoComplete="off"
+          value={formData.website}
+          onChange={(e) => update("website", e.target.value)}
+        />
+      </div>
 
       {/* Trust signals */}
       <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 mb-6 text-[11px] text-earth-muted">

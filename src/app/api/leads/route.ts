@@ -4,11 +4,38 @@ import { cookies } from "next/headers";
 import { z } from "zod";
 import { notifyNewLead, sendLeadAutoReply } from "@/lib/notifications";
 
+// ── Rate limiter (in-memory, resets on deploy) ──
+const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
+const RATE_LIMIT_MAX = 5; // max submissions per window
+const RATE_LIMIT_WINDOW = 60 * 60 * 1000; // 1 hour
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const entry = rateLimitMap.get(ip);
+
+  if (!entry || now > entry.resetAt) {
+    rateLimitMap.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW });
+    return false;
+  }
+
+  entry.count++;
+  if (entry.count > RATE_LIMIT_MAX) return true;
+  return false;
+}
+
+// Clean up old entries every 10 minutes to prevent memory leak
+setInterval(() => {
+  const now = Date.now();
+  for (const [ip, entry] of rateLimitMap) {
+    if (now > entry.resetAt) rateLimitMap.delete(ip);
+  }
+}, 10 * 60 * 1000);
+
 const leadSchema = z.object({
   firstName: z.string().min(1),
   lastName: z.string().optional(),
   phone: z.string().min(10).max(20).regex(/^\+?[\d][\d\-\s\(\)]{8,18}[\d]$/, "Invalid phone number"),
-  email: z.string().email(),
+  email: z.string().email().optional().or(z.literal("")),
   province: z.string().optional(),
   communitySlug: z.string().optional(),
   vehicleType: z.string().optional(),
@@ -25,11 +52,38 @@ const leadSchema = z.object({
   utmSource: z.string().nullable().optional(),
   utmMedium: z.string().nullable().optional(),
   utmCampaign: z.string().nullable().optional(),
+  // Anti-bot fields
+  website: z.string().optional(), // honeypot
+  _t: z.number().optional(), // time on page in ms
 });
 
 export async function POST(request: NextRequest) {
   try {
+    // ── Layer 3: Rate limiting ──
+    const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+               request.headers.get("x-real-ip") ||
+               "unknown";
+    if (isRateLimited(ip)) {
+      return NextResponse.json(
+        { error: "Too many submissions. Please try again later or call us at 613-302-8872." },
+        { status: 429 }
+      );
+    }
+
     const body = await request.json();
+
+    // ── Layer 1: Honeypot check ──
+    if (body.website) {
+      // Bot filled the hidden field — return fake success to confuse it
+      return NextResponse.json({ success: true, leadId: "ok" });
+    }
+
+    // ── Layer 2: Timestamp check (too fast = bot) ──
+    if (body._t !== undefined && body._t < 3000) {
+      // Form submitted in under 3 seconds — almost certainly a bot
+      return NextResponse.json({ success: true, leadId: "ok" });
+    }
+
     const data = leadSchema.parse(body);
 
     const cookieStore = await cookies();
