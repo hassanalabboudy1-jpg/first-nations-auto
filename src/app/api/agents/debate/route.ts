@@ -7,6 +7,23 @@ import { cookies } from "next/headers";
 
 export async function POST(request: NextRequest) {
   try {
+    // Auth check — only logged-in admins can run debates
+    const cookieStore = await cookies();
+    const authClient = createServerClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      {
+        cookies: {
+          getAll() { return cookieStore.getAll(); },
+          setAll() {},
+        },
+      }
+    );
+    const { data: { user } } = await authClient.auth.getUser();
+    if (!user) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
     const body = await request.json();
     const { topic, context, rounds = 3, agents } = body;
 
@@ -21,7 +38,6 @@ export async function POST(request: NextRequest) {
     const numRounds = Math.min(rounds, 5); // cap at 5 rounds
 
     // Create debate session in Supabase
-    const cookieStore = await cookies();
     const supabase = createServerClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
       process.env.SUPABASE_SERVICE_ROLE_KEY!,
