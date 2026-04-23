@@ -391,7 +391,7 @@ export default async function BlogPostPage({
               <p className="text-sm leading-relaxed">
                 Vehicle financing built for First Nations communities. Tax-free
                 on-reserve delivery across Ontario, Quebec, Manitoba, New
-                Brunswick, and Nova Scotia.
+                Brunswick, Nova Scotia, and Newfoundland.
               </p>
             </div>
             <div>

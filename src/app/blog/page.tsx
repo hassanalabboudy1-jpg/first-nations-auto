@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title:
     "Blog | First Nation Auto Financing — Tax Savings, Credit Tips & Vehicle Guides",
   description:
-    "Expert articles on tax-free vehicle delivery, auto financing with bad credit, best trucks for reserve roads, and more. Serving 248+ First Nations communities across 5 provinces.",
+    "Expert articles on tax-free vehicle delivery, auto financing with bad credit, best trucks for reserve roads, and more. Serving 325+ First Nations communities across 6 provinces.",
   keywords: [
     "First Nations auto financing blog",
     "Status Card tax exemption vehicle",
@@ -215,7 +215,7 @@ export default function BlogPage() {
               <p className="text-sm leading-relaxed">
                 Vehicle financing built for First Nations communities. Tax-free
                 on-reserve delivery across Ontario, Quebec, Manitoba, New
-                Brunswick, and Nova Scotia.
+                Brunswick, Nova Scotia, and Newfoundland.
               </p>
             </div>
             <div>

@@ -193,8 +193,8 @@ export default function ReferralPage() {
             🌿 First Nation Auto
           </Link>
           <p className="text-xs text-white/30 mt-3">
-            Serving 248+ First Nations communities across Ontario, Quebec, Manitoba,
-            New Brunswick &amp; Nova Scotia.
+            Serving 325+ First Nations communities across Ontario, Quebec, Manitoba,
+            New Brunswick, Nova Scotia &amp; Newfoundland.
           </p>
           <p className="text-xs text-white/20 mt-3">
             &copy; {new Date().getFullYear()} First Nation Auto Financing.

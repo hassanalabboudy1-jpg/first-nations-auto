@@ -19,7 +19,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "8 min read",
     publishedAt: "2026-03-10",
     author: "First Nation Auto Team",
-    content: `If you hold a Status Card, you are entitled to significant tax savings when purchasing a vehicle — savings that can add up to thousands of dollars. Yet many First Nations buyers either do not know about this exemption or are unsure how the process works in practice. Our team has helped buyers across 248+ First Nations communities across 5 provinces navigate this process, and we want to make it clear and simple for everyone.
+    content: `If you hold a Status Card, you are entitled to significant tax savings when purchasing a vehicle — savings that can add up to thousands of dollars. Yet many First Nations buyers either do not know about this exemption or are unsure how the process works in practice. Our team has helped buyers across 325+ First Nations communities across 6 provinces navigate this process, and we want to make it clear and simple for everyone.
 
 ## What Is Section 87 of the Indian Act?
 
@@ -73,7 +73,7 @@ Over the years, our team has seen buyers make costly errors that reduced or elim
 
 On a $40,000 vehicle, you are saving between $4,800 and $6,000 depending on your province. That is real money — money that can go toward your family, your home, or simply reducing the total cost of your vehicle loan.
 
-Our team serves 248+ First Nations communities across 5 provinces, and we have built our entire service around making this process simple. You should never have to fight for a tax benefit that is your legal right. We handle the paperwork, the lender negotiations, and the delivery logistics so that you can focus on choosing the vehicle that is right for you.
+Our team serves 325+ First Nations communities across 6 provinces, and we have built our entire service around making this process simple. You should never have to fight for a tax benefit that is your legal right. We handle the paperwork, the lender negotiations, and the delivery logistics so that you can focus on choosing the vehicle that is right for you.
 
 Ready to see how much you can save? Apply online today or call us at 613-302-8872. We will call you back within 1 hour to get started.`,
   },
@@ -89,7 +89,7 @@ Ready to see how much you can save? Apply online today or call us at 613-302-887
     author: "First Nation Auto Team",
     content: `One of the most common questions our team hears from First Nations buyers across Canada is: "Can I even get approved with my credit?" The short answer is yes — and we want to explain exactly why and how.
 
-Our team works with 248+ First Nations communities across 5 provinces, and we know that credit challenges are common. Many communities are in rural or remote areas where access to traditional banking is limited. Life events — job changes, medical expenses, family emergencies — can impact anyone's credit. A low credit score does not define your financial future, and it should not prevent you from getting reliable transportation.
+Our team works with 325+ First Nations communities across 6 provinces, and we know that credit challenges are common. Many communities are in rural or remote areas where access to traditional banking is limited. Life events — job changes, medical expenses, family emergencies — can impact anyone's credit. A low credit score does not define your financial future, and it should not prevent you from getting reliable transportation.
 
 ## What Credit Scores Actually Mean
 
@@ -151,7 +151,7 @@ This is why our approval rate is 98.9%. We are not sending your application ever
 
 A low credit score is not a life sentence. Every on-time payment you make on your auto loan rebuilds your credit. Many of our customers start with a subprime loan and refinance into a better rate 12 to 24 months later after their score has improved.
 
-The most important step is the first one: apply. Our team serves 248+ First Nations communities across 5 provinces, and we have helped thousands of buyers with credit challenges get behind the wheel. Call us at 613-302-8872 or apply online — we will call you back within 1 hour to discuss your options with zero pressure.`,
+The most important step is the first one: apply. Our team serves 325+ First Nations communities across 6 provinces, and we have helped thousands of buyers with credit challenges get behind the wheel. Call us at 613-302-8872 or apply online — we will call you back within 1 hour to discuss your options with zero pressure.`,
   },
   {
     slug: "best-trucks-northern-reserve-roads-2025",
@@ -162,7 +162,7 @@ The most important step is the first one: apply. Our team serves 248+ First Nati
     readTime: "7 min read",
     publishedAt: "2026-03-25",
     author: "First Nation Auto Team",
-    content: `Trucks are the most popular vehicle choice across First Nations communities, and for good reason. When you live on a reserve with gravel roads, harsh winters, and long distances to urban centres, you need a vehicle that can handle it all. Our team delivers vehicles to 248+ First Nations communities across 5 provinces, and trucks account for more than half of all our deliveries.
+    content: `Trucks are the most popular vehicle choice across First Nations communities, and for good reason. When you live on a reserve with gravel roads, harsh winters, and long distances to urban centres, you need a vehicle that can handle it all. Our team delivers vehicles to 325+ First Nations communities across 6 provinces, and trucks account for more than half of all our deliveries.
 
 Here are the top five trucks we recommend for northern and reserve road conditions in 2025, along with what you should look for when making your choice.
 
@@ -238,7 +238,7 @@ For buyers on a budget, a quality used truck — two to four years old with unde
 
 Our team can help you find both new and used trucks that fit your budget. We work with over 50 lenders who offer financing for both new and pre-owned vehicles, with a 98.9% approval rate across all credit situations.
 
-Whether you choose new or used, the most important thing is getting a truck that is reliable, capable, and affordable for your situation. Apply online or call us at 613-302-8872 — we deliver to 248+ First Nations communities across 5 provinces with 100% tax savings when you use your Status Card.`,
+Whether you choose new or used, the most important thing is getting a truck that is reliable, capable, and affordable for your situation. Apply online or call us at 613-302-8872 — we deliver to 325+ First Nations communities across 6 provinces with 100% tax savings when you use your Status Card.`,
   },
   {
     slug: "understanding-auto-loan-interest-rates-terms",
@@ -250,7 +250,7 @@ Whether you choose new or used, the most important thing is getting a truck that
     readTime: "9 min read",
     publishedAt: "2026-04-01",
     author: "First Nation Auto Team",
-    content: `Understanding your auto loan is one of the most important financial decisions you will make. A vehicle is likely the second-largest purchase of your life after a home, and the terms of your loan can mean thousands of dollars saved or wasted over the life of the agreement. Our team works with 248+ First Nations communities across 5 provinces, and we believe every buyer deserves to understand exactly what they are signing.
+    content: `Understanding your auto loan is one of the most important financial decisions you will make. A vehicle is likely the second-largest purchase of your life after a home, and the terms of your loan can mean thousands of dollars saved or wasted over the life of the agreement. Our team works with 325+ First Nations communities across 6 provinces, and we believe every buyer deserves to understand exactly what they are signing.
 
 ## How Interest Rates Work: A Simple Explanation
 
@@ -337,7 +337,7 @@ Unfortunately, predatory lending practices exist in the Canadian auto financing 
 
 **Negative equity rollovers.** If you owe more on your current vehicle than it is worth, some dealers will add that negative equity to your new loan, creating a much larger debt. This is a recipe for financial trouble.
 
-Our team at First Nation Auto believes in complete transparency. We explain every detail of your loan, show you the total cost, and never pressure you into a decision. We serve 248+ First Nations communities across 5 provinces with honesty and respect. Call us at 613-302-8872 or apply online to get started.`,
+Our team at First Nation Auto believes in complete transparency. We explain every detail of your loan, show you the total cost, and never pressure you into a decision. We serve 325+ First Nations communities across 6 provinces with honesty and respect. Call us at 613-302-8872 or apply online to get started.`,
   },
   {
     slug: "5-things-first-nations-buyers-should-know-before-financing",
@@ -349,7 +349,7 @@ Our team at First Nation Auto believes in complete transparency. We explain ever
     readTime: "8 min read",
     publishedAt: "2026-04-08",
     author: "First Nation Auto Team",
-    content: `Buying a vehicle is a major decision, and for First Nations buyers, there are specific rights and options that can save you thousands of dollars — if you know about them. Our team has worked with buyers across 248+ First Nations communities across 5 provinces, and we have seen too many people miss out on savings or get taken advantage of because they did not have the right information.
+    content: `Buying a vehicle is a major decision, and for First Nations buyers, there are specific rights and options that can save you thousands of dollars — if you know about them. Our team has worked with buyers across 325+ First Nations communities across 6 provinces, and we have seen too many people miss out on savings or get taken advantage of because they did not have the right information.
 
 Here are the five most important things every First Nations buyer should know before financing a vehicle.
 
@@ -371,7 +371,7 @@ On a $35,000 vehicle, that translates to savings of $4,200 to $5,250 depending o
 
 Many buyers do not realize that on-reserve delivery is available and that reputable providers offer it at no additional charge. You should not have to drive hours to a dealership in a major city, arrange a ride there, and drive the vehicle back yourself.
 
-Our service includes free delivery to your community anywhere across the five provinces we serve — Ontario, Quebec, Manitoba, New Brunswick, and Nova Scotia. We bring the vehicle directly to you. This is not just a convenience; it is what makes the tax exemption possible.
+Our service includes free delivery to your community anywhere across the five provinces we serve — Ontario, Quebec, Manitoba, New Brunswick, Nova Scotia, and Newfoundland & Labrador. We bring the vehicle directly to you. This is not just a convenience; it is what makes the tax exemption possible.
 
 **What to ask any financing provider:** "Do you deliver to my reserve at no charge?" If the answer is no, or if they charge a delivery fee, consider whether those costs eat into your tax savings. With our team, delivery is always free.
 
@@ -436,6 +436,6 @@ Our team at First Nation Auto takes the opposite approach to all of these practi
 
 As a First Nations buyer with a Status Card, you have specific rights and advantages that can save you thousands of dollars. The key is knowing those rights, working with a provider who respects them, and never feeling pressured into a deal that does not feel right.
 
-Our team serves 248+ First Nations communities across 5 provinces with a 98.9% approval rate and free on-reserve delivery. We are here to make the process simple, honest, and fair. Apply online today or call us at 613-302-8872 — we will call you back within 1 hour.`,
+Our team serves 325+ First Nations communities across 6 provinces with a 98.9% approval rate and free on-reserve delivery. We are here to make the process simple, honest, and fair. Apply online today or call us at 613-302-8872 — we will call you back within 1 hour.`,
   },
 ];

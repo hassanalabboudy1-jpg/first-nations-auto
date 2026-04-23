@@ -248,8 +248,8 @@ export default async function CommunityPage({ params }: Props) {
             🌿 First Nation Auto
           </Link>
           <p className="text-xs text-white/30 mt-3">
-            Serving {community.name} and 248+ First Nations communities across
-            Ontario, Quebec, Manitoba, New Brunswick &amp; Nova Scotia.
+            Serving {community.name} and 325+ First Nations communities across
+            Ontario, Quebec, Manitoba, New Brunswick, Nova Scotia &amp; Newfoundland.
           </p>
         </div>
       </footer>

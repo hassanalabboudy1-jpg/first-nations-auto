@@ -17,7 +17,7 @@ const faqs = [
   },
   {
     q: "How fast can I get my vehicle?",
-    a: "Most approvals happen within 24-48 hours. Once you choose your vehicle, delivery to your community typically takes 3-7 business days depending on your location. We deliver to all 248+ First Nations communities across Ontario, Quebec, Manitoba, New Brunswick, and Nova Scotia.",
+    a: "Most approvals happen within 24-48 hours. Once you choose your vehicle, delivery to your community typically takes 3-7 business days depending on your location. We deliver to all 325+ First Nations communities across Ontario, Quebec, Manitoba, New Brunswick, Nova Scotia, and Newfoundland & Labrador.",
   },
   {
     q: "What documents do I need to apply?",
@@ -49,7 +49,7 @@ const faqs = [
   },
   {
     q: "Do you deliver to remote or northern communities?",
-    a: "Yes. We deliver to all First Nations communities across our 5 provinces, including remote and northern locations. Delivery is always free, regardless of how far your community is.",
+    a: "Yes. We deliver to all First Nations communities across our 6 provinces, including remote and northern locations. Delivery is always free, regardless of how far your community is.",
   },
 ];
 

@@ -5,7 +5,7 @@ import { LeadForm } from "@/components/LeadForm";
 export const metadata: Metadata = {
   title: "Apply for Vehicle Financing — First Nation Auto Financing",
   description:
-    "Apply in 3 minutes. $0 down payment. Tax-exempt on-reserve delivery. Serving 248+ First Nations communities in Ontario, Quebec, Manitoba, New Brunswick, and Nova Scotia.",
+    "Apply in 3 minutes. $0 down payment. Tax-exempt on-reserve delivery. Serving 325+ First Nations communities in Ontario, Quebec, Manitoba, New Brunswick, Nova Scotia, and Newfoundland &amp; Labrador.",
 };
 
 export default function ApplyPage() {

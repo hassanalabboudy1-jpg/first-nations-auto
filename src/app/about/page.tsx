@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "About Us — First Nation Auto Financing",
   description:
-    "Learn about First Nation Auto Financing — serving 248+ First Nations communities across Ontario, Quebec, Manitoba, New Brunswick, and Nova Scotia with tax-free on-reserve vehicle delivery.",
+    "Learn about First Nation Auto Financing — serving 325+ First Nations communities across Ontario, Quebec, Manitoba, New Brunswick, Nova Scotia, and Newfoundland &amp; Labrador with tax-free on-reserve vehicle delivery.",
 };
 
 export default function AboutPage() {
@@ -66,7 +66,7 @@ export default function AboutPage() {
           </p>
           <p>
             We built First Nation Auto Financing to change that. We connect First Nations
-            applicants across Ontario, Quebec, Manitoba, New Brunswick, and Nova Scotia with
+            applicants across Ontario, Quebec, Manitoba, New Brunswick, Nova Scotia, and Newfoundland &amp; Labrador with
             a network of 50+ lenders who compete for your business — so you get the best
             rate, not the only rate.
           </p>
@@ -87,7 +87,7 @@ export default function AboutPage() {
             {[
               {
                 title: "Community-First Approach",
-                desc: "We serve 248+ First Nations communities by name. We know your community, your province, and the unique financing options available to you. This isn't one-size-fits-all.",
+                desc: "We serve 325+ First Nations communities by name. We know your community, your province, and the unique financing options available to you. This isn't one-size-fits-all.",
               },
               {
                 title: "100% Tax Savings",
@@ -151,13 +151,14 @@ export default function AboutPage() {
           <h2 className="text-2xl font-bold text-earth-dark uppercase mb-8">
             Communities We Serve
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {[
-              { province: "Ontario", count: "125", icon: "🍁" },
+              { province: "Ontario", count: "124", icon: "🍁" },
               { province: "Quebec", count: "38", icon: "⚜️" },
               { province: "Manitoba", count: "57", icon: "🦬" },
               { province: "New Brunswick", count: "15", icon: "🌊" },
               { province: "Nova Scotia", count: "13", icon: "🦞" },
+              { province: "Newfoundland", count: "79", icon: "🐋" },
             ].map((p) => (
               <div
                 key={p.province}
@@ -170,7 +171,7 @@ export default function AboutPage() {
             ))}
           </div>
           <p className="text-earth-muted text-sm mt-6">
-            248+ First Nations communities across 5 provinces
+            325+ First Nations communities across 6 provinces
           </p>
         </div>
       </section>
@@ -206,8 +207,8 @@ export default function AboutPage() {
             🌿 First Nation Auto
           </Link>
           <p className="text-xs text-white/30 mt-3">
-            Serving 248+ First Nations communities across Ontario, Quebec, Manitoba,
-            New Brunswick &amp; Nova Scotia.
+            Serving 325+ First Nations communities across Ontario, Quebec, Manitoba,
+            New Brunswick, Nova Scotia &amp; Newfoundland.
           </p>
           <p className="text-xs text-white/20 mt-3">
             &copy; {new Date().getFullYear()} First Nation Auto Financing.

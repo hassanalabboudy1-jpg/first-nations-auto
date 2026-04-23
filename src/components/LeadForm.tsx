@@ -13,6 +13,7 @@ const PROVINCES = [
   { value: "MB", label: "Manitoba" },
   { value: "NB", label: "New Brunswick" },
   { value: "NS", label: "Nova Scotia" },
+  { value: "NL", label: "Newfoundland & Labrador" },
 ] as const;
 
 export function LeadForm({ preselectedCommunity }: { preselectedCommunity?: string }) {

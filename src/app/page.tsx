@@ -12,6 +12,7 @@ export default function HomePage() {
   const manitobaCommunities = ALL_COMMUNITIES.filter((c) => c.province === "MB");
   const newBrunswickCommunities = ALL_COMMUNITIES.filter((c) => c.province === "NB");
   const novaScotiaCommunities = ALL_COMMUNITIES.filter((c) => c.province === "NS");
+  const newfoundlandCommunities = ALL_COMMUNITIES.filter((c) => c.province === "NL");
 
   return (
     <main className="min-h-screen bg-earth-warm">
@@ -122,7 +123,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 py-10">
           <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
             {[
-              { value: "248+", label: "Communities", sub: "ON, QC, MB, NB & NS" },
+              { value: "325+", label: "Communities", sub: "ON, QC, MB, NB, NS & NL" },
               { value: "100%", label: "Tax Savings", sub: "HST exempt with Status Card" },
               { value: "$0", label: "Down Payment", sub: "Drive today" },
               { value: "50+", label: "Lenders", sub: "Rates from 0% OAC" },
@@ -281,7 +282,7 @@ export default function HomePage() {
               </span>
             </div>
             <h2 className="text-3xl md:text-5xl font-bold text-white uppercase leading-tight">
-              Why 248+ Communities{" "}
+              Why 325+ Communities{" "}
               <span className="text-earth-gold">Trust Us</span>
             </h2>
             <div className="w-20 h-1 bg-earth-red mx-auto mt-6" />
@@ -335,7 +336,7 @@ export default function HomePage() {
               {
                 icon: "🏠",
                 title: "Free On-Reserve Delivery",
-                desc: "Your vehicle delivered directly to your community — no dealership trips, no extra charges. We come to you, anywhere across 5 provinces.",
+                desc: "Your vehicle delivered directly to your community — no dealership trips, no extra charges. We come to you, anywhere across 6 provinces.",
               },
               {
                 icon: "🤝",
@@ -498,8 +499,8 @@ export default function HomePage() {
               <p className="text-earth-muted leading-relaxed mb-8">
                 We&apos;re not just financing vehicles — we&apos;re building
                 trust, one community at a time. From Six Nations to Peguis, from
-                Kahnawà:ke to Eskasoni, we&apos;re proud to serve 248+ First
-                Nations communities across 5 provinces.
+                Kahnawà:ke to Eskasoni, we&apos;re proud to serve 325+ First
+                Nations communities across 6 provinces.
               </p>
               <div className="flex flex-wrap gap-4">
                 <a
@@ -578,7 +579,7 @@ export default function HomePage() {
             Communities We Serve
           </h2>
           <p className="text-sm text-earth-muted">
-            Tax-free delivery to 248+ First Nations communities across 5
+            Tax-free delivery to 325+ First Nations communities across 5
             provinces.
           </p>
         </div>
@@ -623,6 +624,14 @@ export default function HomePage() {
               hoverColor: "hover:border-earth-tan hover:text-earth-tan",
               communities: novaScotiaCommunities,
             },
+            {
+              label: "Newfoundland & Labrador",
+              icon: "🏔️",
+              color: "text-earth-forest",
+              hoverColor:
+                "hover:border-earth-forest hover:text-earth-forest",
+              communities: newfoundlandCommunities,
+            },
           ]}
         />
       </section>
@@ -641,7 +650,7 @@ export default function HomePage() {
               <p className="text-sm leading-relaxed">
                 Vehicle financing built for First Nations communities. Tax-free
                 on-reserve delivery across Ontario, Quebec, Manitoba, New
-                Brunswick, and Nova Scotia.
+                Brunswick, Nova Scotia, and Newfoundland.
               </p>
             </div>
             <div>

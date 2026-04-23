@@ -4,9 +4,9 @@ import { TrackingPixels } from "@/components/TrackingPixels";
 import { CallbackWidget } from "@/components/CallbackWidget";
 
 export const metadata: Metadata = {
-  title: "First Nation Auto Financing | Tax-Free Vehicle Delivery to 248+ Communities",
+  title: "First Nation Auto Financing | Tax-Free Vehicle Delivery to 325+ Communities",
   description:
-    "Vehicle financing for First Nations communities in Ontario, Quebec, Manitoba, New Brunswick, and Nova Scotia. 100% tax savings with Status Card. $0 down. 98.9% approval. Free on-reserve delivery.",
+    "Vehicle financing for First Nations communities in Ontario, Quebec, Manitoba, New Brunswick, Nova Scotia, and Newfoundland &amp; Labrador. 100% tax savings with Status Card. $0 down. 98.9% approval. Free on-reserve delivery.",
   keywords: [
     "First Nations car financing",
     "First Nation auto financing",
@@ -26,9 +26,9 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "First Nation Auto Financing | 248+ Communities Served",
+    title: "First Nation Auto Financing | 325+ Communities Served",
     description:
-      "Vehicle financing for First Nations communities. 100% tax savings with Status Card. $0 down. Free on-reserve delivery across 5 provinces.",
+      "Vehicle financing for First Nations communities. 100% tax savings with Status Card. $0 down. Free on-reserve delivery across 6 provinces.",
     type: "website",
     locale: "en_CA",
     siteName: "First Nation Auto Financing",
