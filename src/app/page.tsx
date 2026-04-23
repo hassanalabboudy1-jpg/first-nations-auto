@@ -442,7 +442,7 @@ export default function HomePage() {
             Trusted By Canada&apos;s Leading Lenders
           </p>
           <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4 text-earth-muted/40">
-            {["TD Auto Finance", "Scotiabank Dealer Finance", "RBC Auto Lending", "CIBC Auto Finance", "National Bank", "BMO Auto", "Desjardins"].map((lender) => (
+            {["TD Auto Finance", "Bank of Nova Scotia", "RBC Auto Lending", "CIBC Auto Finance", "National Bank", "BMO Auto", "Desjardins"].map((lender) => (
               <span key={lender} className="text-sm font-bold tracking-wide text-earth-forest uppercase">
                 {lender}
               </span>
