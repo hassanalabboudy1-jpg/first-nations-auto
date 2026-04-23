@@ -21,7 +21,7 @@ const faqs = [
   },
   {
     q: "What documents do I need to apply?",
-    a: "To start, you just need your name and phone number. For final approval, lenders typically require: a valid ID, proof of income (pay stub or bank statement), proof of address, and your Status Card if you want tax-free delivery.",
+    a: "A valid government-issued photo ID is all you need to apply.",
   },
   {
     q: "Can I get approved with a bankruptcy or consumer proposal?",
