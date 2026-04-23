@@ -169,10 +169,10 @@ export function LeadForm({ preselectedCommunity }: { preselectedCommunity?: stri
 
       {/* Trust signals */}
       <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 mb-6 text-[11px] text-earth-muted">
-        <span>🔒 No credit check</span>
+        <span>🔒 100% Secure</span>
         <span>🏠 On-reserve delivery</span>
         <span>📞 1-hour callback</span>
-        <span>⏱️ Takes 2 minutes</span>
+        <span>⏱️ Takes 3 minutes</span>
       </div>
 
       {/* ── STEP 1: VEHICLE (aspirational, low friction) ── */}
@@ -508,7 +508,7 @@ export function LeadForm({ preselectedCommunity }: { preselectedCommunity?: stri
               I consent to First Nation Auto Financing collecting my information and
               sharing it with dealer and lender partners to process my vehicle financing
               application. I agree to be contacted by phone, SMS, or email. I can withdraw
-              consent at any time. No credit check at this stage. Protected under{" "}
+              consent at any time. Protected under{" "}
               <span className="underline">PIPEDA</span>.
             </p>
           </label>

@@ -6,7 +6,7 @@ const TWILIO_SID = process.env.TWILIO_ACCOUNT_SID;
 const TWILIO_TOKEN = process.env.TWILIO_AUTH_TOKEN;
 const TWILIO_FROM = process.env.TWILIO_PHONE_NUMBER;
 const NOTIFY_PHONE = process.env.NOTIFY_PHONE_NUMBER;
-const NOTIFY_EMAIL = process.env.NOTIFY_EMAIL; // sam's email for lead alerts
+const NOTIFY_EMAIL = process.env.NOTIFY_EMAIL;
 
 interface LeadAlert {
   leadId: string;
