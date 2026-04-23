@@ -439,7 +439,7 @@ export default function AdminDashboard() {
                         <option value="approved">Approved</option>
                         <option value="vehicle_matched">Matched</option>
                         <option value="delivered">Delivered</option>
-                        <option value="closed_won">Won</option>
+                        <option value="closed_won">Sold</option>
                         <option value="closed_lost">Lost</option>
                       </select>
                     </div>
