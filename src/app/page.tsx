@@ -2,6 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { LeadForm } from "@/components/LeadForm";
 import { CommunityAccordion } from "@/components/CommunityAccordion";
+import { PaymentCalculator } from "@/components/PaymentCalculator";
+import { FAQ } from "@/components/FAQ";
 import { ALL_COMMUNITIES } from "@/data/communities";
 
 export default function HomePage() {
@@ -40,6 +42,12 @@ export default function HomePage() {
               className="hidden md:block text-sm text-white/70 hover:text-white transition"
             >
               How It Works
+            </Link>
+            <Link
+              href="/about"
+              className="hidden md:block text-sm text-white/70 hover:text-white transition"
+            >
+              About
             </Link>
             <a
               href="#apply"
@@ -363,6 +371,89 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Testimonials */}
+      <section className="bg-earth-cream">
+        <div className="max-w-7xl mx-auto px-4 py-20">
+          <div className="text-center mb-14">
+            <p className="text-earth-red text-sm font-bold tracking-wider uppercase mb-2">
+              Real Stories, Real Results
+            </p>
+            <h2 className="text-3xl md:text-5xl font-bold text-earth-dark uppercase">
+              What Our <span className="text-earth-gold">Customers</span> Say
+            </h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                name: "Michael T.",
+                community: "Six Nations, ON",
+                vehicle: "2024 RAM 1500",
+                quote: "I was turned down by 3 dealerships because of my credit. First Nation Auto got me approved in 2 days with a payment I can actually afford. Truck was delivered right to my door on the reserve.",
+                rating: 5,
+              },
+              {
+                name: "Sarah W.",
+                community: "Kahnawà:ke, QC",
+                vehicle: "2023 Toyota RAV4",
+                quote: "The tax savings alone saved me over $6,000. The whole process was easy — I filled out the form, got a call within an hour, and had my SUV delivered the next week. No pressure at all.",
+                rating: 5,
+              },
+              {
+                name: "James R.",
+                community: "Peguis, MB",
+                vehicle: "2023 Ford F-150",
+                quote: "Coming from a remote community, I thought financing would be impossible. They worked with my situation, got me a fair rate, and delivered the truck right to Peguis. Highly recommend.",
+                rating: 5,
+              },
+            ].map((t) => (
+              <div
+                key={t.name}
+                className="bg-white rounded-2xl p-7 border border-earth-border shadow-sm hover:shadow-md transition"
+              >
+                <div className="flex gap-1 mb-4">
+                  {Array.from({ length: t.rating }).map((_, i) => (
+                    <span key={i} className="text-earth-gold text-lg">★</span>
+                  ))}
+                </div>
+                <p className="text-earth-text leading-relaxed mb-5 text-sm">
+                  &ldquo;{t.quote}&rdquo;
+                </p>
+                <div className="border-t border-earth-border pt-4">
+                  <p className="font-bold text-earth-dark text-sm">{t.name}</p>
+                  <p className="text-xs text-earth-muted">{t.community}</p>
+                  <p className="text-xs text-earth-forest font-semibold mt-1">{t.vehicle}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-10">
+            <div className="inline-flex items-center gap-3 bg-earth-dark/5 rounded-full px-6 py-3">
+              <span className="text-earth-gold text-lg font-bold">★ 4.9/5</span>
+              <span className="text-sm text-earth-muted">Based on customer feedback</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Trusted Lender Partners */}
+      <section className="bg-white border-y border-earth-border">
+        <div className="max-w-5xl mx-auto px-4 py-10">
+          <p className="text-center text-xs text-earth-muted font-bold tracking-wider uppercase mb-6">
+            Trusted By Canada&apos;s Leading Lenders
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4 text-earth-muted/40">
+            {["TD Auto Finance", "Scotiabank Dealer Finance", "RBC Auto Lending", "CIBC Auto Finance", "National Bank", "BMO Auto", "Desjardins"].map((lender) => (
+              <span key={lender} className="text-sm font-bold tracking-wide text-earth-dark/30 uppercase">
+                {lender}
+              </span>
+            ))}
+          </div>
+          <p className="text-center text-[10px] text-earth-muted/50 mt-4">
+            50+ lender partners competing for your best rate
+          </p>
+        </div>
+      </section>
+
       {/* Community Story */}
       <section className="relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 py-20">
@@ -437,6 +528,39 @@ export default function HomePage() {
             </p>
           </div>
           <LeadForm />
+        </div>
+      </section>
+
+      {/* Payment Calculator */}
+      <section className="bg-earth-dark">
+        <div className="max-w-3xl mx-auto px-4 py-20">
+          <div className="text-center mb-10">
+            <p className="text-earth-gold text-sm font-bold tracking-wider uppercase mb-2">
+              Estimate Your Payment
+            </p>
+            <h2 className="text-3xl md:text-4xl font-bold text-white uppercase">
+              Payment Calculator
+            </h2>
+            <p className="text-white/50 mt-2 text-sm">
+              See what your monthly payments could look like. No commitment.
+            </p>
+          </div>
+          <PaymentCalculator />
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="bg-earth-warm">
+        <div className="max-w-3xl mx-auto px-4 py-20">
+          <div className="text-center mb-10">
+            <p className="text-earth-red text-sm font-bold tracking-wider uppercase mb-2">
+              Common Questions
+            </p>
+            <h2 className="text-3xl md:text-4xl font-bold text-earth-dark uppercase">
+              Frequently Asked <span className="text-earth-gold">Questions</span>
+            </h2>
+          </div>
+          <FAQ />
         </div>
       </section>
 
@@ -553,6 +677,11 @@ export default function HomePage() {
                   <a href="#how-it-works" className="hover:text-white transition">
                     How It Works
                   </a>
+                </p>
+                <p>
+                  <Link href="/about" className="hover:text-white transition">
+                    About Us
+                  </Link>
                 </p>
               </div>
             </div>
