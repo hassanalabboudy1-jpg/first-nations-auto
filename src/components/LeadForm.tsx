@@ -28,8 +28,6 @@ export function LeadForm({ preselectedCommunity }: { preselectedCommunity?: stri
     lastName: "",
     phone: "",
     email: "",
-    province: "",
-    communitySlug: preselectedCommunity || "",
     vehicleType: "",
     vehicleCondition: "",
     budgetRange: "",
@@ -38,7 +36,15 @@ export function LeadForm({ preselectedCommunity }: { preselectedCommunity?: stri
     jobTitle: "",
     employmentDuration: "",
     monthlyIncome: "",
-    creditRange: "",
+    streetAddress: "",
+    city: "",
+    province: "",
+    postalCode: "",
+    housingStatus: "",
+    communitySlug: preselectedCommunity || "",
+    dobMonth: "",
+    dobDay: "",
+    dobYear: "",
     hasStatusCard: false,
     website: "", // honeypot
   });
@@ -48,7 +54,6 @@ export function LeadForm({ preselectedCommunity }: { preselectedCommunity?: stri
     if (error) setError("");
   };
 
-  // Auto-advance for selection steps
   const selectAndAdvance = (field: string, value: string, nextStep: Step) => {
     update(field, value);
     setTimeout(() => setStep(nextStep), 200);
@@ -119,6 +124,15 @@ export function LeadForm({ preselectedCommunity }: { preselectedCommunity?: stri
 
   const currentStep = typeof step === "number" ? step : TOTAL_STEPS;
 
+  // Generate year options (18-80 years old)
+  const currentYear = new Date().getFullYear();
+  const years = Array.from({ length: 63 }, (_, i) => currentYear - 18 - i);
+  const months = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December",
+  ];
+  const days = Array.from({ length: 31 }, (_, i) => i + 1);
+
   // ── SUCCESS ──
   if (step === "success") {
     return (
@@ -184,8 +198,45 @@ export function LeadForm({ preselectedCommunity }: { preselectedCommunity?: stri
         </p>
       )}
 
-      {/* ── STEP 1: Vehicle Type ── */}
+      {/* ── STEP 1: Contact Info ── */}
       {step === 1 && (
+        <div className="space-y-4">
+          <h3 className="font-bold text-earth-dark text-lg text-center mb-1">
+            Let&apos;s get started
+          </h3>
+          <p className="text-xs text-earth-muted text-center mb-4">So our specialist can call you within 1 hour.</p>
+
+          <div className="grid grid-cols-2 gap-3">
+            <input type="text" placeholder="First Name *" value={formData.firstName} onChange={(e) => update("firstName", e.target.value)} className={inputClass} autoComplete="given-name" />
+            <input type="text" placeholder="Last Name *" value={formData.lastName} onChange={(e) => update("lastName", e.target.value)} className={inputClass} autoComplete="family-name" />
+          </div>
+          <input type="tel" placeholder="Phone Number *" value={formData.phone} onChange={(e) => update("phone", e.target.value)} className={inputClass} autoComplete="tel" />
+          <input type="email" placeholder="Email *" value={formData.email} onChange={(e) => update("email", e.target.value)} className={inputClass} autoComplete="email" />
+
+          <button
+            onClick={() => {
+              if (!formData.firstName || !formData.lastName || !formData.phone || !formData.email) {
+                setError("Please fill in all fields to continue.");
+                return;
+              }
+              setStep(2);
+            }}
+            disabled={!formData.firstName || !formData.lastName || !formData.phone || !formData.email}
+            className="w-full bg-earth-red hover:bg-red-700 disabled:opacity-40 disabled:cursor-not-allowed text-white py-3.5 rounded-xl font-bold uppercase tracking-wide transition"
+          >
+            Get Started →
+          </button>
+
+          <div className="flex items-center justify-center gap-4 text-[10px] text-earth-muted">
+            <span>🔒 100% Secure</span>
+            <span>📞 1-hour callback</span>
+            <span>✅ 98.9% approval</span>
+          </div>
+        </div>
+      )}
+
+      {/* ── STEP 2: Vehicle Type ── */}
+      {step === 2 && (
         <div className="space-y-3">
           <h3 className="font-bold text-earth-dark text-lg text-center mb-1">
             What type of vehicle are you looking for?
@@ -199,7 +250,7 @@ export function LeadForm({ preselectedCommunity }: { preselectedCommunity?: stri
           ].map((type) => (
             <button
               key={type.value}
-              onClick={() => selectAndAdvance("vehicleType", type.value, 2)}
+              onClick={() => selectAndAdvance("vehicleType", type.value, 3)}
               className={optionBtnClass(formData.vehicleType === type.value)}
             >
               <span className="text-2xl">{type.emoji}</span>
@@ -208,35 +259,7 @@ export function LeadForm({ preselectedCommunity }: { preselectedCommunity?: stri
               </span>
             </button>
           ))}
-        </div>
-      )}
-
-      {/* ── STEP 2: New or Used ── */}
-      {step === 2 && (
-        <div className="space-y-3">
-          <h3 className="font-bold text-earth-dark text-lg text-center mb-1">
-            New or pre-owned?
-          </h3>
-          <p className="text-xs text-earth-muted text-center mb-4">Both options available with great rates.</p>
-          {[
-            { value: "new", emoji: "✨", label: "New" },
-            { value: "used", emoji: "🔑", label: "Pre-Owned" },
-            { value: "either", emoji: "👍", label: "Either Works" },
-          ].map((opt) => (
-            <button
-              key={opt.value}
-              onClick={() => selectAndAdvance("vehicleCondition", opt.value, 3)}
-              className={optionBtnClass(formData.vehicleCondition === opt.value)}
-            >
-              <span className="text-2xl">{opt.emoji}</span>
-              <span className={`text-sm font-semibold ${formData.vehicleCondition === opt.value ? "text-earth-forest" : "text-earth-text"}`}>
-                {opt.label}
-              </span>
-            </button>
-          ))}
-          <button onClick={() => setStep(1)} className="w-full text-sm text-earth-muted hover:text-earth-dark transition pt-2">
-            ← Back
-          </button>
+          <button onClick={() => setStep(1)} className="w-full text-sm text-earth-muted hover:text-earth-dark transition pt-2">← Back</button>
         </div>
       )}
 
@@ -263,21 +286,20 @@ export function LeadForm({ preselectedCommunity }: { preselectedCommunity?: stri
               </span>
             </button>
           ))}
-          <button onClick={() => setStep(2)} className="w-full text-sm text-earth-muted hover:text-earth-dark transition pt-2">
-            ← Back
-          </button>
+          <button onClick={() => setStep(2)} className="w-full text-sm text-earth-muted hover:text-earth-dark transition pt-2">← Back</button>
         </div>
       )}
 
-      {/* ── STEP 4: Current Vehicle ── */}
+      {/* ── STEP 4: Trade-In ── */}
       {step === 4 && (
         <div className="space-y-3">
           <h3 className="font-bold text-earth-dark text-lg text-center mb-1">
-            Do you currently have a vehicle?
+            Do you have a vehicle to trade in?
           </h3>
+          <p className="text-xs text-earth-muted text-center mb-4">A trade-in can lower your monthly payment.</p>
           {[
-            { value: "no", emoji: "❌", label: "No vehicle" },
-            { value: "keeping", emoji: "✅", label: "Yes, keeping it" },
+            { value: "no", emoji: "❌", label: "No vehicle to trade" },
+            { value: "keeping", emoji: "✅", label: "Yes, but keeping it" },
             { value: "trading", emoji: "🔄", label: "Yes, trading it in" },
           ].map((opt) => (
             <button
@@ -291,13 +313,11 @@ export function LeadForm({ preselectedCommunity }: { preselectedCommunity?: stri
               </span>
             </button>
           ))}
-          <button onClick={() => setStep(3)} className="w-full text-sm text-earth-muted hover:text-earth-dark transition pt-2">
-            ← Back
-          </button>
+          <button onClick={() => setStep(3)} className="w-full text-sm text-earth-muted hover:text-earth-dark transition pt-2">← Back</button>
         </div>
       )}
 
-      {/* ── STEP 5: Employment ── */}
+      {/* ── STEP 5: Employment Status ── */}
       {step === 5 && (
         <div className="space-y-3">
           <h3 className="font-bold text-earth-dark text-lg text-center mb-1">
@@ -324,19 +344,51 @@ export function LeadForm({ preselectedCommunity }: { preselectedCommunity?: stri
               </span>
             </button>
           ))}
-          <button onClick={() => setStep(4)} className="w-full text-sm text-earth-muted hover:text-earth-dark transition pt-2">
-            ← Back
-          </button>
+          <button onClick={() => setStep(4)} className="w-full text-sm text-earth-muted hover:text-earth-dark transition pt-2">← Back</button>
         </div>
       )}
 
-      {/* ── STEP 6: Monthly Income ── */}
+      {/* ── STEP 6: Job Details ── */}
       {step === 6 && (
+        <div className="space-y-4">
+          <h3 className="font-bold text-earth-dark text-lg text-center mb-1">
+            Tell us about your job
+          </h3>
+          <p className="text-xs text-earth-muted text-center mb-4">Helps lenders find your best rate.</p>
+
+          <input type="text" placeholder="Job Title" value={formData.jobTitle} onChange={(e) => update("jobTitle", e.target.value)} className={inputClass} />
+
+          <select
+            value={formData.employmentDuration}
+            onChange={(e) => update("employmentDuration", e.target.value)}
+            className={inputClass + " text-earth-muted"}
+          >
+            <option value="">How long have you been there?</option>
+            <option value="less_3_months">Less than 3 months</option>
+            <option value="3_months_1_year">3 months – 1 year</option>
+            <option value="1_3_years">1 – 3 years</option>
+            <option value="3_plus_years">3+ years</option>
+          </select>
+
+          <div className="flex gap-3 pt-2">
+            <button onClick={() => setStep(5)} className="flex-1 border border-earth-border text-earth-muted py-3.5 rounded-xl font-semibold hover:border-earth-sage transition">← Back</button>
+            <button
+              onClick={() => setStep(7)}
+              className="flex-1 bg-earth-red hover:bg-red-700 text-white py-3.5 rounded-xl font-bold uppercase tracking-wide transition"
+            >
+              Continue →
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* ── STEP 7: Monthly Income ── */}
+      {step === 7 && (
         <div className="space-y-3">
           <h3 className="font-bold text-earth-dark text-lg text-center mb-1">
-            What&apos;s your monthly income?
+            What&apos;s your monthly take-home income?
           </h3>
-          <p className="text-xs text-earth-muted text-center mb-4">Before taxes. Helps us find your best rate.</p>
+          <p className="text-xs text-earth-muted text-center mb-4">After taxes. This stays confidential.</p>
           {[
             { value: "under_1500", label: "Under $1,500" },
             { value: "1500_2500", label: "$1,500 – $2,500" },
@@ -346,7 +398,7 @@ export function LeadForm({ preselectedCommunity }: { preselectedCommunity?: stri
           ].map((opt) => (
             <button
               key={opt.value}
-              onClick={() => selectAndAdvance("monthlyIncome", opt.value, 7)}
+              onClick={() => selectAndAdvance("monthlyIncome", opt.value, 8)}
               className={optionBtnClass(formData.monthlyIncome === opt.value)}
             >
               <span className={`text-sm font-semibold ${formData.monthlyIncome === opt.value ? "text-earth-forest" : "text-earth-text"}`}>
@@ -354,97 +406,60 @@ export function LeadForm({ preselectedCommunity }: { preselectedCommunity?: stri
               </span>
             </button>
           ))}
-          <button onClick={() => setStep(5)} className="w-full text-sm text-earth-muted hover:text-earth-dark transition pt-2">
-            ← Back
-          </button>
+          <button onClick={() => setStep(6)} className="w-full text-sm text-earth-muted hover:text-earth-dark transition pt-2">← Back</button>
         </div>
       )}
 
-      {/* ── STEP 7: Credit ── */}
-      {step === 7 && (
-        <div className="space-y-3">
-          <h3 className="font-bold text-earth-dark text-lg text-center mb-1">
-            How would you describe your credit?
-          </h3>
-          <p className="text-xs text-earth-muted text-center mb-4">We work with all credit situations.</p>
-          {[
-            { value: "excellent", emoji: "⭐", label: "Great" },
-            { value: "good", emoji: "👍", label: "Good" },
-            { value: "fair", emoji: "🔄", label: "Rebuilding" },
-            { value: "poor", emoji: "🌱", label: "Starting Fresh" },
-            { value: "not_sure", emoji: "🤷", label: "Not Sure" },
-          ].map((opt) => (
-            <button
-              key={opt.value}
-              onClick={() => selectAndAdvance("creditRange", opt.value, 8)}
-              className={optionBtnClass(formData.creditRange === opt.value)}
-            >
-              <span className="text-xl">{opt.emoji}</span>
-              <span className={`text-sm font-semibold ${formData.creditRange === opt.value ? "text-earth-forest" : "text-earth-text"}`}>
-                {opt.label}
-              </span>
-            </button>
-          ))}
-          <button onClick={() => setStep(6)} className="w-full text-sm text-earth-muted hover:text-earth-dark transition pt-2">
-            ← Back
-          </button>
-        </div>
-      )}
-
-      {/* ── STEP 8: Status Card + Community ── */}
+      {/* ── STEP 8: Address + Community ── */}
       {step === 8 && (
         <div className="space-y-4">
           <h3 className="font-bold text-earth-dark text-lg text-center mb-1">
-            First Nations Status
+            Where do you live?
           </h3>
-          <p className="text-xs text-earth-muted text-center mb-4">Save 100% HST with your Status Card.</p>
+          <p className="text-xs text-earth-muted text-center mb-4">For delivery and lender matching.</p>
 
-          {/* Status Card */}
-          <div className="space-y-2">
-            <p className="text-sm font-medium text-earth-text">Do you have a Status Card?</p>
-            <div className="grid grid-cols-2 gap-3">
-              <button
-                onClick={() => update("hasStatusCard", true)}
-                className={`p-3 rounded-xl border text-center text-sm font-semibold transition ${
-                  formData.hasStatusCard
-                    ? "border-earth-forest bg-earth-forest/5 text-earth-forest"
-                    : "border-earth-border text-earth-muted hover:border-earth-sage"
-                }`}
-              >
-                Yes
-              </button>
-              <button
-                onClick={() => update("hasStatusCard", false)}
-                className={`p-3 rounded-xl border text-center text-sm font-semibold transition ${
-                  !formData.hasStatusCard
-                    ? "border-earth-forest bg-earth-forest/5 text-earth-forest"
-                    : "border-earth-border text-earth-muted hover:border-earth-sage"
-                }`}
-              >
-                No
-              </button>
+          <input type="text" placeholder="Street Address" value={formData.streetAddress} onChange={(e) => update("streetAddress", e.target.value)} className={inputClass} autoComplete="street-address" />
+
+          <div className="grid grid-cols-2 gap-3">
+            <input type="text" placeholder="City" value={formData.city} onChange={(e) => update("city", e.target.value)} className={inputClass} autoComplete="address-level2" />
+            <select value={formData.province} onChange={(e) => { update("province", e.target.value); update("communitySlug", ""); setCommunitySearch(""); }} className={inputClass + " text-earth-muted"}>
+              <option value="">Province</option>
+              {PROVINCES.map((p) => (
+                <option key={p.value} value={p.value}>{p.label}</option>
+              ))}
+            </select>
+          </div>
+
+          <input type="text" placeholder="Postal Code" value={formData.postalCode} onChange={(e) => update("postalCode", e.target.value.toUpperCase())} className={inputClass} autoComplete="postal-code" maxLength={7} />
+
+          {/* Housing Status */}
+          <div>
+            <p className="text-xs text-earth-muted mb-2 font-medium">Housing situation</p>
+            <div className="grid grid-cols-3 gap-2">
+              {[
+                { value: "own", label: "Own" },
+                { value: "rent", label: "Rent" },
+                { value: "other", label: "Other" },
+              ].map((opt) => (
+                <button
+                  key={opt.value}
+                  onClick={() => update("housingStatus", opt.value)}
+                  className={`py-2.5 rounded-xl border text-xs font-semibold transition ${
+                    formData.housingStatus === opt.value
+                      ? "border-earth-forest bg-earth-forest/5 text-earth-forest"
+                      : "border-earth-border text-earth-muted hover:border-earth-sage"
+                  }`}
+                >
+                  {opt.label}
+                </button>
+              ))}
             </div>
           </div>
 
-          {/* Province */}
-          <select
-            value={formData.province}
-            onChange={(e) => {
-              update("province", e.target.value);
-              update("communitySlug", "");
-              setCommunitySearch("");
-            }}
-            className={inputClass + " text-earth-muted"}
-          >
-            <option value="">Select Your Province</option>
-            {PROVINCES.map((p) => (
-              <option key={p.value} value={p.value}>{p.label}</option>
-            ))}
-          </select>
-
-          {/* Community Search */}
+          {/* Reserve / Community */}
           {formData.province && (
             <div className="relative">
+              <p className="text-xs text-earth-muted mb-2 font-medium">Reserve / Community (optional)</p>
               <input
                 type="text"
                 placeholder="Search your community..."
@@ -454,55 +469,34 @@ export function LeadForm({ preselectedCommunity }: { preselectedCommunity?: stri
                   setShowCommunityDropdown(true);
                   if (formData.communitySlug) update("communitySlug", "");
                 }}
-                onFocus={() => {
-                  if (!formData.communitySlug) setShowCommunityDropdown(true);
-                }}
+                onFocus={() => { if (!formData.communitySlug) setShowCommunityDropdown(true); }}
                 className={inputClass}
               />
               {showCommunityDropdown && !formData.communitySlug && (
                 <div className="absolute z-20 top-full left-0 right-0 mt-1 bg-white border border-earth-border rounded-xl shadow-lg max-h-48 overflow-y-auto">
                   {filteredCommunities.map((c) => (
-                    <button
-                      key={c.slug}
-                      onClick={() => {
-                        update("communitySlug", c.slug);
-                        setCommunitySearch("");
-                        setShowCommunityDropdown(false);
-                      }}
-                      className="w-full text-left px-4 py-2.5 text-sm text-earth-text hover:bg-earth-cream transition border-b border-earth-border/30 last:border-0"
-                    >
+                    <button key={c.slug} onClick={() => { update("communitySlug", c.slug); setCommunitySearch(""); setShowCommunityDropdown(false); }} className="w-full text-left px-4 py-2.5 text-sm text-earth-text hover:bg-earth-cream transition border-b border-earth-border/30 last:border-0">
                       {c.name}
                     </button>
                   ))}
-                  <button
-                    onClick={() => {
-                      update("communitySlug", "other");
-                      setCommunitySearch("");
-                      setShowCommunityDropdown(false);
-                    }}
-                    className="w-full text-left px-4 py-2.5 text-sm text-earth-muted hover:bg-earth-cream transition"
-                  >
+                  <button onClick={() => { update("communitySlug", "other"); setCommunitySearch(""); setShowCommunityDropdown(false); }} className="w-full text-left px-4 py-2.5 text-sm text-earth-muted hover:bg-earth-cream transition">
                     Other / Not Listed
                   </button>
                 </div>
               )}
               {formData.communitySlug && formData.communitySlug !== "other" && (
-                <button
-                  onClick={() => { update("communitySlug", ""); setCommunitySearch(""); }}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-earth-muted hover:text-earth-text text-sm"
-                >
-                  ✕
-                </button>
+                <button onClick={() => { update("communitySlug", ""); setCommunitySearch(""); }} className="absolute right-3 top-[calc(50%+10px)] -translate-y-1/2 text-earth-muted hover:text-earth-text text-sm">✕</button>
               )}
             </div>
           )}
 
           <div className="flex gap-3 pt-2">
-            <button onClick={() => setStep(7)} className="flex-1 border border-earth-border text-earth-muted py-3.5 rounded-xl font-semibold hover:border-earth-sage transition">
-              ← Back
-            </button>
+            <button onClick={() => setStep(7)} className="flex-1 border border-earth-border text-earth-muted py-3.5 rounded-xl font-semibold hover:border-earth-sage transition">← Back</button>
             <button
-              onClick={() => setStep(9)}
+              onClick={() => {
+                if (!formData.province) { setError("Please select your province."); return; }
+                setStep(9);
+              }}
               className="flex-1 bg-earth-red hover:bg-red-700 text-white py-3.5 rounded-xl font-bold uppercase tracking-wide transition"
             >
               Continue →
@@ -511,20 +505,69 @@ export function LeadForm({ preselectedCommunity }: { preselectedCommunity?: stri
         </div>
       )}
 
-      {/* ── STEP 9: Contact Info + Submit ── */}
+      {/* ── STEP 9: DOB + Status Card + Submit ── */}
       {step === 9 && (
         <div className="space-y-4">
           <h3 className="font-bold text-earth-dark text-lg text-center mb-1">
-            Last step — your contact info
+            Almost done — just a few more details
           </h3>
-          <p className="text-xs text-earth-muted text-center mb-4">So our specialist can call you within 1 hour.</p>
 
-          <div className="grid grid-cols-2 gap-3">
-            <input type="text" placeholder="First Name *" value={formData.firstName} onChange={(e) => update("firstName", e.target.value)} className={inputClass} autoComplete="given-name" />
-            <input type="text" placeholder="Last Name" value={formData.lastName} onChange={(e) => update("lastName", e.target.value)} className={inputClass} autoComplete="family-name" />
+          {/* Date of Birth */}
+          <div>
+            <p className="text-xs text-earth-muted mb-2 font-medium">Date of Birth</p>
+            <div className="grid grid-cols-3 gap-2">
+              <select value={formData.dobMonth} onChange={(e) => update("dobMonth", e.target.value)} className={inputClass + " text-earth-muted text-xs"}>
+                <option value="">Month</option>
+                {months.map((m, i) => (
+                  <option key={m} value={String(i + 1).padStart(2, "0")}>{m}</option>
+                ))}
+              </select>
+              <select value={formData.dobDay} onChange={(e) => update("dobDay", e.target.value)} className={inputClass + " text-earth-muted text-xs"}>
+                <option value="">Day</option>
+                {days.map((d) => (
+                  <option key={d} value={String(d).padStart(2, "0")}>{d}</option>
+                ))}
+              </select>
+              <select value={formData.dobYear} onChange={(e) => update("dobYear", e.target.value)} className={inputClass + " text-earth-muted text-xs"}>
+                <option value="">Year</option>
+                {years.map((y) => (
+                  <option key={y} value={String(y)}>{y}</option>
+                ))}
+              </select>
+            </div>
           </div>
-          <input type="tel" placeholder="Phone Number *" value={formData.phone} onChange={(e) => update("phone", e.target.value)} className={inputClass} autoComplete="tel" />
-          <input type="email" placeholder="Email *" value={formData.email} onChange={(e) => update("email", e.target.value)} className={inputClass} autoComplete="email" />
+
+          {/* Status Card */}
+          <div>
+            <p className="text-xs text-earth-muted mb-2 font-medium">Do you have a First Nations Status Card?</p>
+            <div className="grid grid-cols-2 gap-3">
+              <button
+                onClick={() => update("hasStatusCard", true)}
+                className={`p-3.5 rounded-xl border text-center text-sm font-semibold transition ${
+                  formData.hasStatusCard
+                    ? "border-earth-forest bg-earth-forest/5 text-earth-forest"
+                    : "border-earth-border text-earth-muted hover:border-earth-sage"
+                }`}
+              >
+                ✅ Yes
+              </button>
+              <button
+                onClick={() => update("hasStatusCard", false)}
+                className={`p-3.5 rounded-xl border text-center text-sm font-semibold transition ${
+                  !formData.hasStatusCard
+                    ? "border-earth-forest bg-earth-forest/5 text-earth-forest"
+                    : "border-earth-border text-earth-muted hover:border-earth-sage"
+                }`}
+              >
+                No
+              </button>
+            </div>
+            {formData.hasStatusCard && (
+              <p className="text-xs text-earth-forest mt-2 bg-earth-forest/5 rounded-lg px-3 py-2">
+                🪶 You may qualify for 100% tax savings on your vehicle purchase.
+              </p>
+            )}
+          </div>
 
           {/* Consent */}
           <label className="flex items-start gap-3 p-3 bg-earth-cream/50 border border-earth-border rounded-xl cursor-pointer">
@@ -539,23 +582,18 @@ export function LeadForm({ preselectedCommunity }: { preselectedCommunity?: stri
           </label>
 
           <div className="flex gap-3">
-            <button onClick={() => setStep(8)} className="flex-1 border border-earth-border text-earth-muted py-3.5 rounded-xl font-semibold hover:border-earth-sage transition">
-              ← Back
-            </button>
+            <button onClick={() => setStep(8)} className="flex-1 border border-earth-border text-earth-muted py-3.5 rounded-xl font-semibold hover:border-earth-sage transition">← Back</button>
             <button
               onClick={() => {
                 const consent = (document.getElementById("consent") as HTMLInputElement)?.checked;
                 if (!consent) { setError("Please check the consent box to continue."); return; }
-                if (!formData.firstName || !formData.phone || !formData.email) {
-                  setError("Please enter your name, phone number, and email.");
-                  return;
-                }
+                if (!formData.dobMonth || !formData.dobDay || !formData.dobYear) { setError("Please enter your date of birth."); return; }
                 handleSubmit();
               }}
-              disabled={loading || !formData.firstName || !formData.phone || !formData.email}
+              disabled={loading}
               className="flex-1 bg-earth-red hover:bg-red-700 disabled:opacity-50 text-white py-3.5 rounded-xl font-bold text-lg uppercase tracking-wide transition"
             >
-              {loading ? "Submitting..." : "Get Pre-Approved"}
+              {loading ? "Submitting..." : "Submit Application"}
             </button>
           </div>
 
