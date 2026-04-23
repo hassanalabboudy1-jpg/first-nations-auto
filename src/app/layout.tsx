@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { TrackingPixels } from "@/components/TrackingPixels";
+import { CallbackWidget } from "@/components/CallbackWidget";
 
 export const metadata: Metadata = {
   title: "First Nation Auto Financing | Tax-Free Vehicle Delivery to 248+ Communities",
@@ -54,6 +55,7 @@ export default function RootLayout({
       <body className="antialiased">
         <TrackingPixels />
         {children}
+        <CallbackWidget />
       </body>
     </html>
   );
