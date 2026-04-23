@@ -16,10 +16,18 @@ interface Lead {
   employment_status: string | null;
   monthly_income: string | null;
   credit_score_range: string | null;
+  has_status_card: boolean;
+  trade_in: boolean;
   status: string;
   source: string;
-  has_status_card: boolean;
   lead_score: number;
+  created_at: string;
+}
+
+interface Note {
+  id: string;
+  title: string;
+  description: string | null;
   created_at: string;
 }
 
@@ -47,11 +55,20 @@ function timeAgo(dateStr: string): string {
   return `${days}d ago`;
 }
 
+function formatDate(dateStr: string): string {
+  return new Date(dateStr).toLocaleDateString("en-CA", {
+    month: "short",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+}
+
 function isUrgent(dateStr: string): boolean {
   const now = new Date();
   const date = new Date(dateStr);
   const diffMs = now.getTime() - date.getTime();
-  return diffMs < 60 * 60 * 1000; // less than 1 hour
+  return diffMs < 60 * 60 * 1000;
 }
 
 function priorityBadge(score: number) {
@@ -65,13 +82,17 @@ export default function AdminDashboard() {
   const [stats, setStats] = useState<DashboardStats | null>(null);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState<string>("all");
-  const [, setTick] = useState(0); // forces re-render for time-ago updates
+  const [expandedLead, setExpandedLead] = useState<string | null>(null);
+  const [notes, setNotes] = useState<Record<string, Note[]>>({});
+  const [newNote, setNewNote] = useState("");
+  const [savingNote, setSavingNote] = useState(false);
+  const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
+  const [, setTick] = useState(0);
   const supabase = createClient();
 
   useEffect(() => {
     loadData();
 
-    // Realtime subscription for new leads
     const channel = supabase
       .channel("leads-realtime")
       .on(
@@ -83,7 +104,6 @@ export default function AdminDashboard() {
       )
       .subscribe();
 
-    // Update time-ago every 30 seconds
     const interval = setInterval(() => setTick((t) => t + 1), 30000);
 
     return () => {
@@ -135,10 +155,69 @@ export default function AdminDashboard() {
   }
 
   async function updateLeadStatus(leadId: string, status: string) {
-    await supabase.from("leads").update({ status }).eq("id", leadId);
+    const { error } = await supabase.from("leads").update({ status }).eq("id", leadId);
+    if (error) return;
     setLeads((prev) =>
       prev.map((l) => (l.id === leadId ? { ...l, status } : l))
     );
+  }
+
+  async function toggleExpand(leadId: string) {
+    if (expandedLead === leadId) {
+      setExpandedLead(null);
+      setNewNote("");
+      setDeleteConfirm(null);
+      return;
+    }
+    setExpandedLead(leadId);
+    setNewNote("");
+    setDeleteConfirm(null);
+
+    // Load notes for this lead
+    if (!notes[leadId]) {
+      const { data } = await supabase
+        .from("lead_activities")
+        .select("id, title, description, created_at")
+        .eq("lead_id", leadId)
+        .order("created_at", { ascending: false });
+      if (data) {
+        setNotes((prev) => ({ ...prev, [leadId]: data }));
+      }
+    }
+  }
+
+  async function addNote(leadId: string) {
+    if (!newNote.trim()) return;
+    setSavingNote(true);
+
+    const { data, error } = await supabase
+      .from("lead_activities")
+      .insert({
+        lead_id: leadId,
+        activity: "note_added",
+        title: "Note",
+        description: newNote.trim(),
+      })
+      .select("id, title, description, created_at")
+      .single();
+
+    if (!error && data) {
+      setNotes((prev) => ({
+        ...prev,
+        [leadId]: [data, ...(prev[leadId] || [])],
+      }));
+      setNewNote("");
+    }
+    setSavingNote(false);
+  }
+
+  async function deleteLead(leadId: string) {
+    const res = await fetch(`/api/leads/${leadId}`, { method: "DELETE" });
+    if (res.ok) {
+      setLeads((prev) => prev.filter((l) => l.id !== leadId));
+      setExpandedLead(null);
+      setDeleteConfirm(null);
+    }
   }
 
   async function handleLogout() {
@@ -146,7 +225,6 @@ export default function AdminDashboard() {
     window.location.href = "/login";
   }
 
-  // Sort leads: urgent (new + <1hr) first, then by score, then by date
   const sortedLeads = [...leads].sort((a, b) => {
     const aUrgent = a.status === "new" && isUrgent(a.created_at);
     const bUrgent = b.status === "new" && isUrgent(b.created_at);
@@ -276,150 +354,255 @@ export default function AdminDashboard() {
           )}
         </div>
 
-        {/* Leads Table */}
+        {/* Leads */}
         <div className="bg-brand-darker border border-brand-border rounded-xl overflow-hidden">
           <div className="px-5 py-4 border-b border-brand-border flex items-center justify-between">
             <h2 className="font-display text-sm font-bold tracking-wider uppercase">
-              Leads — Sorted by Priority
+              Leads — Click to expand
             </h2>
             <span className="text-xs text-gray-500">
               {filteredLeads.length} leads
             </span>
           </div>
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead>
-                <tr className="border-b border-brand-border text-xs text-gray-500 font-display tracking-wider uppercase">
-                  <th className="text-left px-5 py-3">Priority</th>
-                  <th className="text-left px-5 py-3">Name</th>
-                  <th className="text-left px-5 py-3">Phone</th>
-                  <th className="text-left px-5 py-3">Community</th>
-                  <th className="text-left px-5 py-3">Vehicle</th>
-                  <th className="text-left px-5 py-3">Budget</th>
-                  <th className="text-left px-5 py-3">Income</th>
-                  <th className="text-left px-5 py-3">Credit</th>
-                  <th className="text-left px-5 py-3">Source</th>
-                  <th className="text-left px-5 py-3">Status</th>
-                  <th className="text-left px-5 py-3">Time</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredLeads.map((lead) => {
-                  const urgent = lead.status === "new" && isUrgent(lead.created_at);
-                  const badge = priorityBadge(lead.lead_score);
 
-                  return (
-                    <tr
-                      key={lead.id}
-                      className={`border-b border-brand-border/50 transition ${
-                        urgent
-                          ? "bg-red-500/[0.03] hover:bg-red-500/[0.06]"
+          <div className="divide-y divide-brand-border/50">
+            {filteredLeads.map((lead) => {
+              const urgent = lead.status === "new" && isUrgent(lead.created_at);
+              const badge = priorityBadge(lead.lead_score);
+              const isExpanded = expandedLead === lead.id;
+              const leadNotes = notes[lead.id] || [];
+
+              return (
+                <div key={lead.id}>
+                  {/* Lead Row */}
+                  <div
+                    onClick={() => toggleExpand(lead.id)}
+                    className={`flex items-center gap-4 px-5 py-3 cursor-pointer transition ${
+                      urgent
+                        ? "bg-red-500/[0.03] hover:bg-red-500/[0.06]"
+                        : isExpanded
+                          ? "bg-white/[0.03]"
                           : "hover:bg-white/[0.02]"
-                      }`}
-                    >
-                      <td className="px-5 py-3">
-                        <div className="flex items-center gap-2">
-                          <span
-                            className={`text-[10px] font-display font-bold px-2 py-0.5 rounded border ${badge.color}`}
-                          >
-                            {badge.label}
+                    }`}
+                  >
+                    {/* Priority */}
+                    <div className="flex items-center gap-2 w-20 flex-shrink-0">
+                      <span className={`text-[10px] font-display font-bold px-2 py-0.5 rounded border ${badge.color}`}>
+                        {badge.label}
+                      </span>
+                    </div>
+
+                    {/* Name + badges */}
+                    <div className="w-40 flex-shrink-0">
+                      <div className="text-sm font-semibold text-white">
+                        {lead.first_name} {lead.last_name || ""}
+                      </div>
+                      <div className="flex items-center gap-1 mt-0.5">
+                        {lead.has_status_card && (
+                          <span className="text-[10px] bg-brand-teal/20 text-brand-teal px-1.5 py-0.5 rounded">
+                            Status Card
                           </span>
-                          <span className="text-xs text-gray-600">
-                            {lead.lead_score}
-                          </span>
-                        </div>
-                      </td>
-                      <td className="px-5 py-3">
-                        <div className="text-sm font-semibold text-white">
-                          {lead.first_name} {lead.last_name || ""}
-                        </div>
-                        <div className="flex items-center gap-1 mt-0.5">
-                          {lead.has_status_card && (
-                            <span className="text-[10px] bg-brand-teal/20 text-brand-teal px-1.5 py-0.5 rounded">
-                              Status Card
-                            </span>
-                          )}
-                          {lead.email && (
-                            <span className="text-[10px] bg-blue-500/10 text-blue-400 px-1.5 py-0.5 rounded">
-                              Email
-                            </span>
-                          )}
-                        </div>
-                      </td>
-                      <td className="px-5 py-3">
-                        <a
-                          href={`tel:${lead.phone}`}
-                          className="text-sm text-brand-teal hover:underline"
-                        >
-                          {lead.phone}
-                        </a>
-                      </td>
-                      <td className="px-5 py-3 text-sm text-gray-400">
-                        {lead.community_name || "—"}
-                      </td>
-                      <td className="px-5 py-3 text-sm text-gray-400 capitalize">
-                        {lead.vehicle_type || "—"}
-                      </td>
-                      <td className="px-5 py-3 text-sm text-gray-400">
-                        {lead.budget_range || "—"}
-                      </td>
-                      <td className="px-5 py-3 text-sm text-gray-400">
-                        {lead.monthly_income?.replace(/_/g, " ") || "—"}
-                      </td>
-                      <td className="px-5 py-3 text-sm text-gray-400 capitalize">
-                        {lead.credit_score_range?.replace(/_/g, " ") || "—"}
-                      </td>
-                      <td className="px-5 py-3">
-                        <span className="text-xs text-gray-500">
-                          {lead.source.replace(/_/g, " ")}
-                        </span>
-                      </td>
-                      <td className="px-5 py-3">
-                        <select
-                          value={lead.status}
-                          onChange={(e) =>
-                            updateLeadStatus(lead.id, e.target.value)
-                          }
-                          className={`text-xs px-2 py-1 rounded-md border bg-transparent cursor-pointer ${statusColors[lead.status] || "text-gray-400 border-brand-border"}`}
-                        >
-                          <option value="new">New</option>
-                          <option value="contacted">Contacted</option>
-                          <option value="qualified">Qualified</option>
-                          <option value="application_sent">App Sent</option>
-                          <option value="approved">Approved</option>
-                          <option value="vehicle_matched">Matched</option>
-                          <option value="delivered">Delivered</option>
-                          <option value="closed_won">Won</option>
-                          <option value="closed_lost">Lost</option>
-                        </select>
-                      </td>
-                      <td className="px-5 py-3">
-                        <span
-                          className={`text-xs ${
-                            urgent ? "text-red-400 font-bold" : "text-gray-500"
-                          }`}
-                        >
-                          {urgent && "🔥 "}
-                          {timeAgo(lead.created_at)}
-                        </span>
-                      </td>
-                    </tr>
-                  );
-                })}
-                {filteredLeads.length === 0 && (
-                  <tr>
-                    <td
-                      colSpan={9}
-                      className="px-5 py-12 text-center text-gray-500 text-sm"
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Phone */}
+                    <a
+                      href={`tel:${lead.phone}`}
+                      onClick={(e) => e.stopPropagation()}
+                      className="text-sm text-brand-teal hover:underline w-32 flex-shrink-0"
                     >
-                      {filter === "all"
-                        ? "No leads yet. Share your community pages to start generating leads."
-                        : `No ${filter.replace("_", " ")} leads.`}
-                    </td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
+                      {lead.phone}
+                    </a>
+
+                    {/* Community */}
+                    <div className="text-sm text-gray-400 w-32 flex-shrink-0 truncate hidden md:block">
+                      {lead.community_name || "—"}
+                    </div>
+
+                    {/* Vehicle */}
+                    <div className="text-sm text-gray-400 capitalize w-20 flex-shrink-0 hidden lg:block">
+                      {lead.vehicle_type || "—"}
+                    </div>
+
+                    {/* Status */}
+                    <div className="flex-shrink-0" onClick={(e) => e.stopPropagation()}>
+                      <select
+                        value={lead.status}
+                        onChange={(e) => updateLeadStatus(lead.id, e.target.value)}
+                        className={`text-xs px-2 py-1 rounded-md border bg-transparent cursor-pointer ${statusColors[lead.status] || "text-gray-400 border-brand-border"}`}
+                      >
+                        <option value="new">New</option>
+                        <option value="contacted">Contacted</option>
+                        <option value="qualified">Qualified</option>
+                        <option value="application_sent">App Sent</option>
+                        <option value="approved">Approved</option>
+                        <option value="vehicle_matched">Matched</option>
+                        <option value="delivered">Delivered</option>
+                        <option value="closed_won">Won</option>
+                        <option value="closed_lost">Lost</option>
+                      </select>
+                    </div>
+
+                    {/* Time */}
+                    <span className={`text-xs ml-auto flex-shrink-0 ${urgent ? "text-red-400 font-bold" : "text-gray-500"}`}>
+                      {urgent && "🔥 "}
+                      {timeAgo(lead.created_at)}
+                    </span>
+
+                    {/* Expand arrow */}
+                    <span className={`text-gray-500 text-xs transition-transform ${isExpanded ? "rotate-180" : ""}`}>
+                      ▼
+                    </span>
+                  </div>
+
+                  {/* Expanded Panel */}
+                  {isExpanded && (
+                    <div className="bg-brand-dark/50 border-t border-brand-border/30 px-5 py-5">
+                      <div className="grid md:grid-cols-2 gap-6">
+                        {/* Left: Lead Details */}
+                        <div>
+                          <h3 className="text-xs font-display font-bold text-gray-400 tracking-wider uppercase mb-3">
+                            Lead Details
+                          </h3>
+                          <div className="bg-brand-darker rounded-xl p-4 space-y-2 text-sm">
+                            <div className="flex justify-between">
+                              <span className="text-gray-500">Name</span>
+                              <span className="text-white">{lead.first_name} {lead.last_name || ""}</span>
+                            </div>
+                            <div className="flex justify-between">
+                              <span className="text-gray-500">Phone</span>
+                              <a href={`tel:${lead.phone}`} className="text-brand-teal">{lead.phone}</a>
+                            </div>
+                            <div className="flex justify-between">
+                              <span className="text-gray-500">Email</span>
+                              <span className="text-white">{lead.email || "—"}</span>
+                            </div>
+                            <div className="flex justify-between">
+                              <span className="text-gray-500">Community</span>
+                              <span className="text-white">{lead.community_name || "—"}</span>
+                            </div>
+                            <div className="flex justify-between">
+                              <span className="text-gray-500">Vehicle</span>
+                              <span className="text-white capitalize">{lead.vehicle_type || "—"}</span>
+                            </div>
+                            <div className="flex justify-between">
+                              <span className="text-gray-500">Budget</span>
+                              <span className="text-white">{lead.budget_range?.replace(/_/g, " ") || "—"}</span>
+                            </div>
+                            <div className="flex justify-between">
+                              <span className="text-gray-500">Trade-In</span>
+                              <span className="text-white">{lead.trade_in ? "Yes" : "No"}</span>
+                            </div>
+                            <div className="flex justify-between">
+                              <span className="text-gray-500">Employment</span>
+                              <span className="text-white capitalize">{lead.employment_status?.replace(/_/g, " ") || "—"}</span>
+                            </div>
+                            <div className="flex justify-between">
+                              <span className="text-gray-500">Monthly Income</span>
+                              <span className="text-white">{lead.monthly_income?.replace(/_/g, " ") || "—"}</span>
+                            </div>
+                            <div className="flex justify-between">
+                              <span className="text-gray-500">Credit</span>
+                              <span className="text-white capitalize">{lead.credit_score_range?.replace(/_/g, " ") || "—"}</span>
+                            </div>
+                            <div className="flex justify-between">
+                              <span className="text-gray-500">Status Card</span>
+                              <span className="text-white">{lead.has_status_card ? "Yes" : "No"}</span>
+                            </div>
+                            <div className="flex justify-between">
+                              <span className="text-gray-500">Source</span>
+                              <span className="text-white">{lead.source.replace(/_/g, " ")}</span>
+                            </div>
+                            <div className="flex justify-between">
+                              <span className="text-gray-500">Submitted</span>
+                              <span className="text-white">{formatDate(lead.created_at)}</span>
+                            </div>
+                          </div>
+
+                          {/* Delete */}
+                          <div className="mt-4">
+                            {deleteConfirm === lead.id ? (
+                              <div className="flex items-center gap-2">
+                                <span className="text-xs text-red-400">Are you sure?</span>
+                                <button
+                                  onClick={() => deleteLead(lead.id)}
+                                  className="text-xs bg-red-500/20 text-red-400 border border-red-500/30 px-3 py-1.5 rounded-lg hover:bg-red-500/30 transition"
+                                >
+                                  Yes, Delete
+                                </button>
+                                <button
+                                  onClick={() => setDeleteConfirm(null)}
+                                  className="text-xs text-gray-500 hover:text-white px-3 py-1.5 transition"
+                                >
+                                  Cancel
+                                </button>
+                              </div>
+                            ) : (
+                              <button
+                                onClick={() => setDeleteConfirm(lead.id)}
+                                className="text-xs text-red-400/60 hover:text-red-400 transition"
+                              >
+                                Delete this lead
+                              </button>
+                            )}
+                          </div>
+                        </div>
+
+                        {/* Right: Notes */}
+                        <div>
+                          <h3 className="text-xs font-display font-bold text-gray-400 tracking-wider uppercase mb-3">
+                            Notes & Activity
+                          </h3>
+
+                          {/* Add Note */}
+                          <div className="mb-4">
+                            <textarea
+                              value={newNote}
+                              onChange={(e) => setNewNote(e.target.value)}
+                              placeholder="Add a note about this lead..."
+                              rows={3}
+                              className="w-full bg-brand-darker border border-brand-border rounded-xl px-4 py-3 text-sm text-white placeholder:text-gray-600 focus:border-brand-teal focus:outline-none resize-none"
+                            />
+                            <button
+                              onClick={() => addNote(lead.id)}
+                              disabled={!newNote.trim() || savingNote}
+                              className="mt-2 text-xs bg-brand-teal/20 text-brand-teal border border-brand-teal/30 px-4 py-2 rounded-lg font-bold hover:bg-brand-teal/30 disabled:opacity-40 transition"
+                            >
+                              {savingNote ? "Saving..." : "Save Note"}
+                            </button>
+                          </div>
+
+                          {/* Notes List */}
+                          <div className="space-y-2 max-h-64 overflow-y-auto">
+                            {leadNotes.length === 0 && (
+                              <p className="text-xs text-gray-600">No notes yet.</p>
+                            )}
+                            {leadNotes.map((note) => (
+                              <div
+                                key={note.id}
+                                className="bg-brand-darker border border-brand-border/50 rounded-lg px-4 py-3"
+                              >
+                                <p className="text-sm text-white/80">{note.description || note.title}</p>
+                                <p className="text-[10px] text-gray-600 mt-1">{formatDate(note.created_at)}</p>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+
+            {filteredLeads.length === 0 && (
+              <div className="px-5 py-12 text-center text-gray-500 text-sm">
+                {filter === "all"
+                  ? "No leads yet. Share your community pages to start generating leads."
+                  : `No ${filter.replace("_", " ")} leads.`}
+              </div>
+            )}
           </div>
         </div>
       </div>
