@@ -259,6 +259,36 @@ export default async function BlogPostPage({
         </div>
       </nav>
 
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            headline: post.title,
+            description: post.excerpt,
+            datePublished: post.publishedAt,
+            dateModified: post.publishedAt,
+            author: {
+              "@type": "Organization",
+              name: post.author,
+              url: "https://firstnationautofinancing.ca",
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "First Nation Auto Financing",
+              url: "https://firstnationautofinancing.ca",
+            },
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": `https://firstnationautofinancing.ca/blog/${post.slug}`,
+            },
+            articleSection: post.category,
+            inLanguage: "en-CA",
+          }),
+        }}
+      />
+
       {/* Article Header */}
       <section className="bg-earth-dark">
         <div className="max-w-3xl mx-auto px-4 py-12 md:py-16">
@@ -453,8 +483,8 @@ export default async function BlogPostPage({
             </p>
             <p className="text-xs text-white/20">
               &copy; {new Date().getFullYear()} First Nation Auto Financing.
-              Serving Ontario, Quebec, Manitoba, New Brunswick &amp; Nova
-              Scotia.
+              Serving Ontario, Quebec, Manitoba, New Brunswick, Nova Scotia
+              &amp; Newfoundland &amp; Labrador.
             </p>
           </div>
         </div>

@@ -3748,7 +3748,7 @@ export const NEWFOUNDLAND_LABRADOR_COMMUNITIES: CommunityData[] = [
   },
   {
     name: "Deer Lake",
-    slug: "deer-lake",
+    slug: "deer-lake-nl",
     province: "NL",
     nation: "Mi'kmaq (Qalipu)",
     language: "Mi'kmaq",

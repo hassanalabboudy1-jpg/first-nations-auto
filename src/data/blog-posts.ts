@@ -371,7 +371,7 @@ On a $35,000 vehicle, that translates to savings of $4,200 to $5,250 depending o
 
 Many buyers do not realize that on-reserve delivery is available and that reputable providers offer it at no additional charge. You should not have to drive hours to a dealership in a major city, arrange a ride there, and drive the vehicle back yourself.
 
-Our service includes free delivery to your community anywhere across the five provinces we serve — Ontario, Quebec, Manitoba, New Brunswick, Nova Scotia, and Newfoundland & Labrador. We bring the vehicle directly to you. This is not just a convenience; it is what makes the tax exemption possible.
+Our service includes free delivery to your community anywhere across the six provinces we serve — Ontario, Quebec, Manitoba, New Brunswick, Nova Scotia, and Newfoundland & Labrador. We bring the vehicle directly to you. This is not just a convenience; it is what makes the tax exemption possible.
 
 **What to ask any financing provider:** "Do you deliver to my reserve at no charge?" If the answer is no, or if they charge a delivery fee, consider whether those costs eat into your tax savings. With our team, delivery is always free.
 

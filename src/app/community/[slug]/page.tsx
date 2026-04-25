@@ -216,27 +216,60 @@ export default async function CommunityPage({ params }: Props) {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "FinancialService",
-            name: `First Nation Auto Financing — ${community.name}`,
-            description: `Vehicle financing for ${community.name} (${community.nation}) in ${province}. Tax-exempt delivery. $0 down.`,
-            telephone: "+16133028872",
-            areaServed: {
-              "@type": "Place",
-              name: community.name,
-              geo: community.latitude
-                ? {
-                    "@type": "GeoCoordinates",
-                    latitude: community.latitude,
-                    longitude: community.longitude,
-                  }
-                : undefined,
-            },
-            serviceType: "Auto Financing",
-            provider: {
-              "@type": "Organization",
-              name: "First Nation Auto Financing",
-              url: "https://firstnationautofinancing.ca",
-            },
+            "@graph": [
+              {
+                "@type": "FinancialService",
+                name: `First Nation Auto Financing — ${community.name}`,
+                description: `Vehicle financing for ${community.name} (${community.nation}) in ${province}. Tax-exempt on-reserve delivery. $0 down. All credit welcome.`,
+                telephone: "+1-613-302-8872",
+                url: `https://firstnationautofinancing.ca/community/${community.slug}`,
+                serviceType: "Auto Financing",
+                priceRange: "$$",
+                areaServed: {
+                  "@type": "Place",
+                  name: community.name,
+                  ...(community.latitude && community.longitude
+                    ? {
+                        geo: {
+                          "@type": "GeoCoordinates",
+                          latitude: community.latitude,
+                          longitude: community.longitude,
+                        },
+                      }
+                    : {}),
+                  containedInPlace: {
+                    "@type": "AdministrativeArea",
+                    name: province,
+                  },
+                },
+                provider: {
+                  "@id": "https://firstnationautofinancing.ca/#organization",
+                },
+              },
+              {
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                  {
+                    "@type": "ListItem",
+                    position: 1,
+                    name: "Home",
+                    item: "https://firstnationautofinancing.ca",
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 2,
+                    name: "Communities",
+                    item: "https://firstnationautofinancing.ca/#communities",
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 3,
+                    name: community.name,
+                    item: `https://firstnationautofinancing.ca/community/${community.slug}`,
+                  },
+                ],
+              },
+            ],
           }),
         }}
       />

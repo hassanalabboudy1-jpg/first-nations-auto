@@ -4,6 +4,7 @@ import { LeadForm } from "@/components/LeadForm";
 import { CommunityAccordion } from "@/components/CommunityAccordion";
 import { PaymentCalculator } from "@/components/PaymentCalculator";
 import { FAQ } from "@/components/FAQ";
+import { faqs } from "@/data/faqs";
 import { ALL_COMMUNITIES } from "@/data/communities";
 
 export default function HomePage() {
@@ -569,6 +570,20 @@ export default function HomePage() {
             </h2>
           </div>
           <FAQ />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                mainEntity: faqs.map((f) => ({
+                  "@type": "Question",
+                  name: f.q,
+                  acceptedAnswer: { "@type": "Answer", text: f.a },
+                })),
+              }),
+            }}
+          />
         </div>
       </section>
 
@@ -579,7 +594,7 @@ export default function HomePage() {
             Communities We Serve
           </h2>
           <p className="text-sm text-earth-muted">
-            Tax-free delivery to 325+ First Nations communities across 5
+            Tax-free delivery to 325+ First Nations communities across 6
             provinces.
           </p>
         </div>

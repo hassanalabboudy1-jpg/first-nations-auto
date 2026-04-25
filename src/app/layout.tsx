@@ -53,6 +53,52 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FinancialService",
+              "@id": "https://firstnationautofinancing.ca/#organization",
+              name: "First Nation Auto Financing",
+              alternateName: "First Nation Auto",
+              url: "https://firstnationautofinancing.ca",
+              telephone: "+1-613-302-8872",
+              priceRange: "$$",
+              description:
+                "Vehicle financing for First Nations communities across Ontario, Quebec, Manitoba, New Brunswick, Nova Scotia and Newfoundland & Labrador. Tax-free on-reserve delivery, $0 down, all credit welcome.",
+              address: {
+                "@type": "PostalAddress",
+                addressCountry: "CA",
+              },
+              areaServed: [
+                { "@type": "AdministrativeArea", name: "Ontario" },
+                { "@type": "AdministrativeArea", name: "Quebec" },
+                { "@type": "AdministrativeArea", name: "Manitoba" },
+                { "@type": "AdministrativeArea", name: "New Brunswick" },
+                { "@type": "AdministrativeArea", name: "Nova Scotia" },
+                { "@type": "AdministrativeArea", name: "Newfoundland and Labrador" },
+              ],
+              serviceType: [
+                "Auto Financing",
+                "Tax-Exempt Vehicle Delivery",
+                "First Nations Auto Loans",
+                "On-Reserve Vehicle Delivery",
+              ],
+              aggregateRating: {
+                "@type": "AggregateRating",
+                ratingValue: "4.9",
+                reviewCount: "127",
+              },
+              openingHoursSpecification: {
+                "@type": "OpeningHoursSpecification",
+                dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                opens: "08:00",
+                closes: "20:00",
+              },
+            }),
+          }}
+        />
         <TrackingPixels />
         {children}
         <CallbackWidget />
