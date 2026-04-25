@@ -85,11 +85,6 @@ export default function RootLayout({
                 "First Nations Auto Loans",
                 "On-Reserve Vehicle Delivery",
               ],
-              aggregateRating: {
-                "@type": "AggregateRating",
-                ratingValue: "4.9",
-                reviewCount: "127",
-              },
               openingHoursSpecification: {
                 "@type": "OpeningHoursSpecification",
                 dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
