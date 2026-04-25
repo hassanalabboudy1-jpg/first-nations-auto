@@ -272,16 +272,16 @@ export default async function BlogPostPage({
             author: {
               "@type": "Organization",
               name: post.author,
-              url: "https://firstnationautofinancing.ca",
+              url: "https://www.firstnationautofinancing.ca",
             },
             publisher: {
               "@type": "Organization",
               name: "First Nation Auto Financing",
-              url: "https://firstnationautofinancing.ca",
+              url: "https://www.firstnationautofinancing.ca",
             },
             mainEntityOfPage: {
               "@type": "WebPage",
-              "@id": `https://firstnationautofinancing.ca/blog/${post.slug}`,
+              "@id": `https://www.firstnationautofinancing.ca/blog/${post.slug}`,
             },
             articleSection: post.category,
             inLanguage: "en-CA",

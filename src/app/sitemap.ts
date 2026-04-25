@@ -3,7 +3,7 @@ import { ALL_COMMUNITIES } from "@/data/communities";
 import { blogPosts } from "@/data/blog-posts";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://firstnationautofinancing.ca";
+  const baseUrl = "https://www.firstnationautofinancing.ca";
 
   // Static pages
   const staticPages: MetadataRoute.Sitemap = [

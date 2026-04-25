@@ -4,7 +4,8 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "About Us — First Nation Auto Financing",
   description:
-    "Learn about First Nation Auto Financing — serving 325+ First Nations communities across Ontario, Quebec, Manitoba, New Brunswick, Nova Scotia, and Newfoundland &amp; Labrador with tax-free on-reserve vehicle delivery.",
+    "Learn about First Nation Auto Financing — serving 325+ First Nations communities across Ontario, Quebec, Manitoba, New Brunswick, Nova Scotia, and Newfoundland & Labrador with tax-free on-reserve vehicle delivery.",
+  alternates: { canonical: "/about" },
 };
 
 export default function AboutPage() {

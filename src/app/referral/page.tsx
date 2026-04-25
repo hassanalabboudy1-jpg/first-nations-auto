@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Referral Program — Earn $500 Per Referral | First Nation Auto Financing",
   description:
     "Refer a friend or family member to First Nation Auto Financing and earn $500 for every approved deal. Help your community get into reliable vehicles.",
+  alternates: { canonical: "/referral" },
 };
 
 export default function ReferralPage() {

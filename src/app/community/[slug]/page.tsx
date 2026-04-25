@@ -23,6 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: meta.title,
     description: meta.description,
     keywords: meta.keywords,
+    alternates: { canonical: `/community/${community.slug}` },
     openGraph: {
       title: meta.title,
       description: meta.description,
@@ -222,7 +223,7 @@ export default async function CommunityPage({ params }: Props) {
                 name: `First Nation Auto Financing — ${community.name}`,
                 description: `Vehicle financing for ${community.name} (${community.nation}) in ${province}. Tax-exempt on-reserve delivery. $0 down. All credit welcome.`,
                 telephone: "+1-613-302-8872",
-                url: `https://firstnationautofinancing.ca/community/${community.slug}`,
+                url: `https://www.firstnationautofinancing.ca/community/${community.slug}`,
                 serviceType: "Auto Financing",
                 priceRange: "$$",
                 areaServed: {
@@ -243,7 +244,7 @@ export default async function CommunityPage({ params }: Props) {
                   },
                 },
                 provider: {
-                  "@id": "https://firstnationautofinancing.ca/#organization",
+                  "@id": "https://www.firstnationautofinancing.ca/#organization",
                 },
               },
               {
@@ -253,19 +254,19 @@ export default async function CommunityPage({ params }: Props) {
                     "@type": "ListItem",
                     position: 1,
                     name: "Home",
-                    item: "https://firstnationautofinancing.ca",
+                    item: "https://www.firstnationautofinancing.ca",
                   },
                   {
                     "@type": "ListItem",
                     position: 2,
                     name: "Communities",
-                    item: "https://firstnationautofinancing.ca/#communities",
+                    item: "https://www.firstnationautofinancing.ca/#communities",
                   },
                   {
                     "@type": "ListItem",
                     position: 3,
                     name: community.name,
-                    item: `https://firstnationautofinancing.ca/community/${community.slug}`,
+                    item: `https://www.firstnationautofinancing.ca/community/${community.slug}`,
                   },
                 ],
               },

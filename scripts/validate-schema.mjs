@@ -1,7 +1,7 @@
 // Validates JSON-LD on the live site against schema.org expectations.
 // Run: node scripts/validate-schema.mjs
 
-const BASE = "https://firstnationautofinancing.ca";
+const BASE = "https://www.firstnationautofinancing.ca";
 
 const pages = [
   { url: `${BASE}/`, expect: ["FinancialService", "FAQPage"] },

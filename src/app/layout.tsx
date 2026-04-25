@@ -6,7 +6,7 @@ import { CallbackWidget } from "@/components/CallbackWidget";
 export const metadata: Metadata = {
   title: "First Nation Auto Financing | Tax-Free Vehicle Delivery to 325+ Communities",
   description:
-    "Vehicle financing for First Nations communities in Ontario, Quebec, Manitoba, New Brunswick, Nova Scotia, and Newfoundland &amp; Labrador. 100% tax savings with Status Card. $0 down. 98.9% approval. Free on-reserve delivery.",
+    "Vehicle financing for First Nations communities in Ontario, Quebec, Manitoba, New Brunswick, Nova Scotia, and Newfoundland & Labrador. 100% tax savings with Status Card. $0 down. 98.9% approval. Free on-reserve delivery.",
   keywords: [
     "First Nations car financing",
     "First Nation auto financing",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     "bad credit auto loan First Nations",
     "vehicle delivery reserve Canada",
   ],
-  metadataBase: new URL("https://firstnationautofinancing.ca"),
+  metadataBase: new URL("https://www.firstnationautofinancing.ca"),
   alternates: {
     canonical: "/",
   },
@@ -59,10 +59,10 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FinancialService",
-              "@id": "https://firstnationautofinancing.ca/#organization",
+              "@id": "https://www.firstnationautofinancing.ca/#organization",
               name: "First Nation Auto Financing",
               alternateName: "First Nation Auto",
-              url: "https://firstnationautofinancing.ca",
+              url: "https://www.firstnationautofinancing.ca",
               telephone: "+1-613-302-8872",
               priceRange: "$$",
               description:

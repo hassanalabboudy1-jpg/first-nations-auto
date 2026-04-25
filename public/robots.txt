@@ -4,4 +4,4 @@ Disallow: /admin
 Disallow: /login
 Disallow: /api/
 
-Sitemap: https://firstnationautofinancing.ca/sitemap.xml
+Sitemap: https://www.firstnationautofinancing.ca/sitemap.xml
