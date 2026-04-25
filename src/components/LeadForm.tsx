@@ -114,7 +114,7 @@ export function LeadForm({ preselectedCommunity }: { preselectedCommunity?: stri
   }
 
   const inputClass =
-    "w-full bg-white border border-earth-border rounded-xl px-4 py-3.5 text-sm text-earth-text focus:border-earth-forest focus:ring-1 focus:ring-earth-forest/20 focus:outline-none transition placeholder:text-earth-muted/60";
+    "w-full bg-white border border-earth-border rounded-xl px-4 py-3.5 text-base text-earth-text focus:border-earth-forest focus:ring-1 focus:ring-earth-forest/20 focus:outline-none transition placeholder:text-earth-muted/60";
 
   const optionBtnClass = (selected: boolean) =>
     `w-full flex items-center gap-3 p-4 rounded-xl border text-left transition ${
@@ -578,7 +578,7 @@ export function LeadForm({ preselectedCommunity }: { preselectedCommunity?: stri
               sharing it with dealer and lender partners to process my vehicle financing
               application. I agree to be contacted by phone, SMS, or email. I can withdraw
               consent at any time. Protected under{" "}
-              <span className="underline">PIPEDA</span>.
+              <a href="/privacy" target="_blank" rel="noopener" className="underline hover:text-earth-forest">PIPEDA — see Privacy Policy</a>.
             </p>
           </label>
 

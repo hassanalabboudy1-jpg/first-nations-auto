@@ -724,6 +724,11 @@ export default function HomePage() {
                     Refer &amp; Earn $500
                   </Link>
                 </p>
+                <p>
+                  <Link href="/privacy" className="hover:text-white transition">
+                    Privacy Policy
+                  </Link>
+                </p>
               </div>
             </div>
           </div>
@@ -736,8 +741,8 @@ export default function HomePage() {
             </p>
             <p className="text-xs text-white/20">
               &copy; {new Date().getFullYear()} First Nation Auto Financing.
-              Serving Ontario, Quebec, Manitoba, New Brunswick &amp; Nova
-              Scotia.
+              Serving Ontario, Quebec, Manitoba, New Brunswick, Nova Scotia
+              &amp; Newfoundland &amp; Labrador.
             </p>
           </div>
         </div>
